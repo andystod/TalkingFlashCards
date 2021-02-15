@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  TalkingFlashCards
+
+  Created by Andrew Stoddart on 14/02/2021.
+  
+*/
+"Hello World!" = "Hola Mundo!";
+"Goodbye!" = "Adios!";

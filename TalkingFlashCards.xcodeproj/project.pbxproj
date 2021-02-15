@@ -13,9 +13,13 @@
 		49989FC525D83ABD001510EB /* TalkingFlashCards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49989FC325D83ABD001510EB /* TalkingFlashCards.xcdatamodeld */; };
 		49989FC725D83AC0001510EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49989FC625D83AC0001510EB /* Assets.xcassets */; };
 		49989FCA25D83AC0001510EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49989FC925D83AC0001510EB /* Preview Assets.xcassets */; };
-		49989FCD25D83AC0001510EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49989FCB25D83AC0001510EB /* LaunchScreen.storyboard */; };
 		49989FD825D83AC1001510EB /* TalkingFlashCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49989FD725D83AC1001510EB /* TalkingFlashCardsTests.swift */; };
 		49989FE325D83AC1001510EB /* TalkingFlashCardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49989FE225D83AC1001510EB /* TalkingFlashCardsUITests.swift */; };
+		49989FFA25D9B713001510EB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49989FF925D9B713001510EB /* HomeView.swift */; };
+		4998A00225D9C22A001510EB /* NewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998A00125D9C22A001510EB /* NewCardView.swift */; };
+		4998A00725D9C234001510EB /* NewDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998A00625D9C234001510EB /* NewDeckView.swift */; };
+		4998A01425D9FA55001510EB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4998A01625D9FA55001510EB /* Localizable.strings */; };
+		4998A02B25DA0EAF001510EB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4998A02A25DA0EAF001510EB /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +47,6 @@
 		49989FC425D83ABD001510EB /* TalkingFlashCards.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TalkingFlashCards.xcdatamodel; sourceTree = "<group>"; };
 		49989FC625D83AC0001510EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49989FC925D83AC0001510EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		49989FCC25D83AC0001510EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49989FCE25D83AC0001510EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49989FD325D83AC1001510EB /* TalkingFlashCardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TalkingFlashCardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49989FD725D83AC1001510EB /* TalkingFlashCardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkingFlashCardsTests.swift; sourceTree = "<group>"; };
@@ -51,6 +54,12 @@
 		49989FDE25D83AC1001510EB /* TalkingFlashCardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TalkingFlashCardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49989FE225D83AC1001510EB /* TalkingFlashCardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkingFlashCardsUITests.swift; sourceTree = "<group>"; };
 		49989FE425D83AC1001510EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49989FF925D9B713001510EB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		4998A00125D9C22A001510EB /* NewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardView.swift; sourceTree = "<group>"; };
+		4998A00625D9C234001510EB /* NewDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeckView.swift; sourceTree = "<group>"; };
+		4998A01525D9FA55001510EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4998A01F25D9FB14001510EB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4998A02A25DA0EAF001510EB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		497A849C25DA10F30040B1CE /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				49989FC625D83AC0001510EB /* Assets.xcassets */,
+				4998A02A25DA0EAF001510EB /* Colors.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		49989FB125D83ABD001510EB = {
 			isa = PBXGroup;
 			children = (
@@ -101,12 +119,11 @@
 		49989FBC25D83ABD001510EB /* TalkingFlashCards */ = {
 			isa = PBXGroup;
 			children = (
+				4998A00B25D9F9E4001510EB /* App */,
+				49989FF825D9B706001510EB /* Views */,
 				49989FBD25D83ABD001510EB /* AppDelegate.swift */,
 				49989FBF25D83ABD001510EB /* SceneDelegate.swift */,
 				49989FC125D83ABD001510EB /* ContentView.swift */,
-				49989FC625D83AC0001510EB /* Assets.xcassets */,
-				49989FCB25D83AC0001510EB /* LaunchScreen.storyboard */,
-				49989FCE25D83AC0001510EB /* Info.plist */,
 				49989FC325D83ABD001510EB /* TalkingFlashCards.xcdatamodeld */,
 				49989FC825D83AC0001510EB /* Preview Content */,
 			);
@@ -137,6 +154,34 @@
 				49989FE425D83AC1001510EB /* Info.plist */,
 			);
 			path = TalkingFlashCardsUITests;
+			sourceTree = "<group>";
+		};
+		49989FF825D9B706001510EB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				49989FF925D9B713001510EB /* HomeView.swift */,
+				4998A00125D9C22A001510EB /* NewCardView.swift */,
+				4998A00625D9C234001510EB /* NewDeckView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4998A00B25D9F9E4001510EB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				49989FCE25D83AC0001510EB /* Info.plist */,
+				497A849C25DA10F30040B1CE /* Assets */,
+				4998A02625DA0DE9001510EB /* Localization */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		4998A02625DA0DE9001510EB /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				4998A01625D9FA55001510EB /* Localizable.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +269,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 49989FB125D83ABD001510EB;
 			productRefGroup = 49989FBB25D83ABD001510EB /* Products */;
@@ -242,7 +288,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49989FCD25D83AC0001510EB /* LaunchScreen.storyboard in Resources */,
+				4998A01425D9FA55001510EB /* Localizable.strings in Resources */,
+				4998A02B25DA0EAF001510EB /* Colors.xcassets in Resources */,
 				49989FCA25D83AC0001510EB /* Preview Assets.xcassets in Resources */,
 				49989FC725D83AC0001510EB /* Assets.xcassets in Resources */,
 			);
@@ -270,9 +317,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				49989FBE25D83ABD001510EB /* AppDelegate.swift in Sources */,
+				4998A00225D9C22A001510EB /* NewCardView.swift in Sources */,
 				49989FC025D83ABD001510EB /* SceneDelegate.swift in Sources */,
 				49989FC225D83ABD001510EB /* ContentView.swift in Sources */,
+				49989FFA25D9B713001510EB /* HomeView.swift in Sources */,
 				49989FC525D83ABD001510EB /* TalkingFlashCards.xcdatamodeld in Sources */,
+				4998A00725D9C234001510EB /* NewDeckView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,12 +358,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		49989FCB25D83AC0001510EB /* LaunchScreen.storyboard */ = {
+		4998A01625D9FA55001510EB /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				49989FCC25D83AC0001510EB /* Base */,
+				4998A01525D9FA55001510EB /* en */,
+				4998A01F25D9FB14001510EB /* es */,
 			);
-			name = LaunchScreen.storyboard;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -323,6 +374,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -384,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -444,12 +497,12 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TalkingFlashCards/Preview Content\"";
 				DEVELOPMENT_TEAM = 4UDDXWCBX9;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = TalkingFlashCards/Info.plist;
+				INFOPLIST_FILE = TalkingFlashCards/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ajs.TalkingFlashCards;
+				PRODUCT_BUNDLE_IDENTIFIER = ajs.LangFlash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -465,12 +518,12 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TalkingFlashCards/Preview Content\"";
 				DEVELOPMENT_TEAM = 4UDDXWCBX9;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = TalkingFlashCards/Info.plist;
+				INFOPLIST_FILE = TalkingFlashCards/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ajs.TalkingFlashCards;
+				PRODUCT_BUNDLE_IDENTIFIER = ajs.LangFlash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
