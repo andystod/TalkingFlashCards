@@ -9,58 +9,73 @@ import SwiftUI
 
 struct HomeView: View {
   
-  @State var selectedTab: Int = 0
+  @State var selectedTab: Tabs = .review
   
   var body: some View {
-    TabView(selection: $selectedTab) {
-      VStack {
-        Text("Tab Content 0")
-        Text("Hello World!")
-        Text("Goodbye!")
-        Text("Tab Selected: \(selectedTab)")
+    
+    NavigationView {
+      TabView(selection: $selectedTab) {
+        VStack {
+          Text("Tab Content 0")
+          Text("Hello World!")
+          Text("Goodbye!")
+          //          Text("Tab Selected: \(selectedTab)")
+        }
+        .tabItem {
+          Label("Review", systemImage: "rectangle.stack.fill")
+        }
+        .tag(Tabs.review)
+        
+        VStack {
+          AddView()
+          //          Text("Tab Selected: \(selectedTab)")
+        }
+        .tabItem {
+          Label("Add", systemImage: "plus.rectangle.fill.on.rectangle.fill")
+        }
+        .tag(Tabs.add)
+        
+        VStack {
+          MoreView()
+        }
+        .tabItem {
+          Label("More", systemImage: "ellipsis")
+        }
+        .tag(Tabs.more)
+        
       }
-      .tabItem {
-        Label("Review", systemImage: "rectangle.stack.fill")
-      }
-      .tag(0)
-      
-      VStack {
-        Text("Tab Content 1")
-        Text("Tab Selected: \(selectedTab)")
-      }
-      .tabItem {
-        Label("Add", systemImage: "plus.rectangle.fill.on.rectangle.fill")
-      }
-      .tag(1)
-      
-      VStack {
-        Text("Tab Content 2")
-        Text("Tab Selected: \(selectedTab)")
-      }
-      .tabItem {
-        Label("More", systemImage: "ellipsis")
-      }
-      .tag(2)
-      
+      .navigationTitle(LocalizedStringKey(getNavBarTitleForTab(selectedTab)))
     }
     
-    
-    
   }
+  
+  enum Tabs{
+    case review, add, more
+  }
+  
+  func getNavBarTitleForTab(_ tab: Tabs) -> String {
+    switch tab{
+    case .review: return "Review" // test localization
+    case .add: return "Add"
+    case .more: return "More"
+    }
+  }
+  
+  
 }
 
 struct HomeView_Previews: PreviewProvider {
   static var previews: some View {
     HomeView()
       .preferredColorScheme(.dark)
-    HomeView()
-      .preferredColorScheme(.light)
-    HomeView()
-      .preferredColorScheme(.none)
-//      .previewedInAllColorSchemes
-//      .environment(\.locale, .init(identifier: "en"))
-//    HomeView()
-//      .environment(\.locale, .init(identifier: "es"))
+    //    HomeView()
+    //      .preferredColorScheme(.light)
+    //    HomeView()
+    //      .preferredColorScheme(.none)
+    //      .previewedInAllColorSchemes
+    //      .environment(\.locale, .init(identifier: "en"))
+    //    HomeView()
+    //      .environment(\.locale, .init(identifier: "es"))
   }
 }
 
