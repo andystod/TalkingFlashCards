@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NewCardView: View {
   
+  @Environment(\.presentationMode) var presentationMode
   @State var front = ""
   @State var back = ""
   
@@ -30,10 +31,18 @@ struct NewCardView: View {
       }
     }
     .navigationTitle("New Card")
-    .navigationBarItems(
-      leading: Button("Cancel") {},
-      trailing: Button("Save") {}
-    )
+    .toolbar {
+      ToolbarItem(placement: .primaryAction) {
+        Button("Save") {
+          presentationMode.wrappedValue.dismiss()
+        }
+      }
+      ToolbarItem(placement: .cancellationAction) {
+        Button("Cancel") {
+          presentationMode.wrappedValue.dismiss()
+        }
+      }
+    }
     .navigationBarBackButtonHidden(true)
   }
   //  }

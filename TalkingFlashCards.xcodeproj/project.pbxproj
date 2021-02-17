@@ -21,12 +21,13 @@
 		4998A00725D9C234001510EB /* NewDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998A00625D9C234001510EB /* NewDeckView.swift */; };
 		4998A01425D9FA55001510EB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4998A01625D9FA55001510EB /* Localizable.strings */; };
 		4998A02B25DA0EAF001510EB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4998A02A25DA0EAF001510EB /* Colors.xcassets */; };
-		49B9D53425DA28480066A51F /* AddNewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D53325DA28480066A51F /* AddNewCard.swift */; };
+		49B9D53425DA28480066A51F /* NewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D53325DA28480066A51F /* NewCardView.swift */; };
 		49B9D53925DADE120066A51F /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D53825DADE120066A51F /* MoreView.swift */; };
 		49B9D53E25DADE280066A51F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D53D25DADE280066A51F /* SettingsView.swift */; };
 		49B9D54325DADE330066A51F /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D54225DADE330066A51F /* ContactView.swift */; };
 		49E6322625DB674800AC6040 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6322525DB674800AC6040 /* Injectable.swift */; };
 		49E6322B25DB694C00AC6040 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6322A25DB694C00AC6040 /* DependencyManager.swift */; };
+		49E6323625DC3F2800AC6040 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6323525DC3F2800AC6040 /* Deck.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,12 +69,13 @@
 		4998A01525D9FA55001510EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4998A01F25D9FB14001510EB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4998A02A25DA0EAF001510EB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		49B9D53325DA28480066A51F /* AddNewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCard.swift; sourceTree = "<group>"; };
+		49B9D53325DA28480066A51F /* NewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardView.swift; sourceTree = "<group>"; };
 		49B9D53825DADE120066A51F /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		49B9D53D25DADE280066A51F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		49B9D54225DADE330066A51F /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		49E6322525DB674800AC6040 /* Injectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
 		49E6322A25DB694C00AC6040 /* DependencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
+		49E6323525DC3F2800AC6040 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,7 +227,8 @@
 			children = (
 				4998A00625D9C234001510EB /* NewDeckView.swift */,
 				497A84AD25DA26850040B1CE /* AddView.swift */,
-				49B9D53325DA28480066A51F /* AddNewCard.swift */,
+				49B9D53325DA28480066A51F /* NewCardView.swift */,
+				49E6323525DC3F2800AC6040 /* Deck.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -370,7 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49989FBE25D83ABD001510EB /* AppDelegate.swift in Sources */,
-				49B9D53425DA28480066A51F /* AddNewCard.swift in Sources */,
+				49B9D53425DA28480066A51F /* NewCardView.swift in Sources */,
 				490925F825DB3ED400BE1DE2 /* DeckDataService.swift in Sources */,
 				49B9D54325DADE330066A51F /* ContactView.swift in Sources */,
 				49989FC025D83ABD001510EB /* SceneDelegate.swift in Sources */,
@@ -381,6 +384,7 @@
 				49989FFA25D9B713001510EB /* HomeView.swift in Sources */,
 				49989FC525D83ABD001510EB /* TalkingFlashCards.xcdatamodeld in Sources */,
 				4998A00725D9C234001510EB /* NewDeckView.swift in Sources */,
+				49E6323625DC3F2800AC6040 /* Deck.swift in Sources */,
 				49B9D53925DADE120066A51F /* MoreView.swift in Sources */,
 				49B9D53E25DADE280066A51F /* SettingsView.swift in Sources */,
 			);

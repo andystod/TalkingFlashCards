@@ -16,10 +16,7 @@ struct HomeView: View {
     NavigationView {
       TabView(selection: $selectedTab) {
         VStack {
-          Text("Tab Content 0")
-          Text("Hello World!")
-          Text("Goodbye!")
-          //          Text("Tab Selected: \(selectedTab)")
+          Text("Review Content")
         }
         .tabItem {
           Label("Review", systemImage: "rectangle.stack.fill")
@@ -28,7 +25,6 @@ struct HomeView: View {
         
         VStack {
           AddView()
-          //          Text("Tab Selected: \(selectedTab)")
         }
         .tabItem {
           Label("Add", systemImage: "plus.rectangle.fill.on.rectangle.fill")
@@ -46,6 +42,7 @@ struct HomeView: View {
       }
       .navigationTitle(LocalizedStringKey(getNavBarTitleForTab(selectedTab)))
     }
+    .accentColor(.yellow) // TODO
     
   }
   

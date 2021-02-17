@@ -43,26 +43,27 @@ extension AddView {
     @Published var decks = [Deck]()
     
     @Dependency var deckDataService: DeckDataService
-    var cancellables = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>()
     
     func getDecks() {
       
-      deckDataService.getDecks().sink { completion in
-        
-        if case let .failure(error) = completion {
-          print(error)
+      deckDataService.getDecks()
+        .sink { completion in
+          
+          if case let .failure(error) = completion {
+            print(error)
+          }
+          
+          
+          switch completion {
+          case .finished: break
+          case let .failure(error):
+            print(error)
+          }
+        } receiveValue: { [weak self] value in
+          self?.decks = value
         }
-        
-        
-        switch completion {
-        case .finished: break
-        case let .failure(error):
-          print(error)
-        }
-      } receiveValue: { [weak self] value in
-        self?.decks = value
-      }
-      .store(in: &cancellables)
+        .store(in: &cancellables)
       
       
       
@@ -71,10 +72,6 @@ extension AddView {
   }
 }
 
-struct Deck: Identifiable {
-  var id: UUID
-  var name: String
-}
 
 struct AddView_Previews: PreviewProvider {
   static var previews: some View {
