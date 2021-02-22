@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// TODO need to make keyboard change depending on language
+
 struct NewCardView: View {
   
   @Environment(\.presentationMode) var presentationMode
@@ -18,16 +20,30 @@ struct NewCardView: View {
     Form {
       Section(header: Text("Front")) {
         TextEditor(text: $front)
+          .frame(minHeight: 70.0, maxHeight: 150.0)
         //          .foregroundColor(.secondary)
       }
       Section(header: Text("Back")) {
         TextEditor(text: $back)
+          .frame(minHeight: 70.0, maxHeight: 150.0)
         //          .foregroundColor(.secondary)
       }
       Section {
-        Button("Save And Next") {
-          // activate theme!
+        ZStack {
+          
+          RoundedRectangle(cornerRadius: 25.0)
+            .strokeBorder(lineWidth: 3.0)
+            .frame(width: 150, height: 42)
+            .foregroundColor(.red)
+          Text("Nope")
+            .foregroundColor(.red)
+            .font(.system(size:32))
+            .fontWeight(.black)
         }
+//        .rotationEffect(.init(degrees:45.0))
+        //        Button("Save And Next") {
+        //          // activate theme!
+        //        }
       }
     }
     .navigationTitle("New Card")
@@ -38,7 +54,7 @@ struct NewCardView: View {
         }
       }
       ToolbarItem(placement: .cancellationAction) {
-        Button("Cancel") {
+        Button("Done") {
           presentationMode.wrappedValue.dismiss()
         }
       }

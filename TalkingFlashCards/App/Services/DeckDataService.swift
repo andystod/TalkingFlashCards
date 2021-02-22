@@ -32,12 +32,22 @@ class RealmDeckDataService: DeckDataService {
   }
   
   func createDeck(deck: Deck) -> AnyPublisher<Void, Error> {
-    return Future { [weak self] promise in
-      self?.decks.append(deck)
+    return Future<Void, FlashError> { [weak self] promise in
+      if deck.name.lowercased() != "aaa" {
+        self?.decks.append(deck)
+      }
       promise(.success(()))
+    }
+    .tryMap { item in
+      if deck.name.lowercased() == "aaa" {
+        throw FlashError.known
+      } else {
+        return item
+      }
     }
     .receive(on: DispatchQueue.main)
     .eraseToAnyPublisher()
   }
   
 }
+

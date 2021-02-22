@@ -15,9 +15,7 @@ struct HomeView: View {
     
     NavigationView {
       TabView(selection: $selectedTab) {
-        VStack {
-          Text("Review Content")
-        }
+        ReviewView()
         .tabItem {
           Label("Review", systemImage: "rectangle.stack.fill")
         }

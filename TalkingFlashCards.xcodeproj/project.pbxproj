@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		490925F825DB3ED400BE1DE2 /* DeckDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490925F725DB3ED400BE1DE2 /* DeckDataService.swift */; };
+		4927E4A125E0100D00F6E166 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927E4A025E0100D00F6E166 /* ReviewView.swift */; };
+		4927E4A625E0102400F6E166 /* ReviewCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927E4A525E0102400F6E166 /* ReviewCardsView.swift */; };
+		4927E4AB25E041F900F6E166 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927E4AA25E041F900F6E166 /* Card.swift */; };
 		497A84AE25DA26850040B1CE /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A84AD25DA26850040B1CE /* AddView.swift */; };
 		49989FBE25D83ABD001510EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49989FBD25D83ABD001510EB /* AppDelegate.swift */; };
 		49989FC025D83ABD001510EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49989FBF25D83ABD001510EB /* SceneDelegate.swift */; };
@@ -25,9 +28,15 @@
 		49B9D53925DADE120066A51F /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D53825DADE120066A51F /* MoreView.swift */; };
 		49B9D53E25DADE280066A51F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D53D25DADE280066A51F /* SettingsView.swift */; };
 		49B9D54325DADE330066A51F /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D54225DADE330066A51F /* ContactView.swift */; };
+		49DBC31225DF3A4A009CFBE0 /* LanguagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DBC31125DF3A4A009CFBE0 /* LanguagesService.swift */; };
+		49DBC31925DF58B3009CFBE0 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DBC31825DF58B3009CFBE0 /* Cache.swift */; };
 		49E6322625DB674800AC6040 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6322525DB674800AC6040 /* Injectable.swift */; };
 		49E6322B25DB694C00AC6040 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6322A25DB694C00AC6040 /* DependencyManager.swift */; };
 		49E6323625DC3F2800AC6040 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6323525DC3F2800AC6040 /* Deck.swift */; };
+		49E6324325DD834A00AC6040 /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6324225DD834A00AC6040 /* GeneralExtensions.swift */; };
+		49F40AB125DDAFBD00DE80DC /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F40AB025DDAFBD00DE80DC /* AlertItem.swift */; };
+		49F40AB625DDB94C00DE80DC /* FlashError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F40AB525DDB94C00DE80DC /* FlashError.swift */; };
+		49FE722725E3422800E2C3B1 /* CardSideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE722625E3422800E2C3B1 /* CardSideView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +58,9 @@
 
 /* Begin PBXFileReference section */
 		490925F725DB3ED400BE1DE2 /* DeckDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckDataService.swift; sourceTree = "<group>"; };
+		4927E4A025E0100D00F6E166 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		4927E4A525E0102400F6E166 /* ReviewCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCardsView.swift; sourceTree = "<group>"; };
+		4927E4AA25E041F900F6E166 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		497A84AD25DA26850040B1CE /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		49989FBA25D83ABD001510EB /* TalkingFlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkingFlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49989FBD25D83ABD001510EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,9 +85,15 @@
 		49B9D53825DADE120066A51F /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		49B9D53D25DADE280066A51F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		49B9D54225DADE330066A51F /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
+		49DBC31125DF3A4A009CFBE0 /* LanguagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesService.swift; sourceTree = "<group>"; };
+		49DBC31825DF58B3009CFBE0 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		49E6322525DB674800AC6040 /* Injectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
 		49E6322A25DB694C00AC6040 /* DependencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
 		49E6323525DC3F2800AC6040 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		49E6324225DD834A00AC6040 /* GeneralExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralExtensions.swift; sourceTree = "<group>"; };
+		49F40AB025DDAFBD00DE80DC /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
+		49F40AB525DDB94C00DE80DC /* FlashError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashError.swift; sourceTree = "<group>"; };
+		49FE722625E3422800E2C3B1 /* CardSideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSideView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				490925F725DB3ED400BE1DE2 /* DeckDataService.swift */,
+				49DBC31125DF3A4A009CFBE0 /* LanguagesService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -185,6 +204,7 @@
 				49B9D54C25DAE6990066A51F /* Review */,
 				49B9D54B25DAE6900066A51F /* Add */,
 				49B9D54A25DAE6880066A51F /* More */,
+				49F40AB025DDAFBD00DE80DC /* AlertItem.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,6 +212,7 @@
 		4998A00B25D9F9E4001510EB /* App */ = {
 			isa = PBXGroup;
 			children = (
+				49DBC31625DF589C009CFBE0 /* Common */,
 				49989FBD25D83ABD001510EB /* AppDelegate.swift */,
 				49989FBF25D83ABD001510EB /* SceneDelegate.swift */,
 				490925FC25DB3EE300BE1DE2 /* Services */,
@@ -200,6 +221,8 @@
 				4998A02625DA0DE9001510EB /* Localization */,
 				49E6322525DB674800AC6040 /* Injectable.swift */,
 				49E6322A25DB694C00AC6040 /* DependencyManager.swift */,
+				49E6324225DD834A00AC6040 /* GeneralExtensions.swift */,
+				49F40AB525DDB94C00DE80DC /* FlashError.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -229,6 +252,7 @@
 				497A84AD25DA26850040B1CE /* AddView.swift */,
 				49B9D53325DA28480066A51F /* NewCardView.swift */,
 				49E6323525DC3F2800AC6040 /* Deck.swift */,
+				4927E4AA25E041F900F6E166 /* Card.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -236,8 +260,27 @@
 		49B9D54C25DAE6990066A51F /* Review */ = {
 			isa = PBXGroup;
 			children = (
+				4927E4A025E0100D00F6E166 /* ReviewView.swift */,
+				4927E4A525E0102400F6E166 /* ReviewCardsView.swift */,
+				49FE722625E3422800E2C3B1 /* CardSideView.swift */,
 			);
 			path = Review;
+			sourceTree = "<group>";
+		};
+		49DBC31625DF589C009CFBE0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				49DBC31725DF58A5009CFBE0 /* Utility */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		49DBC31725DF58A5009CFBE0 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				49DBC31825DF58B3009CFBE0 /* Cache.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,21 +415,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49E6324325DD834A00AC6040 /* GeneralExtensions.swift in Sources */,
 				49989FBE25D83ABD001510EB /* AppDelegate.swift in Sources */,
 				49B9D53425DA28480066A51F /* NewCardView.swift in Sources */,
 				490925F825DB3ED400BE1DE2 /* DeckDataService.swift in Sources */,
+				4927E4A625E0102400F6E166 /* ReviewCardsView.swift in Sources */,
 				49B9D54325DADE330066A51F /* ContactView.swift in Sources */,
 				49989FC025D83ABD001510EB /* SceneDelegate.swift in Sources */,
+				49DBC31925DF58B3009CFBE0 /* Cache.swift in Sources */,
 				49E6322625DB674800AC6040 /* Injectable.swift in Sources */,
 				49E6322B25DB694C00AC6040 /* DependencyManager.swift in Sources */,
 				49989FC225D83ABD001510EB /* ContentView.swift in Sources */,
 				497A84AE25DA26850040B1CE /* AddView.swift in Sources */,
 				49989FFA25D9B713001510EB /* HomeView.swift in Sources */,
 				49989FC525D83ABD001510EB /* TalkingFlashCards.xcdatamodeld in Sources */,
+				4927E4A125E0100D00F6E166 /* ReviewView.swift in Sources */,
+				49F40AB125DDAFBD00DE80DC /* AlertItem.swift in Sources */,
 				4998A00725D9C234001510EB /* NewDeckView.swift in Sources */,
+				49DBC31225DF3A4A009CFBE0 /* LanguagesService.swift in Sources */,
+				4927E4AB25E041F900F6E166 /* Card.swift in Sources */,
 				49E6323625DC3F2800AC6040 /* Deck.swift in Sources */,
 				49B9D53925DADE120066A51F /* MoreView.swift in Sources */,
+				49F40AB625DDB94C00DE80DC /* FlashError.swift in Sources */,
 				49B9D53E25DADE280066A51F /* SettingsView.swift in Sources */,
+				49FE722725E3422800E2C3B1 /* CardSideView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,6 +30,9 @@ struct AddView: View {
         }
       }
     }
+    .alert(isPresented: Binding<Bool>.constant($viewModel.error.wrappedValue != nil)) {
+      Alert(title: Text("Error"))
+    }
     .navigationTitle("AddTabTitle")
     .onAppear(perform: {
       viewModel.getDecks()
@@ -41,6 +44,7 @@ struct AddView: View {
 extension AddView {
   class ViewModel: ObservableObject {
     @Published var decks = [Deck]()
+    @Published var error: Error?
     
     @Dependency var deckDataService: DeckDataService
     private var cancellables = Set<AnyCancellable>()
