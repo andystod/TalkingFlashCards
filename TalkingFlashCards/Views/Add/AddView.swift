@@ -11,10 +11,13 @@ import Combine
 struct AddView: View {
   
   @StateObject var viewModel: ViewModel
+  
   init(viewModel: ViewModel = .init()) {
     
     self._viewModel = StateObject(wrappedValue: viewModel)
   }
+  
+//  @State var deck = Deck()
   
   var body: some View {
     
@@ -23,10 +26,10 @@ struct AddView: View {
         Text("Add New Deck")
           .foregroundColor(.accentColor)
       }
-      ForEach(viewModel.decks) { deck in
+      ForEach(viewModel.decks.indices, id: \.self) { i in
         NavigationLink(
-          destination: NewCardView()) {
-          Text(deck.name)
+          destination: NewCardView(deck: $viewModel.decks[i])) { // TODO
+          Text(viewModel.decks[i].name)
         }
       }
     }
@@ -64,8 +67,9 @@ extension AddView {
           case let .failure(error):
             print(error)
           }
-        } receiveValue: { [weak self] value in
-          self?.decks = value
+        } receiveValue: { [weak self] decks in
+          self?.decks = decks
+          print(self?.decks.indices)
         }
         .store(in: &cancellables)
       
@@ -79,9 +83,9 @@ extension AddView {
 
 struct AddView_Previews: PreviewProvider {
   static var previews: some View {
-    let decks = [Deck(id: UUID(), name: "Deck1"),
-                 Deck(id: UUID(), name: "Deck2"),
-                 Deck(id: UUID(), name: "Deck4")]
+    let decks = [Deck(name: "Deck1"),
+                 Deck(name: "Deck2"),
+                 Deck(name: "Deck4")]
     let viewModel = AddView.ViewModel()
     viewModel.decks = decks
     return NavigationView {

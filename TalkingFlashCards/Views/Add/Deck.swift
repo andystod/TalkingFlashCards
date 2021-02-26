@@ -12,13 +12,13 @@ enum Side {
 }
 
 struct Deck: Identifiable {
-  var id: UUID = UUID()
+  let id: String = UUID().uuidString
   var name: String = ""
   var description: String = ""
   var frontSideSettings = SideSettings(side: .front)
   var backSideSettings = SideSettings(side: .back, autoPlay: true)
   
-  var cards = [Card](repeating: Card.example, count: 3)
+  var cards = [Card]()
   
   var hasRequiredFieldsFilled: Bool {
     return !name.isEmpty && !frontSideSettings.language.isEmpty && !backSideSettings.language.isEmpty

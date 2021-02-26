@@ -29,7 +29,9 @@ struct ReviewCardsView: View {
       }
       .padding()
     }
-    .navigationTitle("Review Cards")
+    .navigationBarTitle("", displayMode: .inline)
+//    .navigationBarHidden(true)
+//    .navigationTitle("")
   }
 }
 

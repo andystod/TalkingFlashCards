@@ -70,8 +70,8 @@ struct NewDeckView: View {
     .navigationBarBackButtonHidden(true)
     .onAppear {
       viewModel.$result
-        .sink { result in
-          switch result {
+        .sink { value in
+          switch value {
           case .success():
             // Depending on save button pressed either proceed to add cards or return to previous screen
             if saveAndAddCardsPressed {
@@ -90,7 +90,7 @@ struct NewDeckView: View {
         .store(in: &self.viewModel.cancellables)
     }
     NavigationLink(
-      destination: NewCardView(),
+      destination: NewCardView(deck: $deck),
       isActive: $proceedToNewCard) { EmptyView() }
   }
 }
@@ -135,7 +135,7 @@ struct SideSettingsView: View {
         Text("N/A").tag("N/A")
           .navigationTitle("Select Language")
         ForEach(languageService.getUniqueLanguages(), id:\.self) {
-          Text($0)
+          Text($0.displayValue)
         }
       }
       

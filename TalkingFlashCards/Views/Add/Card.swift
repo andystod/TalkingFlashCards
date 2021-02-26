@@ -9,12 +9,12 @@ import Foundation
 
 
 struct Card: Identifiable {
-  var id: UUID = UUID()
+  let id: String = UUID().uuidString
   var front: String = ""
   var back: String = ""
 
   static var example: Card {
-    Card(front: "Front card text", back: "Back card text")
+    Card(front: "Hello! How are you?", back: "¡Hola! ¿Cómo estás?")
   }
 }
 

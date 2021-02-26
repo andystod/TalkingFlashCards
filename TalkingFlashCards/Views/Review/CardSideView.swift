@@ -6,13 +6,17 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct CardSideView: View {
   
   var text: String
   var sideSettings: SideSettings
   @Binding var offset: CGSize
-  @State var speaking = false
+//  @State var speaking = false
+  @StateObject var speaker = Speaker()
+  
+  
   
   func gradientColors() -> [Color] {
     var colors = [Color.blue.opacity(1 - Double(abs(offset.width / 50))), Color.purple.opacity(1 - Double(abs(offset.width / 50)))]
@@ -50,12 +54,14 @@ struct CardSideView: View {
           .font(.title)
           .bold()
         Spacer()
-        Button(action: { speaking.toggle()}, label: {
-          Image(systemName: speaking ? "speaker.wave.3.fill" : "speaker.fill")
+        Button(action: {
+          speaker.speak(text, language: sideSettings.language)
+        }, label: {
+          Image(systemName: speaker.isSpeaking ? "speaker.wave.3.fill" : "speaker.fill")
         })
         
-        .padding(.leading, speaking ? 17.5 : 0)
-        .padding(.bottom, speaking ? 29 : 30)
+        .padding(.leading, speaker.isSpeaking ? 17.5 : 0)
+        .padding(.bottom, speaker.isSpeaking ? 29 : 30)
         .foregroundColor(.yellow)
         .font(.title)
       }
@@ -63,8 +69,40 @@ struct CardSideView: View {
   }
 }
 
+
+func speak(_ text: String, language: String) {
+
+  let speaker = Speaker()
+  speaker.speak(text, language: language)
+  
+  
+  //  let langCode = Locale.current.languageCode ?? ""
+  //  let regionCode = Locale.current.regionCode ?? ""
+  //  let language = "\(langCode)-\(regionCode)"
+  //  print(language)
+  //  print(NSLocale.current.identifier)
+
+
+
+//  let speakTalk   = AVSpeechSynthesizer()
+////  speakTalk.delegate = self
+//  //  let speakMsg    = AVSpeechUtterance(string: "Hola el mundo, puedo hablar")
+//
+//  let speakMsg    = AVSpeechUtterance(string: text)
+//
+//  //  speakMsg.voice  = AVSpeechSynthesisVoice(language: "es-MX")
+//
+//  speakMsg.voice  = AVSpeechSynthesisVoice(language: language)
+//
+//  speakMsg.pitchMultiplier = 1.2
+//  speakMsg.rate   = 0.5
+//
+//  speakTalk.speak(speakMsg)
+
+}
+
 struct CardSideView_Previews: PreviewProvider {
     static var previews: some View {
-      CardSideView(text: "Side Text", sideSettings: SideSettings(side: .front, language: "English TODO", autoPlay: true), offset: .constant(.zero))
+      CardSideView(text: "Hola soy Andres", sideSettings: SideSettings(side: .front, language: "es-MX", autoPlay: true), offset: .constant(.zero))
     }
 }

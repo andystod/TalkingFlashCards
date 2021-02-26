@@ -11,6 +11,7 @@
 		4927E4A125E0100D00F6E166 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927E4A025E0100D00F6E166 /* ReviewView.swift */; };
 		4927E4A625E0102400F6E166 /* ReviewCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927E4A525E0102400F6E166 /* ReviewCardsView.swift */; };
 		4927E4AB25E041F900F6E166 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927E4AA25E041F900F6E166 /* Card.swift */; };
+		49495F0A25E81DD800F5C3B0 /* VoiceSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49495F0925E81DD800F5C3B0 /* VoiceSelectionView.swift */; };
 		497A84AE25DA26850040B1CE /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A84AD25DA26850040B1CE /* AddView.swift */; };
 		49989FBE25D83ABD001510EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49989FBD25D83ABD001510EB /* AppDelegate.swift */; };
 		49989FC025D83ABD001510EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49989FBF25D83ABD001510EB /* SceneDelegate.swift */; };
@@ -28,7 +29,7 @@
 		49B9D53925DADE120066A51F /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D53825DADE120066A51F /* MoreView.swift */; };
 		49B9D53E25DADE280066A51F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D53D25DADE280066A51F /* SettingsView.swift */; };
 		49B9D54325DADE330066A51F /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D54225DADE330066A51F /* ContactView.swift */; };
-		49DBC31225DF3A4A009CFBE0 /* LanguagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DBC31125DF3A4A009CFBE0 /* LanguagesService.swift */; };
+		49DBC31225DF3A4A009CFBE0 /* LanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DBC31125DF3A4A009CFBE0 /* LanguageService.swift */; };
 		49DBC31925DF58B3009CFBE0 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DBC31825DF58B3009CFBE0 /* Cache.swift */; };
 		49E6322625DB674800AC6040 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6322525DB674800AC6040 /* Injectable.swift */; };
 		49E6322B25DB694C00AC6040 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6322A25DB694C00AC6040 /* DependencyManager.swift */; };
@@ -37,6 +38,9 @@
 		49F40AB125DDAFBD00DE80DC /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F40AB025DDAFBD00DE80DC /* AlertItem.swift */; };
 		49F40AB625DDB94C00DE80DC /* FlashError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F40AB525DDB94C00DE80DC /* FlashError.swift */; };
 		49FE722725E3422800E2C3B1 /* CardSideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE722625E3422800E2C3B1 /* CardSideView.swift */; };
+		49FE722C25E3499400E2C3B1 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE722B25E3499400E2C3B1 /* Speaker.swift */; };
+		49FE723425E747B100E2C3B1 /* VoiceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE723325E747B100E2C3B1 /* VoiceSettingsView.swift */; };
+		49FE723D25E7EF6900E2C3B1 /* Array+RemoveDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE723C25E7EF6900E2C3B1 /* Array+RemoveDuplicates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,7 @@
 		4927E4A025E0100D00F6E166 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		4927E4A525E0102400F6E166 /* ReviewCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCardsView.swift; sourceTree = "<group>"; };
 		4927E4AA25E041F900F6E166 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		49495F0925E81DD800F5C3B0 /* VoiceSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceSelectionView.swift; sourceTree = "<group>"; };
 		497A84AD25DA26850040B1CE /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		49989FBA25D83ABD001510EB /* TalkingFlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkingFlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49989FBD25D83ABD001510EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,7 +90,7 @@
 		49B9D53825DADE120066A51F /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		49B9D53D25DADE280066A51F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		49B9D54225DADE330066A51F /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
-		49DBC31125DF3A4A009CFBE0 /* LanguagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesService.swift; sourceTree = "<group>"; };
+		49DBC31125DF3A4A009CFBE0 /* LanguageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageService.swift; sourceTree = "<group>"; };
 		49DBC31825DF58B3009CFBE0 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		49E6322525DB674800AC6040 /* Injectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
 		49E6322A25DB694C00AC6040 /* DependencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
@@ -94,6 +99,9 @@
 		49F40AB025DDAFBD00DE80DC /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 		49F40AB525DDB94C00DE80DC /* FlashError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashError.swift; sourceTree = "<group>"; };
 		49FE722625E3422800E2C3B1 /* CardSideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSideView.swift; sourceTree = "<group>"; };
+		49FE722B25E3499400E2C3B1 /* Speaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
+		49FE723325E747B100E2C3B1 /* VoiceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceSettingsView.swift; sourceTree = "<group>"; };
+		49FE723C25E7EF6900E2C3B1 /* Array+RemoveDuplicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+RemoveDuplicates.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				490925F725DB3ED400BE1DE2 /* DeckDataService.swift */,
-				49DBC31125DF3A4A009CFBE0 /* LanguagesService.swift */,
+				49DBC31125DF3A4A009CFBE0 /* LanguageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -221,7 +229,6 @@
 				4998A02625DA0DE9001510EB /* Localization */,
 				49E6322525DB674800AC6040 /* Injectable.swift */,
 				49E6322A25DB694C00AC6040 /* DependencyManager.swift */,
-				49E6324225DD834A00AC6040 /* GeneralExtensions.swift */,
 				49F40AB525DDB94C00DE80DC /* FlashError.swift */,
 			);
 			path = App;
@@ -241,6 +248,8 @@
 				49B9D53825DADE120066A51F /* MoreView.swift */,
 				49B9D53D25DADE280066A51F /* SettingsView.swift */,
 				49B9D54225DADE330066A51F /* ContactView.swift */,
+				49FE723325E747B100E2C3B1 /* VoiceSettingsView.swift */,
+				49495F0925E81DD800F5C3B0 /* VoiceSelectionView.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -270,6 +279,7 @@
 		49DBC31625DF589C009CFBE0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				49FE723B25E7EF1000E2C3B1 /* Extensions */,
 				49DBC31725DF58A5009CFBE0 /* Utility */,
 			);
 			path = Common;
@@ -279,8 +289,18 @@
 			isa = PBXGroup;
 			children = (
 				49DBC31825DF58B3009CFBE0 /* Cache.swift */,
+				49FE722B25E3499400E2C3B1 /* Speaker.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		49FE723B25E7EF1000E2C3B1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				49E6324225DD834A00AC6040 /* GeneralExtensions.swift */,
+				49FE723C25E7EF6900E2C3B1 /* Array+RemoveDuplicates.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,27 +437,31 @@
 			files = (
 				49E6324325DD834A00AC6040 /* GeneralExtensions.swift in Sources */,
 				49989FBE25D83ABD001510EB /* AppDelegate.swift in Sources */,
+				49495F0A25E81DD800F5C3B0 /* VoiceSelectionView.swift in Sources */,
 				49B9D53425DA28480066A51F /* NewCardView.swift in Sources */,
 				490925F825DB3ED400BE1DE2 /* DeckDataService.swift in Sources */,
 				4927E4A625E0102400F6E166 /* ReviewCardsView.swift in Sources */,
 				49B9D54325DADE330066A51F /* ContactView.swift in Sources */,
 				49989FC025D83ABD001510EB /* SceneDelegate.swift in Sources */,
+				49FE722C25E3499400E2C3B1 /* Speaker.swift in Sources */,
 				49DBC31925DF58B3009CFBE0 /* Cache.swift in Sources */,
 				49E6322625DB674800AC6040 /* Injectable.swift in Sources */,
 				49E6322B25DB694C00AC6040 /* DependencyManager.swift in Sources */,
 				49989FC225D83ABD001510EB /* ContentView.swift in Sources */,
 				497A84AE25DA26850040B1CE /* AddView.swift in Sources */,
 				49989FFA25D9B713001510EB /* HomeView.swift in Sources */,
+				49FE723425E747B100E2C3B1 /* VoiceSettingsView.swift in Sources */,
 				49989FC525D83ABD001510EB /* TalkingFlashCards.xcdatamodeld in Sources */,
 				4927E4A125E0100D00F6E166 /* ReviewView.swift in Sources */,
 				49F40AB125DDAFBD00DE80DC /* AlertItem.swift in Sources */,
 				4998A00725D9C234001510EB /* NewDeckView.swift in Sources */,
-				49DBC31225DF3A4A009CFBE0 /* LanguagesService.swift in Sources */,
+				49DBC31225DF3A4A009CFBE0 /* LanguageService.swift in Sources */,
 				4927E4AB25E041F900F6E166 /* Card.swift in Sources */,
 				49E6323625DC3F2800AC6040 /* Deck.swift in Sources */,
 				49B9D53925DADE120066A51F /* MoreView.swift in Sources */,
 				49F40AB625DDB94C00DE80DC /* FlashError.swift in Sources */,
 				49B9D53E25DADE280066A51F /* SettingsView.swift in Sources */,
+				49FE723D25E7EF6900E2C3B1 /* Array+RemoveDuplicates.swift in Sources */,
 				49FE722725E3422800E2C3B1 /* CardSideView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

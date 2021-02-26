@@ -9,8 +9,11 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-      VStack {
-        Text("Settings")
+      List {
+        NavigationLink(
+          destination: VoiceSettingsView()) {
+            Text("Voice Settings")
+          }
       }
       .navigationTitle("Settings")
     }
