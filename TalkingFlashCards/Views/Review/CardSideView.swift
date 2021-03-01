@@ -55,7 +55,7 @@ struct CardSideView: View {
           .bold()
         Spacer()
         Button(action: {
-          speaker.speak(text, language: sideSettings.language)
+          speaker.speak(text, language: sideSettings.language!.displayValue) // TODO
         }, label: {
           Image(systemName: speaker.isSpeaking ? "speaker.wave.3.fill" : "speaker.fill")
         })
@@ -101,8 +101,9 @@ func speak(_ text: String, language: String) {
 
 }
 
-struct CardSideView_Previews: PreviewProvider {
-    static var previews: some View {
-      CardSideView(text: "Hola soy Andres", sideSettings: SideSettings(side: .front, language: "es-MX", autoPlay: true), offset: .constant(.zero))
-    }
-}
+// TODO
+//struct CardSideView_Previews: PreviewProvider {
+//    static var previews: some View {
+//      CardSideView(text: "Hola soy Andres", sideSettings: SideSettings(side: .front, language: "es-MX", autoPlay: true), offset: .constant(.zero))
+//    }
+//}

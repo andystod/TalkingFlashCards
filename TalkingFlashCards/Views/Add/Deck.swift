@@ -21,13 +21,13 @@ struct Deck: Identifiable {
   var cards = [Card]()
   
   var hasRequiredFieldsFilled: Bool {
-    return !name.isEmpty && !frontSideSettings.language.isEmpty && !backSideSettings.language.isEmpty
+    return !name.isEmpty // TODO && !frontSideSettings.language.isEmpty && !backSideSettings.language.isEmpty
   }
 }
 
 struct SideSettings {
   var side: Side
-  var language: String = ""
+  var language: Language? = nil
   var autoPlay: Bool = false
 }
 

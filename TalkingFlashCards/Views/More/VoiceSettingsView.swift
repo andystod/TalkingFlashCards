@@ -14,12 +14,14 @@ struct VoiceSettingsView: View {
   var body: some View {
     List(languageService.getUniqueLanguages(), id: \.self) { language in
       NavigationLink(
-        destination: VoiceSelectionView(languageCode: "en")) {
+        destination: VoiceSelectionView(language: language)) {
         
         HStack {
           Image(systemName: "wave.3.right")
             .foregroundColor(.yellow)
           Text(language.displayValue)
+          Spacer()
+          Text("Default")
         }
       }
     }
