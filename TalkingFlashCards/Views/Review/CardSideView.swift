@@ -55,7 +55,7 @@ struct CardSideView: View {
           .bold()
         Spacer()
         Button(action: {
-          speaker.speak(text, language: sideSettings.language!.displayValue) // TODO
+          speaker.speak(text, language: sideSettings.language) // TODO
         }, label: {
           Image(systemName: speaker.isSpeaking ? "speaker.wave.3.fill" : "speaker.fill")
         })

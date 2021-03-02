@@ -52,7 +52,7 @@ struct NewDeckView: View {
     }
     .navigationTitle("New Deck")
     .toolbar {
-      ToolbarItem(placement: .primaryAction) {
+      ToolbarItem(placement: .confirmationAction) {
         Button(action: { viewModel.createDeck(deck) }) {
           Text("Save")
             .fontWeight(.black)
@@ -125,20 +125,19 @@ struct SideSettingsView: View {
   var sectionName: String
   
   // TODO these need to be loaded into environment or some kind of cache
-  @Dependency var languageService: LanguageService
-  
+//  @Dependency var languageService: LanguageService
   @Binding var sideSettings: SideSettings
+  @EnvironmentObject var languageData: LanguageData
   
   var body: some View {
     Section(header: Text(sectionName)) {
       Picker("Language *", selection: $sideSettings.language) {
         Text("N/A").tag("N/A")
           .navigationTitle("Select Language")
-        ForEach(languageService.getUniqueLanguages(), id:\.self) {
+        ForEach(languageData.uniqueLanguages, id: \.languageCode) {
           Text($0.displayValue)
         }
       }
-      
       Toggle("Auto Play Text", isOn: $sideSettings.autoPlay)
     }
   }
@@ -151,4 +150,16 @@ struct NewDeckView_Previews: PreviewProvider {
     }
     .preferredColorScheme(.dark)
   }
+}
+
+
+struct ItemsPerPageKey: EnvironmentKey {
+    static var defaultValue: Int = 10
+}
+
+extension EnvironmentValues {
+    var itemsPerPage: Int {
+        get { self[ItemsPerPageKey.self] }
+        set { self[ItemsPerPageKey.self] = newValue }
+    }
 }

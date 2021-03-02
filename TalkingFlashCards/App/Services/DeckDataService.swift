@@ -20,11 +20,11 @@ class RealmDeckDataService: DeckDataService {
   init() {
     
     // TODO
-    decks = [Deck]()
+//    decks = [Deck]()
     
-//    decks = [Deck(name: "English to Spanish", frontSideSettings: SideSettings(side: .front, language: "en-US", autoPlay: false), backSideSettings: SideSettings(side: .back, language: "es-MX", autoPlay: true), cards: [Card(front: "Hello!", back: "¡Hola!"), Card(front: "How are you?", back: "¿Cómo estás?"), Card(front: "Where are you from?", back: "¿De donde eres?")]),
-//             Deck(name: "Español a Ingles"),
-//             Deck(name: "English to German", frontSideSettings: SideSettings(side: .front, language: "en-GB", autoPlay: false), backSideSettings: SideSettings(side: .back, language: "de_DE", autoPlay: true), cards: [Card(front: "Hello!", back: "Hallo!"), Card(front: "How are you?", back: "Wie geht es dir?"), Card(front: "Where are you from?", back: "Woher kommen Sie?")])]
+    decks = [Deck(name: "English to Spanish", frontSideSettings: SideSettings(side: .front, language: "en-US", autoPlay: false), backSideSettings: SideSettings(side: .back, language: "es-MX", autoPlay: true), cards: [Card(front: "Hello!", back: "¡Hola!"), Card(front: "How are you?", back: "¿Cómo estás?"), Card(front: "Where are you from?", back: "¿De donde eres?")]),
+             Deck(name: "Español a Ingles"),
+             Deck(name: "English to German", frontSideSettings: SideSettings(side: .front, language: "en-GB", autoPlay: false), backSideSettings: SideSettings(side: .back, language: "de_DE", autoPlay: true), cards: [Card(front: "Hello!", back: "Hallo!"), Card(front: "How are you?", back: "Wie geht es dir?"), Card(front: "Where are you from?", back: "Woher kommen Sie?")])]
   }
   
   var decks: [Deck]

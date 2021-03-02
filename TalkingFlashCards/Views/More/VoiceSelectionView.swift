@@ -23,8 +23,10 @@ struct VoiceSelectionView: View {
   var body: some View {
     VStack {
       Text("Select a Voice to override the default selection")
-      List(viewModel.voices, id: \.self, selection: $selectedItem) { voice in
-        Text("\(voice.languageAndRegionDescription) - \(voice.name)")
+      List(selection: $selectedItem) {
+        ForEach(viewModel.voices, id: \.self) { voice in
+          Text("\(voice.languageAndRegionDescription) - \(voice.name)")
+        }
       }
       .environment(\.editMode, .constant(EditMode.active))
     }

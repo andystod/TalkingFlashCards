@@ -27,7 +27,7 @@ struct Deck: Identifiable {
 
 struct SideSettings {
   var side: Side
-  var language: Language? = nil
+  var language: String = ""
   var autoPlay: Bool = false
 }
 

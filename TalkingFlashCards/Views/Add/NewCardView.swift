@@ -40,7 +40,7 @@ struct NewCardView: View {
     }
     .navigationTitle("New Card")
     .toolbar {
-      ToolbarItem(placement: .primaryAction) {
+      ToolbarItem(placement: .confirmationAction) {
         Button("Save") {
           viewModel.addCard(Card(front: front, back: back), to: deck)
         }

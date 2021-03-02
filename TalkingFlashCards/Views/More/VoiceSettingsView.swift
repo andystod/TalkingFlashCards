@@ -9,10 +9,11 @@ import SwiftUI
 
 struct VoiceSettingsView: View {
   
-  @Dependency var languageService: LanguageService
+//  @Dependency var languageService: LanguageService TODO
+  @EnvironmentObject var languageData: LanguageData
   
   var body: some View {
-    List(languageService.getUniqueLanguages(), id: \.self) { language in
+    List(languageData.uniqueLanguages, id: \.self) { language in
       NavigationLink(
         destination: VoiceSelectionView(language: language)) {
         
