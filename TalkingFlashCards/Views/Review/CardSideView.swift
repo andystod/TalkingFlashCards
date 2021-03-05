@@ -55,7 +55,7 @@ struct CardSideView: View {
           .bold()
         Spacer()
         Button(action: {
-          speaker.speak(text, language: sideSettings.language) // TODO
+          speaker.speak(text, languageCode: sideSettings.languageCode) // TODO
         }, label: {
           Image(systemName: speaker.isSpeaking ? "speaker.wave.3.fill" : "speaker.fill")
         })
@@ -70,40 +70,3 @@ struct CardSideView: View {
 }
 
 
-func speak(_ text: String, language: String) {
-
-  let speaker = Speaker()
-  speaker.speak(text, language: language)
-  
-  
-  //  let langCode = Locale.current.languageCode ?? ""
-  //  let regionCode = Locale.current.regionCode ?? ""
-  //  let language = "\(langCode)-\(regionCode)"
-  //  print(language)
-  //  print(NSLocale.current.identifier)
-
-
-
-//  let speakTalk   = AVSpeechSynthesizer()
-////  speakTalk.delegate = self
-//  //  let speakMsg    = AVSpeechUtterance(string: "Hola el mundo, puedo hablar")
-//
-//  let speakMsg    = AVSpeechUtterance(string: text)
-//
-//  //  speakMsg.voice  = AVSpeechSynthesisVoice(language: "es-MX")
-//
-//  speakMsg.voice  = AVSpeechSynthesisVoice(language: language)
-//
-//  speakMsg.pitchMultiplier = 1.2
-//  speakMsg.rate   = 0.5
-//
-//  speakTalk.speak(speakMsg)
-
-}
-
-// TODO
-//struct CardSideView_Previews: PreviewProvider {
-//    static var previews: some View {
-//      CardSideView(text: "Hola soy Andres", sideSettings: SideSettings(side: .front, language: "es-MX", autoPlay: true), offset: .constant(.zero))
-//    }
-//}

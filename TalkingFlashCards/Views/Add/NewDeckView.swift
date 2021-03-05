@@ -12,13 +12,14 @@ struct NewDeckView: View {
   
   @Environment(\.presentationMode) var presentationMode
   @StateObject var viewModel: ViewModel
-  @State var deck: Deck = Deck()
+  @Binding var deck: Deck
   @State var alertItem: AlertItem?
   @State var proceedToNewCard = false
   @State var saveAndAddCardsPressed = false
   
-  init(viewModel: ViewModel = .init()) {
-    self._viewModel = StateObject(wrappedValue: viewModel)
+  init(viewModel: ViewModel = .init(), deck: Binding<Deck> = .constant(Deck())) {
+    _viewModel = StateObject(wrappedValue: viewModel)
+    _deck = deck
   }
   
   
@@ -127,14 +128,14 @@ struct SideSettingsView: View {
   // TODO these need to be loaded into environment or some kind of cache
 //  @Dependency var languageService: LanguageService
   @Binding var sideSettings: SideSettings
-  @EnvironmentObject var languageData: LanguageData
+  var uniqueLanguages = GlobalData.shared.languageData.uniqueLanguages
   
   var body: some View {
     Section(header: Text(sectionName)) {
-      Picker("Language *", selection: $sideSettings.language) {
+      Picker("Language *", selection: $sideSettings.languageCode) {
         Text("N/A").tag("N/A")
           .navigationTitle("Select Language")
-        ForEach(languageData.uniqueLanguages, id: \.languageCode) {
+        ForEach(uniqueLanguages, id: \.languageCode) {
           Text($0.displayValue)
         }
       }

@@ -17,20 +17,30 @@ struct AddView: View {
     self._viewModel = StateObject(wrappedValue: viewModel)
   }
   
-//  @State var deck = Deck()
+  //  @State var deck = Deck()
   
   var body: some View {
     
-    List(){
-      NavigationLink(destination: NewDeckView()) {
-        Text("Add New Deck")
-          .foregroundColor(.accentColor)
-      }
-      ForEach(viewModel.decks.indices, id: \.self) { i in
-        NavigationLink(
-          destination: NewCardView(deck: $viewModel.decks[i])) { // TODO
-          Text(viewModel.decks[i].name)
+    VStack {
+      Text("Swipe rows left to edit and delete")
+      List(){
+        NavigationLink(destination: NewDeckView()) {
+          Text("Add New Deck")
+            .foregroundColor(.accentColor)
         }
+        ForEach(viewModel.decks.indices, id: \.self) { i in
+          NavigationLink(
+            destination: ManageDeckView(deck: $viewModel.decks[i])) { // TODO
+            Text(viewModel.decks[i].name)
+          }
+//          NavigationLink(
+//            destination: NewCardView(deck: $viewModel.decks[i])) { // TODO
+//            Text(viewModel.decks[i].name)
+//          }
+        }
+        .onDelete(perform: { indexSet in
+          print("delete")
+        })
       }
     }
     .alert(isPresented: Binding<Bool>.constant($viewModel.error.wrappedValue != nil)) {

@@ -22,9 +22,13 @@ class RealmDeckDataService: DeckDataService {
     // TODO
 //    decks = [Deck]()
     
-    decks = [Deck(name: "English to Spanish", frontSideSettings: SideSettings(side: .front, language: "en-US", autoPlay: false), backSideSettings: SideSettings(side: .back, language: "es-MX", autoPlay: true), cards: [Card(front: "Hello!", back: "¡Hola!"), Card(front: "How are you?", back: "¿Cómo estás?"), Card(front: "Where are you from?", back: "¿De donde eres?")]),
+    decks = [Deck(name: "English to Spanish", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "es", autoPlay: true), cards: [
+                    Card(front: "Hello!", back: "¡Hola!"),
+                    Card(front: "How are you?", back: "¿Cómo estás?"),
+                    Card(front: "Australia", back: "Australia"),
+                    Card(front: "Where are you from?", back: "¿De donde eres?")]),
              Deck(name: "Español a Ingles"),
-             Deck(name: "English to German", frontSideSettings: SideSettings(side: .front, language: "en-GB", autoPlay: false), backSideSettings: SideSettings(side: .back, language: "de_DE", autoPlay: true), cards: [Card(front: "Hello!", back: "Hallo!"), Card(front: "How are you?", back: "Wie geht es dir?"), Card(front: "Where are you from?", back: "Woher kommen Sie?")])]
+             Deck(name: "English to German", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "de", autoPlay: true), cards: [Card(front: "Hello!", back: "Hallo!"), Card(front: "How are you?", back: "Wie geht es dir?"), Card(front: "Where are you from?", back: "Woher kommen Sie?")])]
   }
   
   var decks: [Deck]
@@ -46,7 +50,7 @@ class RealmDeckDataService: DeckDataService {
   
   func createDeck(deck: Deck) -> AnyPublisher<Void, Error> {
     return Future<Void, FlashError> { [weak self] promise in
-      if deck.name.lowercased() != "aaa" {
+      if deck.name.lowercased() != "aaa" { // TODO
         self?.decks.append(deck)
       }
       promise(.success(()))
@@ -61,6 +65,8 @@ class RealmDeckDataService: DeckDataService {
     .receive(on: DispatchQueue.main)
     .eraseToAnyPublisher()
   }
+  
+//  func updateDeck(deck: Deck) -
   
   func addCard(_ card: Card, to deck: Deck) -> AnyPublisher<Void, Error> {
     

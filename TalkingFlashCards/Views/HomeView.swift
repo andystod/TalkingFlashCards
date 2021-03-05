@@ -40,6 +40,7 @@ struct HomeView: View {
       }
       .navigationTitle(LocalizedStringKey(getNavBarTitleForTab(selectedTab)))
     }
+    .navigationViewStyle(StackNavigationViewStyle())
     .accentColor(.yellow) // TODO
     
   }

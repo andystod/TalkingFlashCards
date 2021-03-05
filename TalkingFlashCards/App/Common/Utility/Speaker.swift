@@ -20,12 +20,27 @@ class Speaker: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
   
   @Published var isSpeaking: Bool = false
   
-  func speak(_ text: String, language: String) {
+  func speak(_ text: String, languageCode: String) {
     isSpeaking = true
     
     let utterance = AVSpeechUtterance(string: text)
-    utterance.voice = AVSpeechSynthesisVoice(language: language == "en-US" ? "en" : "es")
+    
+    let voicePrefs = UserDefaults.standard.voicePreferences
+    let identifier = voicePrefs[languageCode]
+    if let identifier = identifier {
+      utterance.voice = AVSpeechSynthesisVoice(identifier: identifier)
+    } else {
+      utterance.voice = AVSpeechSynthesisVoice(language: languageCode)
+    }
     utterance.rate = 0.4
+    
+    // Enable sound when on silent mode
+    do {
+      try AVAudioSession.sharedInstance().setCategory(.playback)
+    } catch(let error) {
+      print(error.localizedDescription)
+    }
+    
     synth.speak(utterance)
   }
   

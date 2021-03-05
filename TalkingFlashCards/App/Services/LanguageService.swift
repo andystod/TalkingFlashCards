@@ -10,7 +10,7 @@ import AVFoundation
 
 protocol LanguageService {
   func getUniqueLanguages() -> [Language]
-  func getVoicesForLanguage(_ languageCode: String) -> [AVSpeechSynthesisVoice] 
+  func getVoicesForLanguage(_ languageCode: String) -> [Voice] 
   
 }
 
@@ -40,13 +40,8 @@ struct LocalLanguageService: LanguageService {
   
   // TODO store this in environment
   func getUniqueLanguages() -> [Language] {
-    
-    
-    
-    
     let voices = AVSpeechSynthesisVoice.speechVoices()
     let languages = voices.map { Language(languageAndRegionCode: $0.language) }
-        
     var uniqueLanguages = languages.removingDuplicates(byKey: \.languageCode)
     
     uniqueLanguages = uniqueLanguages.map { language -> (Language) in
@@ -57,30 +52,21 @@ struct LocalLanguageService: LanguageService {
       return _language
     }
     
-    var v = getVoicesForLanguage("en")
-    
-    
     uniqueLanguages.sort()
-    
-    
     return uniqueLanguages
   }
   
-  func getVoicesForLanguage(_ languageCode: String) -> [AVSpeechSynthesisVoice] {
+  func getVoicesForLanguage(_ languageCode: String) -> [Voice] {
     let voices = AVSpeechSynthesisVoice.speechVoices()
-    let locale = NSLocale.autoupdatingCurrent
-    let filteredVoices = voices.filter { voice in
-      voice.language.hasPrefix(languageCode)
-    }
+    let filteredVoices = voices
+      .filter { voice in
+        voice.language.hasPrefix(languageCode)
+      }
+      .map { Voice(voice: $0) }
+    
     return filteredVoices
   }
   
   
 }
 
-extension AVSpeechSynthesisVoice {
-  var languageAndRegionDescription: String {
-    let locale = NSLocale.autoupdatingCurrent
-    return locale.localizedString(forIdentifier: language) ?? language
-  }
-}

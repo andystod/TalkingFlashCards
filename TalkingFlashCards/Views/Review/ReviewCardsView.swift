@@ -19,8 +19,13 @@ struct ReviewCardsView: View {
         Group {
           Image(systemName: "xmark")
             .background(Color.red)
-          Image(systemName: "pencil")
-            .background(Color.blue)
+          NavigationLink(destination: EmptyView()) {
+//            Button(action: { print("Edit") }) {
+              Image(systemName: "pencil")
+                .background(Color.blue)
+//            }
+          }
+          
           Image(systemName: "checkmark")
             .background(Color.green)
         }
@@ -29,7 +34,7 @@ struct ReviewCardsView: View {
       }
       .padding()
     }
-    .navigationBarTitle("", displayMode: .inline)
+    .navigationBarTitle("Review Cards", displayMode: .inline)
 //    .navigationBarHidden(true)
 //    .navigationTitle("")
   }
