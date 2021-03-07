@@ -13,13 +13,17 @@ struct NewDeckView: View {
   @Environment(\.presentationMode) var presentationMode
   @StateObject var viewModel: ViewModel
   @Binding var deck: Deck
+  var mode: Mode
   @State var alertItem: AlertItem?
   @State var proceedToNewCard = false
   @State var saveAndAddCardsPressed = false
   
-  init(viewModel: ViewModel = .init(), deck: Binding<Deck> = .constant(Deck())) {
+  init(viewModel: ViewModel = .init(),
+       deck: Binding<Deck> = .constant(Deck()),
+       mode: Mode) {
     _viewModel = StateObject(wrappedValue: viewModel)
     _deck = deck
+    self.mode = mode
   }
   
   
@@ -36,8 +40,13 @@ struct NewDeckView: View {
         // TODO Test adding this button outside the form
         
         Button(action: {
-                saveAndAddCardsPressed = true
-                viewModel.createDeck(deck) }) {
+          saveAndAddCardsPressed = true
+          if mode == .create {
+            viewModel.createDeck(deck)
+          } else {
+            viewModel.updateDeck(deck)
+          }
+        }) {
           Text("Save and Add Cards")
             .bold()
           
@@ -54,7 +63,14 @@ struct NewDeckView: View {
     .navigationTitle("New Deck")
     .toolbar {
       ToolbarItem(placement: .confirmationAction) {
-        Button(action: { viewModel.createDeck(deck) }) {
+        Button(action: {
+          if mode == .create {
+            viewModel.createDeck(deck)
+          } else {
+            viewModel.updateDeck(deck)
+          }
+          
+        }) {
           Text("Save")
             .fontWeight(.black)
           
@@ -118,6 +134,20 @@ extension NewDeckView {
         } receiveValue: { _ in }
         .store(in: &cancellables)
     }
+    
+    func updateDeck(_ deck: Deck) {
+      //      result = nil
+      deckDataService.updateDeck(deck: deck)
+        .sink { completion in
+          if case let .failure(error) = completion {
+            self.result = .failure(error)
+          } else {
+            self.result = .success(())
+          }
+          print(completion)
+        } receiveValue: { _ in }
+        .store(in: &cancellables)
+    }
   }
 }
 
@@ -126,7 +156,7 @@ struct SideSettingsView: View {
   var sectionName: String
   
   // TODO these need to be loaded into environment or some kind of cache
-//  @Dependency var languageService: LanguageService
+  //  @Dependency var languageService: LanguageService
   @Binding var sideSettings: SideSettings
   var uniqueLanguages = GlobalData.shared.languageData.uniqueLanguages
   
@@ -147,7 +177,7 @@ struct SideSettingsView: View {
 struct NewDeckView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
-      NewDeckView()
+      NewDeckView(mode: .create)
     }
     .preferredColorScheme(.dark)
   }
@@ -155,12 +185,17 @@ struct NewDeckView_Previews: PreviewProvider {
 
 
 struct ItemsPerPageKey: EnvironmentKey {
-    static var defaultValue: Int = 10
+  static var defaultValue: Int = 10
 }
 
 extension EnvironmentValues {
-    var itemsPerPage: Int {
-        get { self[ItemsPerPageKey.self] }
-        set { self[ItemsPerPageKey.self] = newValue }
-    }
+  var itemsPerPage: Int {
+    get { self[ItemsPerPageKey.self] }
+    set { self[ItemsPerPageKey.self] = newValue }
+  }
+}
+
+enum Mode {
+  case create
+  case edit
 }

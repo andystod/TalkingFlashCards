@@ -42,7 +42,7 @@ struct NewCardView: View {
     .toolbar {
       ToolbarItem(placement: .confirmationAction) {
         Button("Save") {
-          viewModel.addCard(Card(front: front, back: back), to: deck)
+          viewModel.addCard(Card(front: CardSide(text: front), back: CardSide(text: back)), to: deck)
         }
       }
       ToolbarItem(placement: .cancellationAction) {

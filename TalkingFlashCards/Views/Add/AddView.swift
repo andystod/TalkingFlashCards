@@ -24,7 +24,7 @@ struct AddView: View {
     VStack {
       Text("Swipe rows left to edit and delete")
       List(){
-        NavigationLink(destination: NewDeckView()) {
+        NavigationLink(destination: NewDeckView(mode: .create)) {
           Text("Add New Deck")
             .foregroundColor(.accentColor)
         }

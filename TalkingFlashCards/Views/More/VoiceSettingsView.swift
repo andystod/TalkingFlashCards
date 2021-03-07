@@ -32,10 +32,6 @@ struct VoiceSettingsView: View {
       }
     }
     .navigationTitle("Voice Settings")
-    .onAppear {
-      print(viewModel)
-      print(viewModel.cancellable)
-    }
   }
 }
 

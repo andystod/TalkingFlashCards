@@ -22,7 +22,7 @@ struct ManageDeckView: View {
   var body: some View {
     List {
       NavigationLink(
-        destination: NewDeckView(deck: $deck)) {
+        destination: NewDeckView(deck: $deck, mode: .edit)) {
         HStack {
           Image(systemName: "pencil")
             .font(Font.body.weight(.bold))
@@ -41,7 +41,7 @@ struct ManageDeckView: View {
         }
       }
       NavigationLink(
-        destination: Text("Manage Cards")) {
+        destination: ManageCardsView(deck: $deck)) {
         HStack {
           Image(systemName: "rectangle.grid.2x2")
             .font(Font.body.weight(.semibold))

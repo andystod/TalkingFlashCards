@@ -71,8 +71,8 @@ struct CardView: View {
   
   var body: some View {
     ZStack {
-      CardSideView(text: card.front, sideSettings: deck.frontSideSettings, offset: $offset).opacity(flipped ? 0.0 : 1.0)
-      CardSideView(text: card.back, sideSettings: deck.backSideSettings, offset: $offset).opacity(flipped ? 1.0 : 0.0)
+      CardSideView(text: card.front.text, sideSettings: deck.frontSideSettings, offset: $offset).opacity(flipped ? 0.0 : 1.0)
+      CardSideView(text: card.back.text, sideSettings: deck.backSideSettings, offset: $offset).opacity(flipped ? 1.0 : 0.0)
     }
     .rotationEffect(.degrees(Double(offset.width / 5)))
     .offset(x: offset.width * 5, y: 0)
