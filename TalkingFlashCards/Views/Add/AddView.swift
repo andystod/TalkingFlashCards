@@ -10,12 +10,13 @@ import Combine
 
 struct AddView: View {
   
-  @StateObject var viewModel: ViewModel
+//  @StateObject var viewModel: ViewModel
+  @State private var loadDecksCalled = false
+  @EnvironmentObject var deckStore: DeckStore
   
-  init(viewModel: ViewModel = .init()) {
-    
-    self._viewModel = StateObject(wrappedValue: viewModel)
-  }
+//  init(viewModel: ViewModel) {
+//    self._viewModel = StateObject(wrappedValue: viewModel)
+//  }
   
   //  @State var deck = Deck()
   
@@ -28,27 +29,27 @@ struct AddView: View {
           Text("Add New Deck")
             .foregroundColor(.accentColor)
         }
-        ForEach(viewModel.decks.indices, id: \.self) { i in
+        ForEach(deckStore.decks.indices, id: \.self) { i in
           NavigationLink(
-            destination: ManageDeckView(deck: $viewModel.decks[i])) { // TODO
-            Text(viewModel.decks[i].name)
+            destination: ManageDeckView(deck: $deckStore.decks[i])) { // TODO
+            Text(deckStore.decks[i].name)
           }
-//          NavigationLink(
-//            destination: NewCardView(deck: $viewModel.decks[i])) { // TODO
-//            Text(viewModel.decks[i].name)
-//          }
         }
         .onDelete(perform: { indexSet in
           print("delete")
         })
       }
     }
-    .alert(isPresented: Binding<Bool>.constant($viewModel.error.wrappedValue != nil)) {
-      Alert(title: Text("Error"))
-    }
+//    .alert(isPresented: Binding<Bool>.constant($viewModel.error.wrappedValue != nil)) {
+//      Alert(title: Text("Error"))
+//    }
     .navigationTitle("AddTabTitle")
     .onAppear(perform: {
-      viewModel.getDecks()
+      print("TODO - is this still getting called from Edit")
+//      if !loadDecksCalled {
+//        viewModel.loadDecks() // Move this to init - though that may not work for refreshes
+//        loadDecksCalled = true // TODO - must be a better way - this get called in edit mode on first select
+//      }
     })
     
   }
@@ -56,50 +57,28 @@ struct AddView: View {
 
 extension AddView {
   class ViewModel: ObservableObject {
-    @Published var decks = [Deck]()
+    @Published var decks: [Deck]
     @Published var error: Error?
+    var deckStore: DeckStore
     
-    @Dependency var deckDataService: DeckDataService
-    private var cancellables = Set<AnyCancellable>()
-    
-    func getDecks() {
-      
-      deckDataService.getDecks()
-        .sink { completion in
-          
-          if case let .failure(error) = completion {
-            print(error)
-          }
-          
-          
-          switch completion {
-          case .finished: break
-          case let .failure(error):
-            print(error)
-          }
-        } receiveValue: { [weak self] decks in
-          self?.decks = decks
-          print(self?.decks.indices)
-        }
-        .store(in: &cancellables)
-      
-      
-      
-      
+    init(deckStore: DeckStore) {
+      self.deckStore = deckStore
+      self.decks = deckStore.decks
     }
+    
   }
 }
 
 
 struct AddView_Previews: PreviewProvider {
   static var previews: some View {
-    let decks = [Deck(name: "Deck1"),
-                 Deck(name: "Deck2"),
-                 Deck(name: "Deck4")]
-    let viewModel = AddView.ViewModel()
-    viewModel.decks = decks
+    let deckStore = DeckStore()
+    deckStore.decks = [Deck(name: "Deck1"),
+                       Deck(name: "Deck2"),
+                       Deck(name: "Deck4")]
     return NavigationView {
-      AddView(viewModel: viewModel)
+      AddView()
+        .environmentObject(deckStore)
     }
   }
 }

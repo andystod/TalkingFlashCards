@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol DeckDataService {
-  func getDecks() -> AnyPublisher<[Deck], Error>
+  func loadDecks() -> AnyPublisher<[Deck], Error>
   func createDeck(deck: Deck) -> AnyPublisher<Void, FlashError> // TODO check on error type and use of trymap and maperror
   func updateDeck(deck: Deck) -> AnyPublisher<Void, Error>
   func addCard(_ card: Card, to deck: Deck) -> AnyPublisher<Void, Error> // TODO need to remove inout
@@ -47,7 +47,7 @@ class RealmDeckDataService: DeckDataService {
   //      promise(.failure(URLError(URLError.Code.badURL)))
   
   
-  func getDecks() -> AnyPublisher<[Deck], Error> {
+  func loadDecks() -> AnyPublisher<[Deck], Error> {
     return Future<[Deck], Error> { [weak self] promise in
       promise(.success(self!.decks))
     }

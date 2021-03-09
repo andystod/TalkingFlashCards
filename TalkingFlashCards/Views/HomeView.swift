@@ -10,6 +10,11 @@ import SwiftUI
 struct HomeView: View {
   
   @State var selectedTab: Tabs = .review
+  @EnvironmentObject var deckStore: DeckStore
+  
+  init() {
+    print("init")
+  }
   
   var body: some View {
     

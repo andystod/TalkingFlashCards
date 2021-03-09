@@ -10,27 +10,26 @@ import Introspect
 
 struct ManageDeckView: View {
   
+  @StateObject private var viewModel: ViewModel = ViewModel()
   @Binding var deck: Deck
-  @StateObject private var viewModel: ViewModel
   
-  init(viewModel: ViewModel = ViewModel(), deck: Binding<Deck>) {
-    _viewModel = StateObject(wrappedValue: viewModel)
-    _deck = deck
+  init(deck: Binding<Deck>) {
+    self._deck = deck
   }
   
   
   var body: some View {
     List {
-      NavigationLink(
-        destination: NewDeckView(deck: $deck, mode: .edit)) {
-        HStack {
-          Image(systemName: "pencil")
-            .font(Font.body.weight(.bold))
-            .foregroundColor(.yellow)
-            
-          Text("Edit Deck")
-        }
-      }
+      //      NavigationLink(
+      //        destination: NewDeckView(deck: viewModel.deck, mode: .edit)) {
+      //        HStack {
+      //          Image(systemName: "pencil")
+      //            .font(Font.body.weight(.bold))
+      //            .foregroundColor(.yellow)
+      //
+      //          Text("Edit Deck")
+      //        }
+      //      }
       NavigationLink(
         destination: Text("Add Cards")) {
         HStack {
@@ -41,7 +40,10 @@ struct ManageDeckView: View {
         }
       }
       NavigationLink(
-        destination: ManageCardsView(deck: $deck)) {
+        destination: ManageCardsView(deck:
+                                      Binding(
+                                        get: { self.deck },
+                                        set: { self.deck = $0 }))) {
         HStack {
           Image(systemName: "rectangle.grid.2x2")
             .font(Font.body.weight(.semibold))
@@ -54,10 +56,10 @@ struct ManageDeckView: View {
       self.viewModel.bindToTableView(tableView)
     }
     .onAppear(perform: {
-          self.viewModel.clearTableViewSelection()
+      self.viewModel.clearTableViewSelection()
     })
     .onDisappear(perform: {
-          self.viewModel.clearTableViewSelection()
+      self.viewModel.clearTableViewSelection()
     })
     .navigationTitle(deck.name)
     
@@ -66,26 +68,30 @@ struct ManageDeckView: View {
 
 extension ManageDeckView {
   class ViewModel: ObservableObject {
-    
+    //    @Published var deck: Deck
     private var tableView: UITableView? // for bug workaround
     
+    //    init(deck: Deck) {
+    //      self.deck = deck
+    //    }
+    
     func bindToTableView(_ tableView: UITableView) {
-        self.tableView = tableView
+      self.tableView = tableView
     }
-
+    
     func clearTableViewSelection() {
-        // This is a iOS14 hack that prevents clicked cell background view to remain highlighted when we come back to the screen
-        if #available(iOS 14, *){
-            DispatchQueue.main.async {
-                if let selectedIndexPath = self.tableView?.indexPathForSelectedRow {
-                    self.tableView?.deselectRow(at: selectedIndexPath, animated: false)
-                    if let selectedCell = self.tableView?.cellForRow(at: selectedIndexPath) {
-                        selectedCell.setSelected(false, animated: false)
-                    }
-                    
-                }
+      // This is a iOS14 hack that prevents clicked cell background view to remain highlighted when we come back to the screen
+      if #available(iOS 14, *){
+        DispatchQueue.main.async {
+          if let selectedIndexPath = self.tableView?.indexPathForSelectedRow {
+            self.tableView?.deselectRow(at: selectedIndexPath, animated: false)
+            if let selectedCell = self.tableView?.cellForRow(at: selectedIndexPath) {
+              selectedCell.setSelected(false, animated: false)
             }
+            
+          }
         }
+      }
     }
   }
 }

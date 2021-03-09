@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
     let contentView = HomeView()
       .environment(\.managedObjectContext, context) // TODO change HomeView or remove content view
-      
+      .environmentObject(DeckStore())
     // TODO pass accent color here?
 
     // Use a UIHostingController as window root view controller.

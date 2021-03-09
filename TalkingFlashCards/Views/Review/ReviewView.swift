@@ -58,7 +58,7 @@ extension ReviewView {
     var cancellables = Set<AnyCancellable>()
     
     func loadDecks() {
-      deckDataService.getDecks()
+      deckDataService.loadDecks()
         .sink { [weak self] completion in
           if case let .failure(error) = completion {
             self?.result = .failure(error)
