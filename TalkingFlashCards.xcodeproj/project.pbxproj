@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,8 @@
 		49495F1225EC8E0800F5C3B0 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49495F1125EC8E0800F5C3B0 /* StoreService.swift */; };
 		49495F1725EC90CC00F5C3B0 /* UserDefaults+TypeSafety.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49495F1625EC90CC00F5C3B0 /* UserDefaults+TypeSafety.swift */; };
 		497A84AE25DA26850040B1CE /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A84AD25DA26850040B1CE /* AddView.swift */; };
+		497B8A8A25F92EBD0093D229 /* DeckStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B8A8925F92EBD0093D229 /* DeckStore.swift */; };
+		497B8A8F25F93C210093D229 /* CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B8A8E25F93C210093D229 /* CardStore.swift */; };
 		49989FBE25D83ABD001510EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49989FBD25D83ABD001510EB /* AppDelegate.swift */; };
 		49989FC025D83ABD001510EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49989FBF25D83ABD001510EB /* SceneDelegate.swift */; };
 		49989FC225D83ABD001510EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49989FC125D83ABD001510EB /* ContentView.swift */; };
@@ -35,7 +37,6 @@
 		49C62FDF25EEC17B007DCC2E /* Voice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C62FDE25EEC17B007DCC2E /* Voice.swift */; };
 		49C62FEA25F03FD4007DCC2E /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C62FE925F03FD4007DCC2E /* GlobalData.swift */; };
 		49CB06E725F1575600B5A7E1 /* ManageDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB06E625F1575600B5A7E1 /* ManageDeckView.swift */; };
-		49CB06F025F199C100B5A7E1 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 49CB06EF25F199C100B5A7E1 /* Introspect */; };
 		49CB070025F1D22900B5A7E1 /* ManageCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB06FF25F1D22900B5A7E1 /* ManageCardsView.swift */; };
 		49CBE20825F2BDC900E03905 /* UIElementPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE20725F2BDC900E03905 /* UIElementPreview.swift */; };
 		49CBE20E25F5348E00E03905 /* View+Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE20D25F5348E00E03905 /* View+Modifiers.swift */; };
@@ -79,6 +80,8 @@
 		49495F1125EC8E0800F5C3B0 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		49495F1625EC90CC00F5C3B0 /* UserDefaults+TypeSafety.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+TypeSafety.swift"; sourceTree = "<group>"; };
 		497A84AD25DA26850040B1CE /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		497B8A8925F92EBD0093D229 /* DeckStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckStore.swift; sourceTree = "<group>"; };
+		497B8A8E25F93C210093D229 /* CardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStore.swift; sourceTree = "<group>"; };
 		49989FBA25D83ABD001510EB /* TalkingFlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkingFlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49989FBD25D83ABD001510EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49989FBF25D83ABD001510EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,7 +131,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49CB06F025F199C100B5A7E1 /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +286,8 @@
 				497A84AD25DA26850040B1CE /* AddView.swift */,
 				49B9D53325DA28480066A51F /* NewCardView.swift */,
 				49E6323525DC3F2800AC6040 /* Deck.swift */,
+				497B8A8925F92EBD0093D229 /* DeckStore.swift */,
+				497B8A8E25F93C210093D229 /* CardStore.swift */,
 				4927E4AA25E041F900F6E166 /* Card.swift */,
 				49CB06E625F1575600B5A7E1 /* ManageDeckView.swift */,
 				49CB06FF25F1D22900B5A7E1 /* ManageCardsView.swift */,
@@ -365,7 +369,6 @@
 			);
 			name = TalkingFlashCards;
 			packageProductDependencies = (
-				49CB06EF25F199C100B5A7E1 /* Introspect */,
 			);
 			productName = TalkingFlashCards;
 			productReference = 49989FBA25D83ABD001510EB /* TalkingFlashCards.app */;
@@ -440,7 +443,6 @@
 			);
 			mainGroup = 49989FB125D83ABD001510EB;
 			packageReferences = (
-				49CB06EE25F199C100B5A7E1 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = 49989FBB25D83ABD001510EB /* Products */;
 			projectDirPath = "";
@@ -495,6 +497,7 @@
 				4927E4A625E0102400F6E166 /* ReviewCardsView.swift in Sources */,
 				49B9D54325DADE330066A51F /* ContactView.swift in Sources */,
 				49989FC025D83ABD001510EB /* SceneDelegate.swift in Sources */,
+				497B8A8F25F93C210093D229 /* CardStore.swift in Sources */,
 				49C62FDA25EDDF82007DCC2E /* LanguageData.swift in Sources */,
 				49FE722C25E3499400E2C3B1 /* Speaker.swift in Sources */,
 				49DBC31925DF58B3009CFBE0 /* Cache.swift in Sources */,
@@ -520,6 +523,7 @@
 				49B9D53925DADE120066A51F /* MoreView.swift in Sources */,
 				49F40AB625DDB94C00DE80DC /* FlashError.swift in Sources */,
 				49B9D53E25DADE280066A51F /* SettingsView.swift in Sources */,
+				497B8A8A25F92EBD0093D229 /* DeckStore.swift in Sources */,
 				49FE723D25E7EF6900E2C3B1 /* Array+RemoveDuplicates.swift in Sources */,
 				49495F1725EC90CC00F5C3B0 /* UserDefaults+TypeSafety.swift in Sources */,
 				49FE722725E3422800E2C3B1 /* CardSideView.swift in Sources */,
@@ -854,25 +858,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		49CB06EE25F199C100B5A7E1 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		49CB06EF25F199C100B5A7E1 /* Introspect */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49CB06EE25F199C100B5A7E1 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
-			productName = Introspect;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		49989FC325D83ABD001510EB /* TalkingFlashCards.xcdatamodeld */ = {

@@ -12,15 +12,15 @@ import Combine
 
 struct NewCardView: View {
   
-  @Binding var deck: Deck
+  var deck: Deck
   @Environment(\.presentationMode) var presentationMode
   @StateObject var viewModel: ViewModel
   @State var front = ""
   @State var back = ""
   
-  init(viewModel: ViewModel = .init(), deck: Binding<Deck>) {
+  init(viewModel: ViewModel = .init(), deck: Deck) {
     _viewModel = StateObject(wrappedValue: viewModel)
-    _deck = deck
+    self.deck = deck
   }
   
   var body: some View {
@@ -79,20 +79,20 @@ extension NewCardView {
   class ViewModel: ObservableObject {
     
     @Published var result: Result<Void, Error>?
-    @Dependency var deckDataService: DeckDataService
+//    @Dependency var deckDataService: DeckDataService
     var cancellables = Set<AnyCancellable>()
     
     func addCard(_ card: Card, to deck: Deck) {
-      deckDataService.addCard(card, to: deck)
-        .sink { [weak self] completion in
-          if case let .failure(error) = completion {
-            self?.result = .failure(error)
-          } else {
-//            deck.cards.append(card) // TODO this needs to go
-            self?.result = .success(())
-          }
-        } receiveValue: { _ in }
-        .store(in: &cancellables)
+//      deckDataService.addCard(card, to: deck)
+//        .sink { [weak self] completion in
+//          if case let .failure(error) = completion {
+//            self?.result = .failure(error)
+//          } else {
+////            deck.cards.append(card) // TODO this needs to go
+//            self?.result = .success(())
+//          }
+//        } receiveValue: { _ in }
+//        .store(in: &cancellables)
     }
   }
 }
@@ -100,7 +100,7 @@ extension NewCardView {
 struct NewCardView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
-      NewCardView(deck: .constant(Deck()))
+      NewCardView(deck: Deck())
         .preferredColorScheme(.dark)
     }
   }

@@ -13,6 +13,7 @@ protocol DeckDataService {
   func createDeck(deck: Deck) -> AnyPublisher<Void, FlashError> // TODO check on error type and use of trymap and maperror
   func updateDeck(deck: Deck) -> AnyPublisher<Void, Error>
   func addCard(_ card: Card, to deck: Deck) -> AnyPublisher<Void, Error> // TODO need to remove inout
+  func deleteCards() -> AnyPublisher<Void, FlashError>
 }
 
 class RealmDeckDataService: DeckDataService {
@@ -86,6 +87,16 @@ class RealmDeckDataService: DeckDataService {
     }
     
 //    decks[3].cards.append(card)
+    
+    return Future { promise in
+      promise(.success(()))
+    }
+    .receive(on: DispatchQueue.main)
+    .eraseToAnyPublisher()
+  }
+  
+  func deleteCards() -> AnyPublisher<Void, FlashError> {
+//    deck.cards.removeAll { $0.selected }
     
     return Future { promise in
       promise(.success(()))

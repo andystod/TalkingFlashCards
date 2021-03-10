@@ -11,18 +11,14 @@ import Combine
 struct NewDeckView: View {
   
   @Environment(\.presentationMode) var presentationMode
-  @StateObject var viewModel: ViewModel
-  @Binding var deck: Deck
+  @EnvironmentObject var deckStore: DeckStore
+  @State var deck: Deck
   var mode: Mode
   @State var alertItem: AlertItem?
   @State var proceedToNewCard = false
-  @State var saveAndAddCardsPressed = false
   
-  init(viewModel: ViewModel = .init(),
-       deck: Binding<Deck> = .constant(Deck()),
-       mode: Mode) {
-    _viewModel = StateObject(wrappedValue: viewModel)
-    _deck = deck
+  init(deck: Deck = Deck(), mode: Mode) {
+    self._deck = State(wrappedValue: deck)
     self.mode = mode
   }
   
@@ -40,12 +36,12 @@ struct NewDeckView: View {
         // TODO Test adding this button outside the form
         
         Button(action: {
-          saveAndAddCardsPressed = true
           if mode == .create {
-            viewModel.createDeck(deck)
+            deckStore.createDeck(deck)
           } else {
-            viewModel.updateDeck(deck)
+            deckStore.updateDeck(deck)
           }
+          proceedToNewCard = true
         }) {
           Text("Save and Add Cards")
             .bold()
@@ -60,16 +56,16 @@ struct NewDeckView: View {
         return Alert(title: alertItem.title, message: alertItem.message, primaryButton: primaryButton, secondaryButton: secondaryButton)
       }
     }
-    .navigationTitle("New Deck")
+    .navigationTitle(mode == .create ? "New Deck" : "Edit Deck")
     .toolbar {
       ToolbarItem(placement: .confirmationAction) {
         Button(action: {
           if mode == .create {
-            viewModel.createDeck(deck)
+            deckStore.createDeck(deck)
           } else {
-            viewModel.updateDeck(deck)
+            deckStore.updateDeck(deck)
           }
-          
+          presentationMode.wrappedValue.dismiss()
         }) {
           Text("Save")
             .fontWeight(.black)
@@ -85,69 +81,9 @@ struct NewDeckView: View {
       }
     }
     .navigationBarBackButtonHidden(true)
-    .onAppear {
-      viewModel.$result
-        .sink { value in
-          switch value {
-          case .success():
-            // Depending on save button pressed either proceed to add cards or return to previous screen
-            if saveAndAddCardsPressed {
-              proceedToNewCard = true
-            } else {
-              presentationMode.wrappedValue.dismiss()
-            }
-          case .failure(let error):
-            saveAndAddCardsPressed = false
-            print(error)
-            alertItem = AlertItem(id: UUID(), title: Text("Error Occured"), message: Text(error.localizedDescription), dismissButton: Alert.Button.default(Text("OK")))
-          case .none:
-            break
-          }
-        }
-        .store(in: &self.viewModel.cancellables)
-    }
     NavigationLink(
-      destination: NewCardView(deck: $deck),
+      destination: NewCardView(deck: deck),
       isActive: $proceedToNewCard) { EmptyView() }
-  }
-}
-
-extension NewDeckView {
-  class ViewModel: ObservableObject {
-    
-    @Published var result: Result<Void, Error>? //.success(false)
-    
-    //    @Published var error: Error?
-    @Dependency var deckDataService: DeckDataService
-    var cancellables = Set<AnyCancellable>()
-    
-    func createDeck(_ deck: Deck) {
-      //      result = nil
-      deckDataService.createDeck(deck: deck)
-        .sink { completion in
-          if case let .failure(error) = completion {
-            self.result = .failure(error)
-          } else {
-            self.result = .success(())
-          }
-          print(completion)
-        } receiveValue: { _ in }
-        .store(in: &cancellables)
-    }
-    
-    func updateDeck(_ deck: Deck) {
-      //      result = nil
-      deckDataService.updateDeck(deck: deck)
-        .sink { completion in
-          if case let .failure(error) = completion {
-            self.result = .failure(error)
-          } else {
-            self.result = .success(())
-          }
-          print(completion)
-        } receiveValue: { _ in }
-        .store(in: &cancellables)
-    }
   }
 }
 
@@ -177,7 +113,7 @@ struct SideSettingsView: View {
 struct NewDeckView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
-      NewDeckView(mode: .create)
+      NewDeckView(mode: .edit)
     }
     .preferredColorScheme(.dark)
   }
