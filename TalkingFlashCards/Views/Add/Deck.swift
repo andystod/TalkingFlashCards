@@ -19,6 +19,8 @@ struct Deck: Identifiable {
   var frontSideSettings = SideSettings(side: .front)
   var backSideSettings = SideSettings(side: .back, autoPlay: true)
   
+  var cards = [Card]()
+  
 //  var cardStore = CardStore()
 //  @Dependency var deckDataService: DeckDataService
   var cancellables = Set<AnyCancellable>()

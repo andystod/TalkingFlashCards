@@ -22,21 +22,21 @@ class RealmDeckDataService: DeckDataService {
   init() {
     
     // TODO
-    //    decks = [Deck]()
+        decks = [Deck]()
     
-    decks = [
-      Deck(name: "English to Spanish", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "es", autoPlay: true), cards: [
-//                    Card(front: CardSide(text: "Hello!"), back: CardSide(text: "¡Hola!")),
-                    Card(front: CardSide(text: "How are you?"), back: CardSide(text: "¿Cómo estás?")),
-                    Card(front: CardSide(text: "Australia"), back: CardSide(text: "Australia")),
-                    Card(front: CardSide(text: "Where are you from?"), back: CardSide(text: "¿De donde eres?"))]),
-             Deck(name: "Español a Ingles"),
-             Deck(name: "English to German", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "de", autoPlay: true),
-                  cards: [Card(front: CardSide(text: "Hello!"), back: CardSide(text: "Hallo!")),
-                          Card(front: CardSide(text: "How are you?"), back: CardSide(text: "Wie geht es dir?")),
-                          Card(front: CardSide(text: "Where are you from?"), back: CardSide(text: "Woher kommen Sie?"))])
-//
-    ]
+//    decks = [
+//      Deck(name: "English to Spanish", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "es", autoPlay: true), cards: [
+////                    Card(front: CardSide(text: "Hello!"), back: CardSide(text: "¡Hola!")),
+//                    Card(front: CardSide(text: "How are you?"), back: CardSide(text: "¿Cómo estás?")),
+//                    Card(front: CardSide(text: "Australia"), back: CardSide(text: "Australia")),
+//                    Card(front: CardSide(text: "Where are you from?"), back: CardSide(text: "¿De donde eres?"))]),
+//             Deck(name: "Español a Ingles"),
+//             Deck(name: "English to German", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "de", autoPlay: true),
+//                  cards: [Card(front: CardSide(text: "Hello!"), back: CardSide(text: "Hallo!")),
+//                          Card(front: CardSide(text: "How are you?"), back: CardSide(text: "Wie geht es dir?")),
+//                          Card(front: CardSide(text: "Where are you from?"), back: CardSide(text: "Woher kommen Sie?"))])
+////
+//    ]
   }
   
   var decks: [Deck]
