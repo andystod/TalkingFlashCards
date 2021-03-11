@@ -19,7 +19,7 @@ struct Deck: Identifiable {
   var frontSideSettings = SideSettings(side: .front)
   var backSideSettings = SideSettings(side: .back, autoPlay: true)
   
-  var cards = [Card]()
+  var cards = [Card]()  // TODO remove
   
 //  var cardStore = CardStore()
 //  @Dependency var deckDataService: DeckDataService

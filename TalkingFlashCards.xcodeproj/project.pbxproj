@@ -40,6 +40,7 @@
 		49CBE20825F2BDC900E03905 /* UIElementPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE20725F2BDC900E03905 /* UIElementPreview.swift */; };
 		49CBE20E25F5348E00E03905 /* View+Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE20D25F5348E00E03905 /* View+Modifiers.swift */; };
 		49DA20DB25F9A9360049B0A7 /* DeckStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA20DA25F9A9360049B0A7 /* DeckStore.swift */; };
+		49DA20E925F9ACB90049B0A7 /* CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA20E825F9ACB90049B0A7 /* CardStore.swift */; };
 		49DBC31225DF3A4A009CFBE0 /* LanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DBC31125DF3A4A009CFBE0 /* LanguageService.swift */; };
 		49DBC31925DF58B3009CFBE0 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DBC31825DF58B3009CFBE0 /* Cache.swift */; };
 		49E6322625DB674800AC6040 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6322525DB674800AC6040 /* Injectable.swift */; };
@@ -111,6 +112,7 @@
 		49CBE20725F2BDC900E03905 /* UIElementPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementPreview.swift; sourceTree = "<group>"; };
 		49CBE20D25F5348E00E03905 /* View+Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Modifiers.swift"; sourceTree = "<group>"; };
 		49DA20DA25F9A9360049B0A7 /* DeckStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckStore.swift; sourceTree = "<group>"; };
+		49DA20E825F9ACB90049B0A7 /* CardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStore.swift; sourceTree = "<group>"; };
 		49DBC31125DF3A4A009CFBE0 /* LanguageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageService.swift; sourceTree = "<group>"; };
 		49DBC31825DF58B3009CFBE0 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		49E6322525DB674800AC6040 /* Injectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
@@ -286,10 +288,11 @@
 				497A84AD25DA26850040B1CE /* AddView.swift */,
 				49B9D53325DA28480066A51F /* NewCardView.swift */,
 				49E6323525DC3F2800AC6040 /* Deck.swift */,
-				49DA20DA25F9A9360049B0A7 /* DeckStore.swift */,
 				4927E4AA25E041F900F6E166 /* Card.swift */,
 				49CB06E625F1575600B5A7E1 /* ManageDeckView.swift */,
 				49CB06FF25F1D22900B5A7E1 /* ManageCardsView.swift */,
+				49DA20DA25F9A9360049B0A7 /* DeckStore.swift */,
+				49DA20E825F9ACB90049B0A7 /* CardStore.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				4927E4A625E0102400F6E166 /* ReviewCardsView.swift in Sources */,
 				49B9D54325DADE330066A51F /* ContactView.swift in Sources */,
 				49989FC025D83ABD001510EB /* SceneDelegate.swift in Sources */,
+				49DA20E925F9ACB90049B0A7 /* CardStore.swift in Sources */,
 				49C62FDA25EDDF82007DCC2E /* LanguageData.swift in Sources */,
 				49FE722C25E3499400E2C3B1 /* Speaker.swift in Sources */,
 				49DBC31925DF58B3009CFBE0 /* Cache.swift in Sources */,

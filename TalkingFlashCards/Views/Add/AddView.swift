@@ -9,31 +9,31 @@ import SwiftUI
 import Combine
 
 struct AddView: View {
-  
+
 //  @StateObject var viewModel: ViewModel
-  @State private var loadDecksCalled = false
+//  @State private var loadDecksCalled = false
   @EnvironmentObject var deckStore: DeckStore
-  
+
 //  init(viewModel: ViewModel) {
 //    self._viewModel = StateObject(wrappedValue: viewModel)
 //  }
-  
+
   //  @State var deck = Deck()
-  
+
   var body: some View {
-    
+
     VStack {
       Text("Swipe rows left to edit and delete")
       List(){
-        NavigationLink(destination: NewDeckView(mode: .create)) {
+        NavigationLink(destination: NavigationLazyView(NewDeckView(mode: .create))) {
           Text("Add New Deck")
             .foregroundColor(.accentColor)
         }
         ForEach(deckStore.decks.indices, id: \.self) { i in
-          NavigationLink(
-            destination: ManageDeckView(deck: $deckStore.decks[i])) { // TODO
-            Text(deckStore.decks[i].name)
-          }
+//          NavigationLink(
+//            destination: ManageDeckView(deck: deckStore.decks[i])) { // TODO
+//            Text(deckStore.decks[i].name)
+//          }
         }
         .onDelete(perform: { indexSet in
           print("delete")
@@ -51,7 +51,7 @@ struct AddView: View {
 //        loadDecksCalled = true // TODO - must be a better way - this get called in edit mode on first select
 //      }
     })
-    
+
   }
 }
 
@@ -60,12 +60,12 @@ extension AddView {
     @Published var decks: [Deck]
     @Published var error: Error?
     var deckStore: DeckStore
-    
+
     init(deckStore: DeckStore) {
       self.deckStore = deckStore
       self.decks = deckStore.decks
     }
-    
+
   }
 }
 

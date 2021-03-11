@@ -32,20 +32,20 @@ struct ReviewView: View {
     }
     .navigationTitle("Review")
     .onAppear {
-      viewModel.loadDecks()
-      viewModel.$result
-        .sink { result in
-          switch result {
-          
-          case .success(let decks):
-            self.decks = decks
-          case .failure(let error):
-            break
-          case .none:
-            break
-          }
-        }
-        .store(in: &viewModel.cancellables)
+//      viewModel.loadDecks()
+//      viewModel.$result
+//        .sink { result in
+//          switch result {
+//
+//          case .success(let decks):
+//            self.decks = decks
+//          case .failure(let error):
+//            break
+//          case .none:
+//            break
+//          }
+//        }
+//        .store(in: &viewModel.cancellables)
     }
   }
 }
@@ -54,19 +54,20 @@ extension ReviewView {
   class ViewModel: ObservableObject {
     
     @Published var result: Result<[Deck], Error>?
-    @Dependency var deckDataService: DeckDataService
+//    @Dependency var deckDataService: DeckDataService
     var cancellables = Set<AnyCancellable>()
     
     func loadDecks() {
-      deckDataService.loadDecks()
-        .sink { [weak self] completion in
-          if case let .failure(error) = completion {
-            self?.result = .failure(error)
-          }
-        } receiveValue: { [weak self] decks in
-          self?.result = .success(decks)
-        }
-        .store(in: &cancellables)
+      // TODO
+//      deckDataService.loadDecks()
+//        .sink { [weak self] completion in
+//          if case let .failure(error) = completion {
+//            self?.result = .failure(error)
+//          }
+//        } receiveValue: { [weak self] decks in
+//          self?.result = .success(decks)
+//        }
+//        .store(in: &cancellables)
     }
     
   }

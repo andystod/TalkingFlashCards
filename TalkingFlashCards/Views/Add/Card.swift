@@ -1,5 +1,5 @@
 //
-//  Deck.swift
+//  Card.swift
 //  TalkingFlashCards
 //
 //  Created by Andrew Stoddart on 16/02/2021.
