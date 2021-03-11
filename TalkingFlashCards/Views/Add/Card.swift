@@ -12,7 +12,11 @@ struct Card: Identifiable {
   let id: String = UUID().uuidString
   var front: CardSide
   var back: CardSide
-  var selected: Bool = false
+  var selected: Bool = false {
+    willSet {
+      
+    }
+  }
 
   static var example: Card {
     Card(front: CardSide(text: "Hello! How are you? fsdfjasd fajsdlf asdfljasdf asldjf asdlfjk asdflkjasd fasjdf asldjf asdfjasldfkj asdfjlkasd;fjas;djfsajdfk asdfkljsd fajskldf; asdfjasd f"), back: CardSide(text: "¡Hola! ¿Cómo estás?"))
@@ -23,5 +27,10 @@ struct CardSide {
   var text: String
 }
 
+extension Array where Iterator.Element == Card {
+  var hasSelectedItems: Bool {
+    return self.contains { $0.selected }
+    }
+  }
   
 

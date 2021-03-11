@@ -39,6 +39,7 @@
 		49CB070025F1D22900B5A7E1 /* ManageCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB06FF25F1D22900B5A7E1 /* ManageCardsView.swift */; };
 		49CBE20825F2BDC900E03905 /* UIElementPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE20725F2BDC900E03905 /* UIElementPreview.swift */; };
 		49CBE20E25F5348E00E03905 /* View+Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE20D25F5348E00E03905 /* View+Modifiers.swift */; };
+		49DA20DB25F9A9360049B0A7 /* DeckStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA20DA25F9A9360049B0A7 /* DeckStore.swift */; };
 		49DBC31225DF3A4A009CFBE0 /* LanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DBC31125DF3A4A009CFBE0 /* LanguageService.swift */; };
 		49DBC31925DF58B3009CFBE0 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DBC31825DF58B3009CFBE0 /* Cache.swift */; };
 		49E6322625DB674800AC6040 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6322525DB674800AC6040 /* Injectable.swift */; };
@@ -109,6 +110,7 @@
 		49CB06FF25F1D22900B5A7E1 /* ManageCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageCardsView.swift; sourceTree = "<group>"; };
 		49CBE20725F2BDC900E03905 /* UIElementPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementPreview.swift; sourceTree = "<group>"; };
 		49CBE20D25F5348E00E03905 /* View+Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Modifiers.swift"; sourceTree = "<group>"; };
+		49DA20DA25F9A9360049B0A7 /* DeckStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckStore.swift; sourceTree = "<group>"; };
 		49DBC31125DF3A4A009CFBE0 /* LanguageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageService.swift; sourceTree = "<group>"; };
 		49DBC31825DF58B3009CFBE0 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		49E6322525DB674800AC6040 /* Injectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				497A84AD25DA26850040B1CE /* AddView.swift */,
 				49B9D53325DA28480066A51F /* NewCardView.swift */,
 				49E6323525DC3F2800AC6040 /* Deck.swift */,
+				49DA20DA25F9A9360049B0A7 /* DeckStore.swift */,
 				4927E4AA25E041F900F6E166 /* Card.swift */,
 				49CB06E625F1575600B5A7E1 /* ManageDeckView.swift */,
 				49CB06FF25F1D22900B5A7E1 /* ManageCardsView.swift */,
@@ -520,6 +523,7 @@
 				49B9D53925DADE120066A51F /* MoreView.swift in Sources */,
 				49F40AB625DDB94C00DE80DC /* FlashError.swift in Sources */,
 				49B9D53E25DADE280066A51F /* SettingsView.swift in Sources */,
+				49DA20DB25F9A9360049B0A7 /* DeckStore.swift in Sources */,
 				49FE723D25E7EF6900E2C3B1 /* Array+RemoveDuplicates.swift in Sources */,
 				49495F1725EC90CC00F5C3B0 /* UserDefaults+TypeSafety.swift in Sources */,
 				49FE722725E3422800E2C3B1 /* CardSideView.swift in Sources */,

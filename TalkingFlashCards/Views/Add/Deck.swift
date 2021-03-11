@@ -21,14 +21,39 @@ struct Deck: Identifiable {
   
   var cards = [Card]()
   
+//  var cardStore = CardStore()
+//  @Dependency var deckDataService: DeckDataService
+  var cancellables = Set<AnyCancellable>()
+//  @Published var result: Result<Void, Error>?
+  
   var hasRequiredFieldsFilled: Bool {
-    return !name.isEmpty // TODO && !frontSideSettings.language.isEmpty && !backSideSettings.language.isEmpty
+    return !name.isEmpty && !frontSideSettings.languageCode.isEmpty && !backSideSettings.languageCode.isEmpty
   }
   
-//  var hasSelectedItems: Bool {
-//    return cards.hasSelectedItems
+//  init() {
+//
 //  }
+//
+//  init(name: String) {
+//    self.name = name
+//  }
+//
+//  init(cards: [Card]) {
+//    self.cards = cards
+//  }
+//
+//  init(name: String, frontSideSettings: SideSettings, backSideSettings: SideSettings, cards: [Card]) {
+//    self.name = name
+//    self.frontSideSettings = frontSideSettings
+//    self.backSideSettings = backSideSettings
+//    self.cards = cards
+//  }
+  
+  //  var hasSelectedItems: Bool {
+  //    return cards.hasSelectedItems
+  //  }
 }
+
 
 struct SideSettings {
   var side: Side
@@ -36,50 +61,5 @@ struct SideSettings {
   var autoPlay: Bool = false
 }
 
-extension Array where Iterator.Element == Card {
-  var hasSelectedItems: Bool {
-    return self.contains { $0.selected }
-    }
-  }
-  
 
-class DeckStore: ObservableObject {
-  
-  var decks = [Deck]()
-  private var deckDataService: DeckDataService
-  private var cancellables = Set<AnyCancellable>()
-  
-  init(deckDataService: DeckDataService = RealmDeckDataService()) {
-    self.deckDataService = deckDataService
-    loadDecks()
-  }
-  
-  private func loadDecks() {
-      deckDataService.loadDecks()
-        .sink { completion in
-          
-          if case let .failure(error) = completion {
-            print(error)
-          }
-          
-          
-          switch completion {
-          case .finished: break
-          case let .failure(error):
-            print(error)
-          }
-        } receiveValue: { [weak self] decks in
-          self?.decks = decks
-          print(self?.decks.indices)
-        }
-        .store(in: &cancellables)
-      
-      
-      
-      
-    
-    
-    
-  }
-}
 
