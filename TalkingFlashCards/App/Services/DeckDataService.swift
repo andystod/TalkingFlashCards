@@ -12,7 +12,7 @@ protocol DeckDataService {
   func loadDecks() -> AnyPublisher<[Deck], Error>
   func createDeck(deck: Deck) -> AnyPublisher<Void, FlashError> // TODO check on error type and use of trymap and maperror
   func updateDeck(deck: Deck) -> AnyPublisher<Void, Error>
-  func addCard(_ card: Card, to deck: Deck) -> AnyPublisher<Void, Error> // TODO need to remove inout
+//  func addCard(_ card: Card, to deck: Deck) -> AnyPublisher<Void, Error> // TODO need to remove inout
   func deleteCards() -> AnyPublisher<Void, FlashError>
 }
 
@@ -22,21 +22,24 @@ class RealmDeckDataService: DeckDataService {
   init() {
     
     // TODO
-        decks = [Deck]()
+    //        decks = [Deck]()
     
-//    decks = [
-//      Deck(name: "English to Spanish", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "es", autoPlay: true), cards: [
-////                    Card(front: CardSide(text: "Hello!"), back: CardSide(text: "¡Hola!")),
-//                    Card(front: CardSide(text: "How are you?"), back: CardSide(text: "¿Cómo estás?")),
-//                    Card(front: CardSide(text: "Australia"), back: CardSide(text: "Australia")),
-//                    Card(front: CardSide(text: "Where are you from?"), back: CardSide(text: "¿De donde eres?"))]),
-//             Deck(name: "Español a Ingles"),
-//             Deck(name: "English to German", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "de", autoPlay: true),
-//                  cards: [Card(front: CardSide(text: "Hello!"), back: CardSide(text: "Hallo!")),
-//                          Card(front: CardSide(text: "How are you?"), back: CardSide(text: "Wie geht es dir?")),
-//                          Card(front: CardSide(text: "Where are you from?"), back: CardSide(text: "Woher kommen Sie?"))])
-////
-//    ]
+    decks = [
+      Deck(name: "English to Spanish", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "es", autoPlay: true),
+           cardStore: CardStore(cards: [
+            Card(front: CardSide(text: "Hello!"), back: CardSide(text: "¡Hola!")),
+            Card(front: CardSide(text: "How are you?"), back: CardSide(text: "¿Cómo estás?")),
+            Card(front: CardSide(text: "Australia"), back: CardSide(text: "Australia")),
+            Card(front: CardSide(text: "Where are you from?"), back: CardSide(text: "¿De donde eres?"))
+           ])),
+      Deck(name: "Español a Ingles"),
+      Deck(name: "English to German", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "de", autoPlay: true),
+           cardStore: CardStore(cards: [
+            Card(front: CardSide(text: "Hello!"), back: CardSide(text: "Hallo!")),
+            Card(front: CardSide(text: "How are you?"), back: CardSide(text: "Wie geht es dir?")),
+            Card(front: CardSide(text: "Where are you from?"), back: CardSide(text: "Woher kommen Sie?"))
+           ]))
+    ]
   }
   
   var decks: [Deck]
@@ -79,24 +82,24 @@ class RealmDeckDataService: DeckDataService {
     .eraseToAnyPublisher()
   }
   
-  func addCard(_ card: Card, to deck: Deck) -> AnyPublisher<Void, Error> {
-    
-    let deckFound = decks.first { $0.id == deck.id }
-    if var deckFound = deckFound {
-      deckFound.cards.append(card)
-    }
-    
-//    decks[3].cards.append(card)
-    
-    return Future { promise in
-      promise(.success(()))
-    }
-    .receive(on: DispatchQueue.main)
-    .eraseToAnyPublisher()
-  }
+//  func addCard(_ card: Card, to deck: Deck) -> AnyPublisher<Void, Error> {
+//
+//    let deckFound = decks.first { $0.id == deck.id }
+//    if var deckFound = deckFound {
+//      deckFound.cards.append(card)
+//    }
+//
+//    //    decks[3].cards.append(card)
+//
+//    return Future { promise in
+//      promise(.success(()))
+//    }
+//    .receive(on: DispatchQueue.main)
+//    .eraseToAnyPublisher()
+//  }
   
   func deleteCards() -> AnyPublisher<Void, FlashError> {
-//    deck.cards.removeAll { $0.selected }
+    //    deck.cards.removeAll { $0.selected }
     
     return Future { promise in
       promise(.success(()))

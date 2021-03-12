@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,6 +29,7 @@
 		4998A00725D9C234001510EB /* NewDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998A00625D9C234001510EB /* NewDeckView.swift */; };
 		4998A01425D9FA55001510EB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4998A01625D9FA55001510EB /* Localizable.strings */; };
 		4998A02B25DA0EAF001510EB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4998A02A25DA0EAF001510EB /* Colors.xcassets */; };
+		49AF41F825FA666500D7CE80 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 49AF41F725FA666500D7CE80 /* Introspect */; };
 		49B9D53425DA28480066A51F /* NewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D53325DA28480066A51F /* NewCardView.swift */; };
 		49B9D53925DADE120066A51F /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D53825DADE120066A51F /* MoreView.swift */; };
 		49B9D53E25DADE280066A51F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D53D25DADE280066A51F /* SettingsView.swift */; };
@@ -131,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49AF41F825FA666500D7CE80 /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +371,7 @@
 			);
 			name = TalkingFlashCards;
 			packageProductDependencies = (
+				49AF41F725FA666500D7CE80 /* Introspect */,
 			);
 			productName = TalkingFlashCards;
 			productReference = 49989FBA25D83ABD001510EB /* TalkingFlashCards.app */;
@@ -443,6 +446,7 @@
 			);
 			mainGroup = 49989FB125D83ABD001510EB;
 			packageReferences = (
+				49AF41F625FA666500D7CE80 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = 49989FBB25D83ABD001510EB /* Products */;
 			projectDirPath = "";
@@ -858,6 +862,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		49AF41F625FA666500D7CE80 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		49AF41F725FA666500D7CE80 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49AF41F625FA666500D7CE80 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		49989FC325D83ABD001510EB /* TalkingFlashCards.xcdatamodeld */ = {

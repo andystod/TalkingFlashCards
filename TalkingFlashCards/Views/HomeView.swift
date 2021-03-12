@@ -26,9 +26,9 @@ struct HomeView: View {
         }
         .tag(Tabs.review)
         
-//        VStack {
-//          AddView()
-//        }
+        VStack {
+          AddView()
+        }
         .tabItem {
           Label("Add", systemImage: "plus.rectangle.fill.on.rectangle.fill")
         }

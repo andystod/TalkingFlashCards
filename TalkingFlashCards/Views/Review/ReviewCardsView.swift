@@ -47,14 +47,15 @@ struct DeckView: View {
   
   
   var body: some View {
-    VStack {
-      ZStack {
-        ForEach(Array(zip(deck.cards.indices, deck.cards)), id: \.0) { index, card in
-          CardView(deck: deck, card: card)
-            .offset(x: CGFloat(index * 3), y: CGFloat(index * 10))
-        }
-      }
-    }
+    Text("TODO")
+//    VStack {
+//      ZStack {
+//        ForEach(Array(zip(deck.cards.indices, deck.cards)), id: \.0) { index, card in
+//          CardView(deck: deck, card: card)
+//            .offset(x: CGFloat(index * 3), y: CGFloat(index * 10))
+//        }
+//      }
+//    }
   }
 }
 
