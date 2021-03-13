@@ -10,28 +10,28 @@ import Combine
 
 struct AddView: View {
   
-//  @StateObject var viewModel: ViewModel
-//  @State private var loadDecksCalled = false
+  //  @StateObject var viewModel: ViewModel
+  //  @State private var loadDecksCalled = false
   @EnvironmentObject var deckStore: DeckStore
   
-//  init(viewModel: ViewModel) {
-//    self._viewModel = StateObject(wrappedValue: viewModel)
-//  }
+  //  init(viewModel: ViewModel) {
+  //    self._viewModel = StateObject(wrappedValue: viewModel)
+  //  }
   
   //  @State var deck = Deck()
   
   var body: some View {
     
     VStack {
-      Text("Swipe rows left to edit and delete")
-      List(){
-        NavigationLink(destination: NavigationLazyView(NewDeckView(mode: .create))) {
+      List {
+        NavigationLink(destination: NavigationLazyView( NewDeckView(mode: .create))) {
           Text("Add New Deck")
             .foregroundColor(.accentColor)
         }
+        //        .environment(\.rootPresentationMode, self.$isPresented)
         ForEach(deckStore.decks.indices, id: \.self) { i in
           NavigationLink(
-            destination: ManageDeckView(deck: deckStore.decks[i])) { // TODO
+            destination: ManageDeckView(deckId: deckStore.decks[i].id)) { // TODO
             Text(deckStore.decks[i].name)
           }
         }
@@ -40,20 +40,38 @@ struct AddView: View {
         })
       }
     }
-//    .alert(isPresented: Binding<Bool>.constant($viewModel.error.wrappedValue != nil)) {
-//      Alert(title: Text("Error"))
-//    }
-    .navigationTitle("AddTabTitle")
+    //    .alert(isPresented: Binding<Bool>.constant($viewModel.error.wrappedValue != nil)) {
+    //      Alert(title: Text("Error"))
+    //    }
+    .navigationTitle("Add New Card")
     .onAppear(perform: {
+      
+      
+      
+      
       print("TODO - is this still getting called from Edit")
-//      if !loadDecksCalled {
-//        viewModel.loadDecks() // Move this to init - though that may not work for refreshes
-//        loadDecksCalled = true // TODO - must be a better way - this get called in edit mode on first select
-//      }
+      //      if !loadDecksCalled {
+      //        viewModel.loadDecks() // Move this to init - though that may not work for refreshes
+      //        loadDecksCalled = true // TODO - must be a better way - this get called in edit mode on first select
+      //      }
     })
     
   }
 }
+
+struct ContentView3: View {
+  @Binding var shouldPopToRootView : Bool
+  
+  var body: some View {
+    VStack {
+      Text("Hello, World #3!")
+      Button (action: { self.shouldPopToRootView = false } ){
+        Text("Pop to root")
+      }
+    }.navigationBarTitle("Three")
+  }
+}
+
 
 extension AddView {
   class ViewModel: ObservableObject {

@@ -30,9 +30,9 @@ struct HomeView: View {
           AddView()
         }
         .tabItem {
-          Label("Add", systemImage: "plus.rectangle.fill.on.rectangle.fill")
+          Label("Edit", systemImage: "square.and.pencil")
         }
-        .tag(Tabs.add)
+        .tag(Tabs.edit)
         
         VStack {
           MoreView()
@@ -51,13 +51,13 @@ struct HomeView: View {
   }
   
   enum Tabs{
-    case review, add, more
+    case review, edit, more
   }
   
   func getNavBarTitleForTab(_ tab: Tabs) -> String {
     switch tab{
     case .review: return "Review" // test localization
-    case .add: return "Add"
+    case .edit: return "Edit"
     case .more: return "More"
     }
   }

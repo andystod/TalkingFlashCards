@@ -12,13 +12,15 @@ struct NewDeckView: View {
   
   @Environment(\.presentationMode) var presentationMode
   @EnvironmentObject var deckStore: DeckStore
-  @State var deck: Deck
-  var mode: Mode
+  @State var deck: Deck = Deck()
+  var mode: CrudMode
   @State var alertItem: AlertItem?
   @State var proceedToNewCard = false
+  var deckId: String
+  @State private var cancelButtonText = "Cancel"
   
-  init(deck: Deck = Deck(), mode: Mode) {
-    self._deck = State(wrappedValue: deck)
+  init(deckId: String = "", mode: CrudMode) {
+    self.deckId = deckId
     self.mode = mode
   }
   
@@ -42,6 +44,7 @@ struct NewDeckView: View {
             deckStore.updateDeck(deck)
           }
           proceedToNewCard = true
+          cancelButtonText = "Done"
         }) {
           Text("Save and Add Cards")
             .bold()
@@ -57,6 +60,11 @@ struct NewDeckView: View {
       }
     }
     .navigationTitle(mode == .create ? "New Deck" : "Edit Deck")
+    .onAppear {
+      if !deckId.isEmpty {
+        self.deck = deckStore.deckById(deckId)
+      }
+    }
     .toolbar {
       ToolbarItem(placement: .confirmationAction) {
         Button(action: {
@@ -75,14 +83,14 @@ struct NewDeckView: View {
       }
       
       ToolbarItem(placement: .cancellationAction) {
-        Button("Cancel") {
+        Button(cancelButtonText) {
           presentationMode.wrappedValue.dismiss()
         }
       }
     }
     .navigationBarBackButtonHidden(true)
     NavigationLink(
-      destination: NewCardView(deck: deck),
+      destination: NewCardView(cardStore: deck.cardStore, mode: .create),
       isActive: $proceedToNewCard) { EmptyView() }
   }
 }
@@ -129,9 +137,4 @@ extension EnvironmentValues {
     get { self[ItemsPerPageKey.self] }
     set { self[ItemsPerPageKey.self] = newValue }
   }
-}
-
-enum Mode {
-  case create
-  case edit
 }

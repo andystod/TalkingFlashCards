@@ -31,6 +31,7 @@ struct ManageCardsView: View {
       LazyVGrid(columns: getGridItems(), spacing: 10.0, content: {
         ForEach(cardStore.cards) { card in
           CollageCardItemView(card: $cardStore.cards[cardStore.cards.firstIndex(where: { $0.id == card.id })!],
+                              cardStore: cardStore,
                               editMode: $editMode)
         }
       })
@@ -98,9 +99,11 @@ struct ManageCardsView: View {
 
 struct CollageCardItemView: View {
   @Binding var card: Card // TODO
-  //  var card: Card
-  @State var selected: Bool = false
+  @ObservedObject var cardStore: CardStore
+  @State var selectedForDelete: Bool = false
   @Binding var editMode: EditMode
+  @State var tappedForEdit: Bool = false
+  
   
   var body: some View {
     ZStack {
@@ -111,7 +114,7 @@ struct CollageCardItemView: View {
         .foregroundColor(.yellow)
         .bold()
         .padding(.horizontal, 5.0) // TODO test
-      if editMode.isEditing && selected {
+      if editMode.isEditing && selectedForDelete {
         VStack {
           Spacer()
           HStack {
@@ -125,12 +128,19 @@ struct CollageCardItemView: View {
           }
         }
       }
+      NavigationLink(destination: NewCardView(card: card, cardStore: cardStore, mode: .edit)
+                      .environmentObject(cardStore),
+                     isActive: $tappedForEdit) {
+        EmptyView()
+      }
     }
     .aspectRatio(2/3, contentMode: .fill)
     .onTapGesture {
-      if editMode.isEditing {
+      if !editMode.isEditing {
+        tappedForEdit = true
+      } else {
         card.selected.toggle() // TODO
-        selected = card.selected
+        selectedForDelete = card.selected
       }
     }
   }
@@ -153,8 +163,9 @@ struct ManageCardsView_Previews: PreviewProvider {
     //      UIElementPreview(
     
     NavigationView {
-      ManageCardsView(cardStore: CardStore(cards: [Card](repeating: Card.example, count: 1)))
+      ManageCardsView(cardStore: CardStore())
         .preferredColorScheme(.dark)
+        .environmentObject(CardStore(cards: [Card](repeating: Card.example, count: 1)))
     }
     .navigationViewStyle(StackNavigationViewStyle())
     //      )

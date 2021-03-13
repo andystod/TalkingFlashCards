@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 extension View {
   
@@ -29,5 +30,26 @@ struct NavigationLazyView<Content: View>: View {
     }
     var body: Content {
         build()
+    }
+}
+
+func ??<T>(lhs: Binding<Optional<T>>, rhs: T) -> Binding<T> {
+    Binding(
+        get: { lhs.wrappedValue ?? rhs },
+        set: { lhs.wrappedValue = $0 }
+    )
+}
+
+extension View {
+    public func introspectTextView(customize: @escaping (UITextView) -> ()) -> some View {
+        return inject(UIKitIntrospectionView(
+            selector: { introspectionView in
+                guard let viewHost = Introspect.findViewHost(from: introspectionView) else {
+                    return nil
+                }
+                return Introspect.previousSibling(containing: UITextView.self, from: viewHost)
+            },
+            customize: customize
+        ))
     }
 }

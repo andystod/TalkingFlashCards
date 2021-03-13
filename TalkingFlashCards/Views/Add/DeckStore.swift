@@ -9,12 +9,16 @@ import Combine
 
 class DeckStore: ObservableObject {
   
-  var decks = [Deck]()
+  @Published var decks = [Deck]()
   @Dependency var deckDataService: DeckDataService
   private var cancellables = Set<AnyCancellable>()
   
   init() {
     loadDecks()
+  }
+  
+  init(decks: [Deck]) {
+    self.decks = decks
   }
   
   private func loadDecks() {
@@ -48,6 +52,10 @@ class DeckStore: ObservableObject {
     if let index = decks.firstIndex(where: { $0.id == deck.id }) {
       decks[index] = deck
     }
+  }
+  
+  func deckById(_ id: String) -> Deck {
+    decks.first { $0.id == id }!
   }
   
 }

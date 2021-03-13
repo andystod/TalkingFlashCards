@@ -22,4 +22,16 @@ class CardStore: ObservableObject {
   func deleteCards() {
     cards.removeAll { $0.selected }
   }
+  
+  func addCard(_ card: Card) {
+    objectWillChange.send()
+    cards.append(card)
+  }
+  
+  func updateCard(_ card: Card) {
+    objectWillChange.send()
+    if let index = cards.firstIndex(where: { $0.id == card.id }) {
+      cards[index] = card
+    }
+  }
 }

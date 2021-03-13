@@ -9,41 +9,61 @@ import SwiftUI
 import Combine
 
 // TODO need to make keyboard change depending on language
-
+// TODO move focus to first field after save
 struct NewCardView: View {
   
-  var deck: Deck
+  @State var card: Card
+  @ObservedObject var cardStore: CardStore
   @Environment(\.presentationMode) var presentationMode
-  @StateObject var viewModel: ViewModel
-  @State var front = ""
-  @State var back = ""
+  var mode: CrudMode
+  var viewModel: ViewModel
   
-  init(viewModel: ViewModel = .init(), deck: Deck) {
-    _viewModel = StateObject(wrappedValue: viewModel)
-    self.deck = deck
+  init(card: Card = Card(), cardStore: CardStore, mode: CrudMode, viewModel: ViewModel = ViewModel()) {
+    self._card = State(wrappedValue: card)
+    self.cardStore = cardStore
+    self.mode = mode
+    self.viewModel = viewModel
   }
   
   var body: some View {
-    //    NavigationView {
     Form {
       Section(header: Text("Front")) {
         // TODO should change default keyboard
-        TextEditor(text: $front)
+        TextEditor(text: $card.front.text)
+          .introspectTextView { textField in
+            if self.viewModel.frontTextView == nil {
+              self.viewModel.frontTextView = textField
+              if card.front.text.isEmpty && card.back.text.isEmpty {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                  viewModel.frontTextView?.becomeFirstResponder()
+                }
+              }
+            }
+          }
           .frame(minHeight: 70.0, maxHeight: 150.0)
         //          .foregroundColor(.secondary)
       }
       Section(header: Text("Back")) {
-        TextEditor(text: $back)
+        TextEditor(text: $card.back.text)
           .frame(minHeight: 70.0, maxHeight: 150.0)
         //          .foregroundColor(.secondary)
       }
     }
-    .navigationTitle("New Card")
+    //    .onAppear {
+    //      viewModel.frontTextView?.becomeFirstResponder()
+    //    }
+    .navigationTitle(mode == .create ? "New Card" : "Edit Card")
     .toolbar {
       ToolbarItem(placement: .confirmationAction) {
         Button("Save") {
-          viewModel.addCard(Card(front: CardSide(text: front), back: CardSide(text: back)), to: deck)
+          if mode == .create {
+            cardStore.addCard(card)
+            resetScreen()
+          } else {
+            cardStore.updateCard(card)
+          }
         }
+        .disabled(hasEmptyFields())
       }
       ToolbarItem(placement: .cancellationAction) {
         Button("Done") {
@@ -52,55 +72,31 @@ struct NewCardView: View {
       }
     }
     .navigationBarBackButtonHidden(true)
-    .onAppear {
-      viewModel.$result
-        .sink { value in
-          switch value {
-          case .success():
-            resetScreen()
-          case .failure(let error):
-            break
-          case .none:
-            break
-          }
-        }
-        .store(in: &self.viewModel.cancellables)
-    }
   }
   
   func resetScreen() {
-    front = ""
-    back = ""
+    card = Card()
+    viewModel.frontTextView?.becomeFirstResponder()
+  }
+  
+  func hasEmptyFields() -> Bool {
+    card.front.text.isEmpty || card.back.text.isEmpty
   }
   
 }
 
 extension NewCardView {
-  class ViewModel: ObservableObject {
-    
-    @Published var result: Result<Void, Error>?
-//    @Dependency var deckDataService: DeckDataService
-    var cancellables = Set<AnyCancellable>()
-    
-    func addCard(_ card: Card, to deck: Deck) {
-//      deckDataService.addCard(card, to: deck)
-//        .sink { [weak self] completion in
-//          if case let .failure(error) = completion {
-//            self?.result = .failure(error)
-//          } else {
-////            deck.cards.append(card) // TODO this needs to go
-//            self?.result = .success(())
-//          }
-//        } receiveValue: { _ in }
-//        .store(in: &cancellables)
-    }
+  class ViewModel {
+    var frontTextView: UITextView?
   }
 }
 
 struct NewCardView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
-      NewCardView(deck: Deck())
+      NewCardView(card: Card(front: CardSide(text: "Front text"), back: CardSide(text: "Back text")),
+                  cardStore: CardStore(),
+                  mode: .edit)
         .preferredColorScheme(.dark)
     }
   }

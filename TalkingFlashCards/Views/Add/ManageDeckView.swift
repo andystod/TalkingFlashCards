@@ -8,30 +8,34 @@
 import SwiftUI
 import Introspect
 
+
+
 struct ManageDeckView: View {
   
+  @EnvironmentObject var deckStore: DeckStore
   @StateObject private var viewModel: ViewModel = ViewModel()
-  var deck: Deck
+  @State var deck: Deck = Deck()
+  var deckId: String
   
-  init(deck: Deck) {
-    self.deck = deck
+  init(deckId: String) {
+    self.deckId = deckId
   }
   
   
   var body: some View {
     List {
       NavigationLink(
-        destination: NavigationLazyView(NewDeckView(deck: deck, mode: .edit))) {
+        destination: NavigationLazyView(NewDeckView(deckId: deck.id, mode: .edit))) {
         HStack {
           Image(systemName: "pencil")
             .font(Font.body.weight(.bold))
             .foregroundColor(.yellow)
-
+          
           Text("Edit Deck")
         }
       }
       NavigationLink(
-        destination: Text("Add Cards")) {
+        destination: NewCardView(cardStore: deck.cardStore, mode: .create)) {
         HStack {
           Image(systemName: "plus")
             .font(Font.body.weight(.bold))
@@ -40,7 +44,8 @@ struct ManageDeckView: View {
         }
       }
       NavigationLink(
-        destination: ManageCardsView(cardStore: deck.cardStore)) {
+        destination: ManageCardsView(cardStore: deck.cardStore))
+      {
         HStack {
           Image(systemName: "rectangle.grid.2x2")
             .font(Font.body.weight(.semibold))
@@ -54,12 +59,12 @@ struct ManageDeckView: View {
     }
     .onAppear(perform: {
       self.viewModel.clearTableViewSelection()
+      self.deck = deckStore.deckById(deckId)
     })
     .onDisappear(perform: {
       self.viewModel.clearTableViewSelection()
     })
     .navigationTitle(deck.name)
-    
   }
 }
 
@@ -97,7 +102,8 @@ extension ManageDeckView {
 struct ManageDeckView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
-      ManageDeckView(deck: Deck())
+      ManageDeckView(deckId: "123")
+        .environmentObject(DeckStore())
     }
   }
 }
