@@ -12,7 +12,7 @@ struct SettingsView: View {
       List {
         NavigationLink(
           destination: VoiceSettingsView()) {
-            Text("Voice Settings")
+            Label("Voice Settings", systemImage: "wave.3.right")
           }
       }
       .navigationTitle("Settings")
@@ -21,6 +21,8 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
+      NavigationView {
         SettingsView()
+      }
     }
 }

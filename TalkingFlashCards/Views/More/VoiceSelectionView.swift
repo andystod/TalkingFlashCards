@@ -14,7 +14,6 @@ struct VoiceSelectionView: View {
   @State var selectedVoice: Voice?
   @StateObject var viewModel: ViewModel
   @Dependency var languageService: LanguageService
-//  @State private var listSelection: Voice? = nil
   
   init(viewModel: ViewModel = ViewModel(), language: Language, selectedVoice: Voice) {
     self._viewModel = StateObject(wrappedValue: viewModel)
@@ -23,8 +22,9 @@ struct VoiceSelectionView: View {
   }
   
   var body: some View {
-    VStack {
+    VStack(alignment: .leading) {
       Text("Select a Voice to override the default selection")
+        .padding(.leading)
       List(selection: $selectedVoice) {
         ForEach(viewModel.voices, id: \.self) { voice in
           HStack(spacing: 0) {
@@ -35,11 +35,6 @@ struct VoiceSelectionView: View {
           }
         }
       }
-//      .onReceive(viewModel.$selectedVoice) { voice in
-//        if voice != nil {
-//          listSelection = voice
-//        }
-//      }
       .onChange(of: selectedVoice, perform: { voice in
         if let voice = voice {
           var voices = UserDefaults.standard.voicePreferences
@@ -48,19 +43,13 @@ struct VoiceSelectionView: View {
           print(UserDefaults.standard.voicePreferences) // TODO
         }
       })
-      
       .environment(\.editMode, .constant(EditMode.active))
-      Text(selectedVoice != nil ? selectedVoice!.languageAndRegionDescription: "none")
     }
     .navigationTitle(
       Text("Select \(language.displayValue) Voice")
     )
-    
     .onAppear {
       viewModel.loadLanguages(languageCode: language.languageCode)
-    }
-    .onDisappear {
-      print("Save settings")
     }
   }
 }
@@ -72,7 +61,6 @@ extension VoiceSelectionView {
     @Published var selectedVoice: Voice?
     
     func loadLanguages(languageCode: String) {
-      // TODO
       var tempVoices = languageService.getVoicesForLanguage(languageCode)
       let defaultItem = Voice(defaultItem: true)
       selectedVoice = defaultItem

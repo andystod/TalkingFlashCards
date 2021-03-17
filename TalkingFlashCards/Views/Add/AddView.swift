@@ -17,13 +17,13 @@ struct AddView: View {
     VStack {
       List {
         NavigationLink(destination: NavigationLazyView( NewDeckView(mode: .create))) {
-          Text("Add New Deck")
+          Label("Add New Deck", systemImage:"plus.rectangle.on.rectangle")
             .foregroundColor(.accentColor)
         }
         ForEach(deckStore.decks.indices, id: \.self) { i in
           NavigationLink(
             destination: ManageDeckView(deckId: deckStore.decks[i].id)) { // TODO
-            Text(deckStore.decks[i].name)
+            Label(deckStore.decks[i].name, systemImage:"square.and.pencil")
           }
         }
         .onDelete(perform: { indexSet in

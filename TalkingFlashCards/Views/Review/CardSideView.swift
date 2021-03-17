@@ -13,7 +13,6 @@ struct CardSideView: View {
   var text: String
   var sideSettings: SideSettings
   @Binding var offset: CGSize
-//  @State var speaking = false
   @StateObject var speaker = Speaker()
   
   
