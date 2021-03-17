@@ -45,7 +45,7 @@ struct CardSideView: View {
           RoundedRectangle(cornerRadius: 25, style: .continuous)
             .fill(offset.width > 0 ? Color.green : Color.red)
         )
-        .shadow(radius: 10)
+        .shadow(radius: 1)
         .padding()
       VStack {
         Spacer()

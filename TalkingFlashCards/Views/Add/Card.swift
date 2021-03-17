@@ -8,7 +8,11 @@
 import Foundation
 
 
-struct Card: Identifiable {
+struct Card: Identifiable, Equatable {
+  static func == (lhs: Card, rhs: Card) -> Bool {
+    lhs.id == rhs.id
+  }
+  
   let id: String = UUID().uuidString
   var front = CardSide(text: "")
   var back = CardSide(text: "")

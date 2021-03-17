@@ -10,15 +10,7 @@ import Combine
 
 struct AddView: View {
   
-  //  @StateObject var viewModel: ViewModel
-  //  @State private var loadDecksCalled = false
   @EnvironmentObject var deckStore: DeckStore
-  
-  //  init(viewModel: ViewModel) {
-  //    self._viewModel = StateObject(wrappedValue: viewModel)
-  //  }
-  
-  //  @State var deck = Deck()
   
   var body: some View {
     
@@ -28,7 +20,6 @@ struct AddView: View {
           Text("Add New Deck")
             .foregroundColor(.accentColor)
         }
-        //        .environment(\.rootPresentationMode, self.$isPresented)
         ForEach(deckStore.decks.indices, id: \.self) { i in
           NavigationLink(
             destination: ManageDeckView(deckId: deckStore.decks[i].id)) { // TODO
@@ -40,22 +31,7 @@ struct AddView: View {
         })
       }
     }
-    //    .alert(isPresented: Binding<Bool>.constant($viewModel.error.wrappedValue != nil)) {
-    //      Alert(title: Text("Error"))
-    //    }
     .navigationTitle("Add New Card")
-    .onAppear(perform: {
-      
-      
-      
-      
-      print("TODO - is this still getting called from Edit")
-      //      if !loadDecksCalled {
-      //        viewModel.loadDecks() // Move this to init - though that may not work for refreshes
-      //        loadDecksCalled = true // TODO - must be a better way - this get called in edit mode on first select
-      //      }
-    })
-    
   }
 }
 

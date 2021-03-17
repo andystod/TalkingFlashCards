@@ -15,28 +15,8 @@ struct ReviewCardsView: View {
     VStack {
       DeckView(deck: deck)
         .padding()
-      HStack {
-        Group {
-          Image(systemName: "xmark")
-            .background(Color.red)
-          NavigationLink(destination: EmptyView()) {
-//            Button(action: { print("Edit") }) {
-              Image(systemName: "pencil")
-                .background(Color.blue)
-//            }
-          }
-          
-          Image(systemName: "checkmark")
-            .background(Color.green)
-        }
-        .font(Font.title.weight(.bold))
-        .foregroundColor(.white)
-      }
-      .padding()
     }
     .navigationBarTitle("Review Cards", displayMode: .inline)
-//    .navigationBarHidden(true)
-//    .navigationTitle("")
   }
 }
 
@@ -47,15 +27,18 @@ struct DeckView: View {
   
   
   var body: some View {
-    Text("TODO")
-//    VStack {
-//      ZStack {
-//        ForEach(Array(zip(deck.cards.indices, deck.cards)), id: \.0) { index, card in
-//          CardView(deck: deck, card: card)
-//            .offset(x: CGFloat(index * 3), y: CGFloat(index * 10))
-//        }
-//      }
-//    }
+    ZStack {
+      ForEach(Array(zip(deck.cardStore.cards.indices, deck.cardStore.cards)), id: \.0) { index, card in
+        CardView(deck: deck, card: card)
+          .offset(offsetForCardNumber(index))
+          .rotationEffect(Angle(degrees: Double.random(in: -2.0...2.0)))
+          .zIndex(Double(deck.cardStore.cards.count - index - 1))
+      }
+    }
+  }
+  
+  func offsetForCardNumber(_ cardNumber: Int) -> CGSize {
+    return CGSize(width: CGFloat.random(in: -2.0...2.0), height: CGFloat.random(in: -2.0...2.0))
   }
 }
 
@@ -150,7 +133,7 @@ struct FlipEffect: GeometryEffect {
 struct ReviewCardsView_Previews: PreviewProvider {
   static var previews: some View {
     
-    let deck = Deck()
+    let deck = Deck(cardStore: CardStore(cards: [Card](repeating: Card(), count: 20)))
     NavigationView {
       ReviewCardsView(deck: deck)
         .preferredColorScheme(.dark)

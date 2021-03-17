@@ -8,8 +8,7 @@
 import SwiftUI
 import Combine
 
-// TODO need to make keyboard change depending on language
-// TODO move focus to first field after save
+// TODO make keyboard change depending on language
 struct NewCardView: View {
   
   @State var card: Card
@@ -28,7 +27,6 @@ struct NewCardView: View {
   var body: some View {
     Form {
       Section(header: Text("Front")) {
-        // TODO should change default keyboard
         TextEditor(text: $card.front.text)
           .introspectTextView { textField in
             if self.viewModel.frontTextView == nil {
@@ -49,9 +47,6 @@ struct NewCardView: View {
         //          .foregroundColor(.secondary)
       }
     }
-    //    .onAppear {
-    //      viewModel.frontTextView?.becomeFirstResponder()
-    //    }
     .navigationTitle(mode == .create ? "New Card" : "Edit Card")
     .toolbar {
       ToolbarItem(placement: .confirmationAction) {

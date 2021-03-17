@@ -20,6 +20,7 @@ class CardStore: ObservableObject {
   }
   
   func deleteCards() {
+    objectWillChange.send()
     cards.removeAll { $0.selected }
   }
   

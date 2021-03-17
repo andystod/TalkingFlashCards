@@ -99,8 +99,6 @@ struct SideSettingsView: View {
   
   var sectionName: String
   
-  // TODO these need to be loaded into environment or some kind of cache
-  //  @Dependency var languageService: LanguageService
   @Binding var sideSettings: SideSettings
   var uniqueLanguages = GlobalData.shared.languageData.uniqueLanguages
   

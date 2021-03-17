@@ -9,18 +9,18 @@ import SwiftUI
 
 struct MoreView: View {
   var body: some View {
-//    NavigationView {
-      VStack {
-        Text("More View")
+      List {
         NavigationLink(destination: SettingsView()){
-          Text("Settings")
+          Label("Settings", systemImage: "gear")
+          
+        
+//          Text("Settings")
         }
         NavigationLink(destination: ContactView()){
-          Text("Contact")
+          Label("Contact", systemImage: "envelope.fill")
         }
       }
       .navigationTitle("More")
-//    }
   }
 }
 

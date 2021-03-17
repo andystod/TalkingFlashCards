@@ -27,12 +27,14 @@ class RealmDeckDataService: DeckDataService {
     decks = [
       Deck(name: "English to Spanish", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "es", autoPlay: true),
            cardStore: CardStore(cards: [
+            Card(front: CardSide(text: "First Card"), back: CardSide(text: "Primera Carta")),
             Card(front: CardSide(text: "Hello!"), back: CardSide(text: "¡Hola!")),
             Card(front: CardSide(text: "How are you?"), back: CardSide(text: "¿Cómo estás?")),
             Card(front: CardSide(text: "Australia"), back: CardSide(text: "Australia")),
             Card(front: CardSide(text: "Where are you from?"), back: CardSide(text: "¿De donde eres?"))
            ])),
-      Deck(name: "Español a Ingles"),
+      Deck(name: "Español a Ingles", frontSideSettings: SideSettings(side: .front, languageCode: "es", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "en", autoPlay: true),
+           cardStore: CardStore(cards: [Card](repeating: Card(front: CardSide(text: "Hello!"), back: CardSide(text: "¡Hola!")), count: 10))),
       Deck(name: "English to German", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "de", autoPlay: true),
            cardStore: CardStore(cards: [
             Card(front: CardSide(text: "Hello!"), back: CardSide(text: "Hallo!")),
