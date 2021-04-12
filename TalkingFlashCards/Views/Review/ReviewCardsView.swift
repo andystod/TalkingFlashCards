@@ -24,12 +24,17 @@ struct DeckView: View {
   
   @State var backViewSize: CGFloat = 80.0
   var deck: Deck
+  @State var cards: [Card]
   
+  init(deck: Deck) {
+    self.deck = deck
+    self._cards = State(wrappedValue: deck.cardStore.cards)
+  }
   
   var body: some View {
     ZStack {
-      ForEach(Array(zip(deck.cardStore.cards.indices, deck.cardStore.cards)), id: \.0) { index, card in
-        CardView(deck: deck, card: card)
+      ForEach(cards.indices) { index in
+        CardView(deck: deck, card: $cards[index])
           .offset(offsetForCardNumber(index))
           .rotationEffect(Angle(degrees: Double.random(in: -2.0...2.0)))
           .zIndex(Double(deck.cardStore.cards.count - index - 1))
@@ -45,13 +50,11 @@ struct DeckView: View {
 struct CardView: View {
   
   @State private var offset = CGSize.zero
-  //  @State var flipped = false
-  
   @State private var flipped = false
   @State private var animate3d = false
   
   var deck: Deck
-  var card: Card
+  @Binding var card: Card
   
   var body: some View {
     ZStack {
@@ -66,32 +69,24 @@ struct CardView: View {
         .onChanged { gesture in
           self.offset = gesture.translation
         }
-        
         .onEnded { _ in
           if abs(self.offset.width) > 100 {
-            // remove the card
+            if self.offset.width > 0 {
+              deck.cardStore.promoteCard(&card)
+            } else {
+              deck.cardStore.demoteCard(&card)
+            }
           } else {
             self.offset = .zero
           }
         }
     )
-    
-    
     .modifier(FlipEffect(flipped: $flipped, angle: animate3d ? 180 : 0, axis: (x: 1, y: 0)))
     .onTapGesture {
       withAnimation(Animation.linear(duration: 0.8)) {
         self.animate3d.toggle()
       }
     }
-    
-    
-    
-    //    .rotation3DEffect(self.flipped ? Angle(degrees: 180): Angle(degrees: 0), axis: (x: CGFloat(10), y: CGFloat(0), z: CGFloat(0)))
-    //    .animation(.default)
-    //    .onTapGesture {
-    //      self.flipped.toggle()
-    //    }
-    
   }
 }
 

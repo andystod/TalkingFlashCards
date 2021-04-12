@@ -13,7 +13,7 @@ struct ManageCardsView: View {
   @State var editMode: EditMode = .inactive
   @State var showAlert = false
   @ObservedObject var cardStore: CardStore
-    
+  
   init(cardStore: CardStore) {
     self.cardStore = cardStore
     UIToolbar.appearance().tintColor = UIColor(Color.red)
@@ -90,7 +90,7 @@ struct ManageCardsView: View {
 
 struct CollageCardItemView: View {
   @Binding var card: Card // TODO
-//  var cardIndex: Int
+  //  var cardIndex: Int
   @ObservedObject var cardStore: CardStore
   @State var selectedForDelete: Bool = false
   @Binding var editMode: EditMode
@@ -104,7 +104,7 @@ struct CollageCardItemView: View {
         } else {
           return Card()
         }
-        },
+      },
       set: { cardStore.cards[cardIndex] = $0 })
     self._cardStore = ObservedObject(wrappedValue: cardStore)
     self._editMode = editMode
@@ -115,7 +115,7 @@ struct CollageCardItemView: View {
       RoundedRectangle(cornerRadius: 5.0)
         .fill(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing))
       
-      Text("card.front.text")
+      Text(card.front.text)
         .foregroundColor(.yellow)
         .bold()
         .padding(.horizontal, 5.0) // TODO test
@@ -133,11 +133,11 @@ struct CollageCardItemView: View {
           }
         }
       }
-//      NavigationLink(destination: NewCardView(card: card, cardStore: cardStore, mode: .edit)
-//                      .environmentObject(cardStore),
-//                     isActive: $tappedForEdit) {
-//        EmptyView()
-//      }
+      NavigationLink(destination: NavigationLazyView(NewCardView(card: card, cardStore: cardStore, mode: .edit))
+                      .environmentObject(cardStore),
+                     isActive: $tappedForEdit) {
+        EmptyView()
+      }
     }
     .aspectRatio(2/3, contentMode: .fill)
     .onTapGesture {

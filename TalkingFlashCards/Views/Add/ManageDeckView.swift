@@ -35,7 +35,7 @@ struct ManageDeckView: View {
         }
       }
       NavigationLink(
-        destination: NewCardView(cardStore: deck.cardStore, mode: .create)) {
+        destination: NavigationLazyView(NewCardView(cardStore: deck.cardStore, mode: .create))) {
         HStack {
           Image(systemName: "plus")
             .font(Font.body.weight(.bold))

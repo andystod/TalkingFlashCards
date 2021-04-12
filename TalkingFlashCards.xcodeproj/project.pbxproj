@@ -14,6 +14,8 @@
 		49495F0A25E81DD800F5C3B0 /* VoiceSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49495F0925E81DD800F5C3B0 /* VoiceSelectionView.swift */; };
 		49495F1225EC8E0800F5C3B0 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49495F1125EC8E0800F5C3B0 /* StoreService.swift */; };
 		49495F1725EC90CC00F5C3B0 /* UserDefaults+TypeSafety.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49495F1625EC90CC00F5C3B0 /* UserDefaults+TypeSafety.swift */; };
+		4958D3FB261F72640050D717 /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958D3FA261F72640050D717 /* CardManager.swift */; };
+		4958D400261F72A60050D717 /* CardManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958D3FF261F72A60050D717 /* CardManagerTests.swift */; };
 		497A84AE25DA26850040B1CE /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A84AD25DA26850040B1CE /* AddView.swift */; };
 		497B8A8A25F92EBD0093D229 /* DeckStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B8A8925F92EBD0093D229 /* DeckStore.swift */; };
 		497B8A8F25F93C210093D229 /* CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B8A8E25F93C210093D229 /* CardStore.swift */; };
@@ -23,7 +25,6 @@
 		49989FC525D83ABD001510EB /* TalkingFlashCards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49989FC325D83ABD001510EB /* TalkingFlashCards.xcdatamodeld */; };
 		49989FC725D83AC0001510EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49989FC625D83AC0001510EB /* Assets.xcassets */; };
 		49989FCA25D83AC0001510EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49989FC925D83AC0001510EB /* Preview Assets.xcassets */; };
-		49989FD825D83AC1001510EB /* TalkingFlashCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49989FD725D83AC1001510EB /* TalkingFlashCardsTests.swift */; };
 		49989FE325D83AC1001510EB /* TalkingFlashCardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49989FE225D83AC1001510EB /* TalkingFlashCardsUITests.swift */; };
 		49989FFA25D9B713001510EB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49989FF925D9B713001510EB /* HomeView.swift */; };
 		4998A00725D9C234001510EB /* NewDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998A00625D9C234001510EB /* NewDeckView.swift */; };
@@ -81,6 +82,8 @@
 		49495F0925E81DD800F5C3B0 /* VoiceSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceSelectionView.swift; sourceTree = "<group>"; };
 		49495F1125EC8E0800F5C3B0 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		49495F1625EC90CC00F5C3B0 /* UserDefaults+TypeSafety.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+TypeSafety.swift"; sourceTree = "<group>"; };
+		4958D3FA261F72640050D717 /* CardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
+		4958D3FF261F72A60050D717 /* CardManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManagerTests.swift; sourceTree = "<group>"; };
 		497A84AD25DA26850040B1CE /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		497B8A8925F92EBD0093D229 /* DeckStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckStore.swift; sourceTree = "<group>"; };
 		497B8A8E25F93C210093D229 /* CardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStore.swift; sourceTree = "<group>"; };
@@ -93,7 +96,6 @@
 		49989FC925D83AC0001510EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		49989FCE25D83AC0001510EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49989FD325D83AC1001510EB /* TalkingFlashCardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TalkingFlashCardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		49989FD725D83AC1001510EB /* TalkingFlashCardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkingFlashCardsTests.swift; sourceTree = "<group>"; };
 		49989FD925D83AC1001510EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49989FDE25D83AC1001510EB /* TalkingFlashCardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TalkingFlashCardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49989FE225D83AC1001510EB /* TalkingFlashCardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkingFlashCardsUITests.swift; sourceTree = "<group>"; };
@@ -218,8 +220,8 @@
 		49989FD625D83AC1001510EB /* TalkingFlashCardsTests */ = {
 			isa = PBXGroup;
 			children = (
-				49989FD725D83AC1001510EB /* TalkingFlashCardsTests.swift */,
 				49989FD925D83AC1001510EB /* Info.plist */,
+				4958D3FF261F72A60050D717 /* CardManagerTests.swift */,
 			);
 			path = TalkingFlashCardsTests;
 			sourceTree = "<group>";
@@ -287,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				4998A00625D9C234001510EB /* NewDeckView.swift */,
+				4958D3FA261F72640050D717 /* CardManager.swift */,
 				497A84AD25DA26850040B1CE /* AddView.swift */,
 				49B9D53325DA28480066A51F /* NewCardView.swift */,
 				49E6323525DC3F2800AC6040 /* Deck.swift */,
@@ -522,6 +525,7 @@
 				49495F1225EC8E0800F5C3B0 /* StoreService.swift in Sources */,
 				49989FC225D83ABD001510EB /* ContentView.swift in Sources */,
 				49C62FEA25F03FD4007DCC2E /* GlobalData.swift in Sources */,
+				4958D3FB261F72640050D717 /* CardManager.swift in Sources */,
 				497A84AE25DA26850040B1CE /* AddView.swift in Sources */,
 				49CB070025F1D22900B5A7E1 /* ManageCardsView.swift in Sources */,
 				49CBE20E25F5348E00E03905 /* View+Modifiers.swift in Sources */,
@@ -550,7 +554,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49989FD825D83AC1001510EB /* TalkingFlashCardsTests.swift in Sources */,
+				4958D400261F72A60050D717 /* CardManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

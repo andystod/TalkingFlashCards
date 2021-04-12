@@ -10,6 +10,7 @@ import SwiftUI
 class CardStore: ObservableObject {
   
   @Published var cards = [Card]()
+  var cardManager = CardManager()
   
   init() {
     
@@ -35,4 +36,16 @@ class CardStore: ObservableObject {
       cards[index] = card
     }
   }
+  
+  func promoteCard(_ card: inout Card) {
+    cardManager.promoteCard(&card)
+  }
+  
+  func demoteCard(_ card: inout Card) {
+    cardManager.demoteCard(&card)
+  }
+//  
+////  func getNextReviewDate(card: Card) -> Date {
+////    return Calendar.current.date(byAdding: .day, value: boxNumberOfDays[card.boxNumber], to: card.nextReviewDate ?? Date())!
+////  }
 }
