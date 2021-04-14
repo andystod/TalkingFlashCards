@@ -7,44 +7,44 @@
 
 import Foundation
 import Combine
+import RealmSwift
 
 protocol DeckDataService {
-  func loadDecks() -> AnyPublisher<[Deck], Error>
+  func loadDecks() -> AnyPublisher<Results<DeckDB>, Error>
   func createDeck(deck: Deck) -> AnyPublisher<Void, FlashError> // TODO check on error type and use of trymap and maperror
   func updateDeck(deck: Deck) -> AnyPublisher<Void, Error>
-//  func addCard(_ card: Card, to deck: Deck) -> AnyPublisher<Void, Error> // TODO need to remove inout
+  //  func addCard(_ card: Card, to deck: Deck) -> AnyPublisher<Void, Error> // TODO need to remove inout
   func deleteCards() -> AnyPublisher<Void, FlashError>
 }
 
 class RealmDeckDataService: DeckDataService {
-  
+ 
   // TODO delete this
-  init() {
-    
-    // TODO
-    //        decks = [Deck]()
-    
-    decks = [
-      Deck(name: "English to Spanish", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "es", autoPlay: true),
-           cardStore: CardStore(cards: [
-            Card(front: CardSide(text: "First Card"), back: CardSide(text: "Primera Carta")),
-            Card(front: CardSide(text: "Hello!"), back: CardSide(text: "¡Hola!")),
-            Card(front: CardSide(text: "How are you?"), back: CardSide(text: "¿Cómo estás?")),
-            Card(front: CardSide(text: "Australia"), back: CardSide(text: "Australia")),
-            Card(front: CardSide(text: "Where are you from?"), back: CardSide(text: "¿De donde eres?"))
-           ])),
-      Deck(name: "Español a Ingles", frontSideSettings: SideSettings(side: .front, languageCode: "es", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "en", autoPlay: true),
-           cardStore: CardStore(cards: [Card](repeating: Card(front: CardSide(text: "Hello!"), back: CardSide(text: "¡Hola!")), count: 10))),
-      Deck(name: "English to German", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "de", autoPlay: true),
-           cardStore: CardStore(cards: [
-            Card(front: CardSide(text: "Hello!"), back: CardSide(text: "Hallo!")),
-            Card(front: CardSide(text: "How are you?"), back: CardSide(text: "Wie geht es dir?")),
-            Card(front: CardSide(text: "Where are you from?"), back: CardSide(text: "Woher kommen Sie?"))
-           ]))
-    ]
-  }
+//  init() {
+//
+//    // TODO
+//    //        decks = [Deck]()
+//
+//    decks = [
+//      Deck(name: "English to Spanish", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "es", autoPlay: true),
+//           cardStore: CardStore(cards: [
+//            Card(front: CardSide(text: "First Card"), back: CardSide(text: "Primera Carta")),
+//            Card(front: CardSide(text: "Hello!"), back: CardSide(text: "¡Hola!")),
+//            Card(front: CardSide(text: "How are you?"), back: CardSide(text: "¿Cómo estás?")),
+//            Card(front: CardSide(text: "Australia"), back: CardSide(text: "Australia")),
+//            Card(front: CardSide(text: "Where are you from?"), back: CardSide(text: "¿De donde eres?"))
+//           ])),
+//      Deck(name: "Español a Ingles", frontSideSettings: SideSettings(side: .front, languageCode: "es", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "en", autoPlay: true),
+//           cardStore: CardStore(cards: [Card](repeating: Card(front: CardSide(text: "Hello!"), back: CardSide(text: "¡Hola!")), count: 10))),
+//      Deck(name: "English to German", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "de", autoPlay: true),
+//           cardStore: CardStore(cards: [
+//            Card(front: CardSide(text: "Hello!"), back: CardSide(text: "Hallo!")),
+//            Card(front: CardSide(text: "How are you?"), back: CardSide(text: "Wie geht es dir?")),
+//            Card(front: CardSide(text: "Where are you from?"), back: CardSide(text: "Woher kommen Sie?"))
+//           ]))
+//    ]
+//  }
   
-  var decks: [Deck]
   //  var decks = [Deck]() // TODO
   
   //      promise(.success([Deck(id: UUID(), name: "Deck1"),
@@ -53,9 +53,16 @@ class RealmDeckDataService: DeckDataService {
   //      promise(.failure(URLError(URLError.Code.badURL)))
   
   
-  func loadDecks() -> AnyPublisher<[Deck], Error> {
-    return Future<[Deck], Error> { [weak self] promise in
-      promise(.success(self!.decks))
+  func loadDecks() -> AnyPublisher<Results<DeckDB>, Error> {
+    return Future<Results<DeckDB>, Error> { promise in
+      do {
+      let realm = try Realm()
+      let decks = realm.objects(DeckDB.self)
+      print(decks)
+      promise(.success(decks))
+      } catch let error {
+        promise(.failure(error))
+      }
     }
     .receive(on: DispatchQueue.main)
     .eraseToAnyPublisher()
@@ -63,8 +70,17 @@ class RealmDeckDataService: DeckDataService {
   
   func createDeck(deck: Deck) -> AnyPublisher<Void, FlashError> {
     return Future<Void, FlashError> { [weak self] promise in
-      self?.decks.append(deck)
-      promise(.success(()))
+      do {
+        let realm = try Realm()
+        let deckDB = DeckDB(deck)
+        try realm.write {
+          realm.add(deckDB)
+          promise(.success(()))
+        }
+      } catch let error {
+        // Handle error
+        print(error.localizedDescription)
+      }
     }
     //    .tryMap{ _ in }
     .receive(on: DispatchQueue.main)
@@ -73,32 +89,32 @@ class RealmDeckDataService: DeckDataService {
   
   func updateDeck(deck: Deck) -> AnyPublisher<Void, Error> {
     return Future<Void, Error> { [weak self] promise in
-      if let index = self?.decks.firstIndex(where: { $0.id == deck.id }) {
-        self?.decks[index] = deck
+//      if let index = self?.decks.firstIndex(where: { $0.id == deck.id }) {
+//        self?.decks[index] = deck
         promise(.success(()))
-      } else {
-        promise(.failure(FlashError.unknown))
-      }
+//      } else {
+//        promise(.failure(FlashError.unknown))
+//      }
     }
     .receive(on: DispatchQueue.main)
     .eraseToAnyPublisher()
   }
   
-//  func addCard(_ card: Card, to deck: Deck) -> AnyPublisher<Void, Error> {
-//
-//    let deckFound = decks.first { $0.id == deck.id }
-//    if var deckFound = deckFound {
-//      deckFound.cards.append(card)
-//    }
-//
-//    //    decks[3].cards.append(card)
-//
-//    return Future { promise in
-//      promise(.success(()))
-//    }
-//    .receive(on: DispatchQueue.main)
-//    .eraseToAnyPublisher()
-//  }
+  //  func addCard(_ card: Card, to deck: Deck) -> AnyPublisher<Void, Error> {
+  //
+  //    let deckFound = decks.first { $0.id == deck.id }
+  //    if var deckFound = deckFound {
+  //      deckFound.cards.append(card)
+  //    }
+  //
+  //    //    decks[3].cards.append(card)
+  //
+  //    return Future { promise in
+  //      promise(.success(()))
+  //    }
+  //    .receive(on: DispatchQueue.main)
+  //    .eraseToAnyPublisher()
+  //  }
   
   func deleteCards() -> AnyPublisher<Void, FlashError> {
     //    deck.cards.removeAll { $0.selected }

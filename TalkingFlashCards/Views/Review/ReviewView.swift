@@ -29,9 +29,13 @@ struct ReviewView: View {
 
 struct ReviewView_Previews: PreviewProvider {
   static var previews: some View {
+    let deckStore = DeckStore(callLoad: false)
+    deckStore.decks = [Deck(name: "Deck1"),
+                       Deck(name: "Deck2"),
+                       Deck(name: "Deck4")]
     return NavigationView {
       ReviewView()
-        .environmentObject(DeckStore(decks: [Deck(name: "Deck 1")]))
+        .environmentObject(deckStore)
         .preferredColorScheme(.dark)
     }
   }

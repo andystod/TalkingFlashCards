@@ -103,7 +103,7 @@ struct ManageDeckView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
       ManageDeckView(deckId: "123")
-        .environmentObject(DeckStore())
+        .environmentObject(DeckStore(callLoad: false))
     }
   }
 }

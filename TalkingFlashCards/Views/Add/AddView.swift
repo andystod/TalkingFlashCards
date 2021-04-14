@@ -66,7 +66,7 @@ extension AddView {
 
 struct AddView_Previews: PreviewProvider {
   static var previews: some View {
-    let deckStore = DeckStore()
+    let deckStore = DeckStore(callLoad: false)
     deckStore.decks = [Deck(name: "Deck1"),
                        Deck(name: "Deck2"),
                        Deck(name: "Deck4")]

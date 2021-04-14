@@ -6,6 +6,7 @@
 //
 
 import Combine
+import RealmSwift
 
 class DeckStore: ObservableObject {
   
@@ -13,31 +14,22 @@ class DeckStore: ObservableObject {
   @Dependency var deckDataService: DeckDataService
   private var cancellables = Set<AnyCancellable>()
   
-  init() {
-    loadDecks()
+  init(callLoad: Bool = true) {
+    if callLoad {
+      loadDecks()
+    }
   }
-  
-  init(decks: [Deck]) {
-    self.decks = decks
-  }
-  
+    
   private func loadDecks() {
     deckDataService.loadDecks()
       .sink { completion in
-        
-        if case let .failure(error) = completion {
-          print(error)
-        }
-        
-        
         switch completion {
         case .finished: break
         case let .failure(error):
           print(error)
         }
-      } receiveValue: { [weak self] decks in
-        self?.decks = decks
-        print(self?.decks.indices)
+      } receiveValue: { [weak self] decksDB in
+        self?.decks = decksDB.map(Deck.init)
       }
       .store(in: &cancellables)
   }
