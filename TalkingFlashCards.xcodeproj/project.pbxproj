@@ -180,6 +180,23 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		497812272641AF79003407E8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				497B8A8925F92EBD0093D229 /* DeckStore.swift */,
+				497B8A8E25F93C210093D229 /* CardStore.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		497812292641B045003407E8 /* BusinessLogic */ = {
+			isa = PBXGroup;
+			children = (
+				4958D3FA261F72640050D717 /* CardManager.swift */,
+			);
+			path = BusinessLogic;
+			sourceTree = "<group>";
+		};
 		497A849C25DA10F30040B1CE /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +213,7 @@
 				495A63E22638976A0085FD5C /* CardDB.swift */,
 				49E6323525DC3F2800AC6040 /* Deck.swift */,
 				498965B82625E9A300E71B1A /* DeckDB.swift */,
+				49C62FDE25EEC17B007DCC2E /* Voice.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -223,6 +241,9 @@
 		49989FBC25D83ABD001510EB /* TalkingFlashCards */ = {
 			isa = PBXGroup;
 			children = (
+				497812292641B045003407E8 /* BusinessLogic */,
+				490925FC25DB3EE300BE1DE2 /* Services */,
+				497812272641AF79003407E8 /* ViewModel */,
 				498965B72625E95A00E71B1A /* Models */,
 				4998A00B25D9F9E4001510EB /* App */,
 				49989FF825D9B706001510EB /* Views */,
@@ -278,7 +299,6 @@
 				49DBC31625DF589C009CFBE0 /* Common */,
 				49989FBD25D83ABD001510EB /* AppDelegate.swift */,
 				49989FBF25D83ABD001510EB /* SceneDelegate.swift */,
-				490925FC25DB3EE300BE1DE2 /* Services */,
 				49989FCE25D83AC0001510EB /* Info.plist */,
 				497A849C25DA10F30040B1CE /* Assets */,
 				4998A02625DA0DE9001510EB /* Localization */,
@@ -305,7 +325,6 @@
 				49B9D54225DADE330066A51F /* ContactView.swift */,
 				49FE723325E747B100E2C3B1 /* VoiceSettingsView.swift */,
 				49495F0925E81DD800F5C3B0 /* VoiceSelectionView.swift */,
-				49C62FDE25EEC17B007DCC2E /* Voice.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -314,11 +333,8 @@
 			isa = PBXGroup;
 			children = (
 				4998A00625D9C234001510EB /* NewDeckView.swift */,
-				4958D3FA261F72640050D717 /* CardManager.swift */,
 				497A84AD25DA26850040B1CE /* AddView.swift */,
 				49B9D53325DA28480066A51F /* NewCardView.swift */,
-				497B8A8925F92EBD0093D229 /* DeckStore.swift */,
-				497B8A8E25F93C210093D229 /* CardStore.swift */,
 				49CB06E625F1575600B5A7E1 /* ManageDeckView.swift */,
 				49CB06FF25F1D22900B5A7E1 /* ManageCardsView.swift */,
 			);
