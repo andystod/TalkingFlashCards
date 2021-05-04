@@ -69,7 +69,7 @@ class RealmDeckDataService: DeckDataService {
   }
   
   func createDeck(deck: Deck) -> AnyPublisher<Void, FlashError> {
-    return Future<Void, FlashError> { [weak self] promise in
+    return Future<Void, FlashError> { promise in
       do {
         let realm = try Realm()
         let deckDB = DeckDB(deck)
@@ -77,9 +77,8 @@ class RealmDeckDataService: DeckDataService {
           realm.add(deckDB)
           promise(.success(()))
         }
-      } catch let error {
-        // Handle error
-        print(error.localizedDescription)
+      } catch {
+        promise(.failure(FlashError.unknown))
       }
     }
     //    .tryMap{ _ in }
@@ -88,13 +87,17 @@ class RealmDeckDataService: DeckDataService {
   }
   
   func updateDeck(deck: Deck) -> AnyPublisher<Void, Error> {
-    return Future<Void, Error> { [weak self] promise in
-//      if let index = self?.decks.firstIndex(where: { $0.id == deck.id }) {
-//        self?.decks[index] = deck
-        promise(.success(()))
-//      } else {
-//        promise(.failure(FlashError.unknown))
-//      }
+    return Future<Void, Error> { promise in
+      do {
+        let realm = try Realm()
+        let deckDB = DeckDB(deck)
+        try realm.write {
+          realm.add(deckDB, update: .all)
+          promise(.success(()))
+        }
+      } catch {
+        promise(.failure(FlashError.unknown))
+      }
     }
     .receive(on: DispatchQueue.main)
     .eraseToAnyPublisher()

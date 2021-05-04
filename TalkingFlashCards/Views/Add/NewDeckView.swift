@@ -16,11 +16,11 @@ struct NewDeckView: View {
   var mode: CrudMode
   @State var alertItem: AlertItem?
   @State var proceedToNewCard = false
-  var deckId: String
+  @State var deckId: String
   @State private var cancelButtonText = "Cancel"
   
   init(deckId: String = "", mode: CrudMode) {
-    self.deckId = deckId
+    self._deckId = State(wrappedValue: deckId)
     self.mode = mode
   }
   
@@ -29,7 +29,7 @@ struct NewDeckView: View {
     Form {
       Section {
         TextField("Deck Name *", text: $deck.name)
-        TextField("Deck Description", text: $deck.description)
+        TextField("Deck Description", text: $deck.desc)
       }
       SideSettingsView(sectionName:"Front Side Settings", sideSettings: $deck.frontSideSettings)
       SideSettingsView(sectionName:"Back Side Settings", sideSettings: $deck.backSideSettings)
@@ -63,6 +63,7 @@ struct NewDeckView: View {
     .onAppear {
       if !deckId.isEmpty {
         self.deck = deckStore.deckById(deckId)
+        deckId = ""
       }
     }
     .toolbar {

@@ -36,18 +36,49 @@ class DeckStore: ObservableObject {
   
   func createDeck(_ deck: Deck) {
     objectWillChange.send()
-    decks.append(deck)
+    deckDataService.createDeck(deck: deck)
+      .sink { [weak self] completion in
+        switch completion {
+        case .finished:
+          self?.decks.append(deck)
+        case .failure(let error):
+          print("error", error)
+        }
+      } receiveValue: { _ in }
+      .store(in: &cancellables)
   }
   
   func updateDeck(_ deck: Deck) {
     objectWillChange.send()
-    if let index = decks.firstIndex(where: { $0.id == deck.id }) {
-      decks[index] = deck
-    }
+    deckDataService.updateDeck(deck: deck)
+      .sink { [weak self] completion in
+        switch completion {
+        case .finished:
+          self?.decks[(self?.deckIndexById(deck.id))!] = deck
+        case .failure(let error):
+          print(error)
+        }
+      } receiveValue: { _ in }
+      .store(in: &cancellables)
+  }
+  
+  func deckIndexById(_ id: String) -> Int {
+    decks.firstIndex { $0.id == id }!
   }
   
   func deckById(_ id: String) -> Deck {
     decks.first { $0.id == id }!
   }
+  
+  /*
+  decks.append(deck)
+}
+
+func updateDeck(_ deck: Deck) {
+  objectWillChange.send()
+  if let index = decks.firstIndex(where: { $0.id == deck.id }) {
+    decks[index] = deck
+  }
+  */ 
   
 }

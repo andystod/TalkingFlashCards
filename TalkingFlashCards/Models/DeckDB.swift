@@ -13,6 +13,7 @@ class DeckDB: Object {
   @objc dynamic var desc: String = ""
   @objc dynamic var frontSideSettings: SideSettingsDB?
   @objc dynamic var backSideSettings: SideSettingsDB?
+  dynamic var cards = List<CardDB>()
   
   override class func primaryKey() -> String? {
     return "id"
@@ -22,7 +23,7 @@ class DeckDB: Object {
     self.init()
     id = deck.id
     name = deck.name
-    desc = deck.description
+    desc = deck.desc
     frontSideSettings = SideSettingsDB(deck.frontSideSettings)
     backSideSettings = SideSettingsDB(deck.backSideSettings)
   }
@@ -30,13 +31,19 @@ class DeckDB: Object {
 }
 
 class SideSettingsDB: Object {
+  @objc dynamic var id: String = ""
   @objc dynamic var side: Side = .front
   @objc dynamic var languageCode: String = ""
   @objc dynamic var autoPlay: Bool = false
   var parentCategory: LinkingObjects<DeckDB> = LinkingObjects(fromType: DeckDB.self, property: "frontSideSettings" )
   
+  override class func primaryKey() -> String? {
+    return "id"
+  }
+  
   convenience init(_ sideSettings: SideSettings){
     self.init()
+    id = sideSettings.id
     side = sideSettings.side
     languageCode = sideSettings.languageCode
     autoPlay = sideSettings.autoPlay

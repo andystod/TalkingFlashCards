@@ -16,6 +16,8 @@
 		49495F1725EC90CC00F5C3B0 /* UserDefaults+TypeSafety.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49495F1625EC90CC00F5C3B0 /* UserDefaults+TypeSafety.swift */; };
 		4958D3FB261F72640050D717 /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958D3FA261F72640050D717 /* CardManager.swift */; };
 		4958D400261F72A60050D717 /* CardManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958D3FF261F72A60050D717 /* CardManagerTests.swift */; };
+		495A63DE2638948E0085FD5C /* CardDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A63DD2638948E0085FD5C /* CardDataService.swift */; };
+		495A63E32638976A0085FD5C /* CardDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A63E22638976A0085FD5C /* CardDB.swift */; };
 		497A84AE25DA26850040B1CE /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A84AD25DA26850040B1CE /* AddView.swift */; };
 		497B8A8A25F92EBD0093D229 /* DeckStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B8A8925F92EBD0093D229 /* DeckStore.swift */; };
 		497B8A8F25F93C210093D229 /* CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B8A8E25F93C210093D229 /* CardStore.swift */; };
@@ -88,6 +90,8 @@
 		49495F1625EC90CC00F5C3B0 /* UserDefaults+TypeSafety.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+TypeSafety.swift"; sourceTree = "<group>"; };
 		4958D3FA261F72640050D717 /* CardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
 		4958D3FF261F72A60050D717 /* CardManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManagerTests.swift; sourceTree = "<group>"; };
+		495A63DD2638948E0085FD5C /* CardDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDataService.swift; sourceTree = "<group>"; };
+		495A63E22638976A0085FD5C /* CardDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDB.swift; sourceTree = "<group>"; };
 		497A84AD25DA26850040B1CE /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		497B8A8925F92EBD0093D229 /* DeckStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckStore.swift; sourceTree = "<group>"; };
 		497B8A8E25F93C210093D229 /* CardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStore.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				490925F725DB3ED400BE1DE2 /* DeckDataService.swift */,
+				495A63DD2638948E0085FD5C /* CardDataService.swift */,
 				49DBC31125DF3A4A009CFBE0 /* LanguageService.swift */,
 				49495F1125EC8E0800F5C3B0 /* StoreService.swift */,
 			);
@@ -187,6 +192,8 @@
 		498965B72625E95A00E71B1A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4927E4AA25E041F900F6E166 /* Card.swift */,
+				495A63E22638976A0085FD5C /* CardDB.swift */,
 				49E6323525DC3F2800AC6040 /* Deck.swift */,
 				498965B82625E9A300E71B1A /* DeckDB.swift */,
 			);
@@ -312,7 +319,6 @@
 				49B9D53325DA28480066A51F /* NewCardView.swift */,
 				497B8A8925F92EBD0093D229 /* DeckStore.swift */,
 				497B8A8E25F93C210093D229 /* CardStore.swift */,
-				4927E4AA25E041F900F6E166 /* Card.swift */,
 				49CB06E625F1575600B5A7E1 /* ManageDeckView.swift */,
 				49CB06FF25F1D22900B5A7E1 /* ManageCardsView.swift */,
 			);
@@ -540,6 +546,7 @@
 				49C62FDA25EDDF82007DCC2E /* LanguageData.swift in Sources */,
 				49C26AEF25FB15DC002251B5 /* GeneralEnums.swift in Sources */,
 				49FE722C25E3499400E2C3B1 /* Speaker.swift in Sources */,
+				495A63DE2638948E0085FD5C /* CardDataService.swift in Sources */,
 				49DBC31925DF58B3009CFBE0 /* Cache.swift in Sources */,
 				49E6322625DB674800AC6040 /* Injectable.swift in Sources */,
 				49E6322B25DB694C00AC6040 /* DependencyManager.swift in Sources */,
@@ -570,6 +577,7 @@
 				49FE723D25E7EF6900E2C3B1 /* Array+RemoveDuplicates.swift in Sources */,
 				49495F1725EC90CC00F5C3B0 /* UserDefaults+TypeSafety.swift in Sources */,
 				49FE722725E3422800E2C3B1 /* CardSideView.swift in Sources */,
+				495A63E32638976A0085FD5C /* CardDB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

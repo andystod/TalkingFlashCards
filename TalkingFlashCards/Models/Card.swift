@@ -28,6 +28,7 @@ struct Card: Identifiable, Equatable {
 }
 
 struct CardSide {
+  var id: String = UUID().uuidString
   var text: String
 }
 
