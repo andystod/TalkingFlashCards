@@ -38,6 +38,8 @@ class CardDB: Object {
 class CardSideDB: Object {
   @objc dynamic var id: String = ""
   @objc dynamic var text: String = ""
+  @objc dynamic var side: Side = .front
+  var card: LinkingObjects<CardDB> = LinkingObjects(fromType: CardDB.self, property: "front" )
   
   override class func primaryKey() -> String? {
     return "id"
@@ -47,5 +49,9 @@ class CardSideDB: Object {
     self.init()
     self.id = cardSide.id
     self.text = cardSide.text
+    self.side = cardSide.side
+    if side == .back {
+      card = LinkingObjects(fromType: CardDB.self, property: "back" )
+    }
   }
 }

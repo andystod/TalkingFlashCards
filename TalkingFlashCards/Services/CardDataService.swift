@@ -10,59 +10,82 @@ import RealmSwift
 import Combine
 
 protocol CardDataService {
-//  func loadCards(
-  func addCard(_ card: Card) -> AnyPublisher<Void, FlashError>
+  func loadCards(deckId: String) -> AnyPublisher<[Card], FlashError>
+  func addCard(_ card: Card, deckId: String) -> AnyPublisher<Void, FlashError>
   func updateCard(_ card: Card) -> AnyPublisher<Void, FlashError>
-  func deleteCards(_ cards: [Card]) -> AnyPublisher<Void, FlashError>
+  func deleteCards(_ cards: [Card], deckId: String) -> AnyPublisher<Void, FlashError>
 }
 
 class RealmCardDataService: CardDataService {
-  func addCard(_ card: Card)  -> AnyPublisher<Void, FlashError> {
+  
+  func loadCards(deckId: String) -> AnyPublisher<[Card], FlashError> {
+    Future { promise in
+      let realm = try! Realm()
+      let cardsDB = realm.objects(CardDB.self).filter("ANY deck.id = %@", deckId)
+      promise(.success(cardsDB.map(Card.init)))
+    }
+    .eraseToAnyPublisher()
+  }
+  
+  func addCard(_ card: Card, deckId: String)  -> AnyPublisher<Void, FlashError> {
     Future { promise in
       do {
         let realm = try Realm()
-        try realm.write
-        {
-          realm.add(CardDB(card))
-          promise(.success(()))
+        let deck = realm.object(ofType: DeckDB.self, forPrimaryKey: deckId)
+        if let deck = deck {
+          try realm.write
+          {
+            deck.cards.append(CardDB(card))
+            realm.add(deck, update: .modified)
+            promise(.success(()))
+          }
         }
       } catch {
         promise(.failure(FlashError.unknown))
       }
     }
-    .receive(on: DispatchQueue.main)
     .eraseToAnyPublisher()
   }
   
   
   func updateCard(_ card: Card) -> AnyPublisher<Void, FlashError> {
     Future { promise in
-      
+      do {
+        let realm = try Realm()
+        try realm.write {
+          let cardDB = CardDB(card)
+          realm.add(cardDB, update: .all)
+          promise(.success(()))
+        }
+      }
+      catch {
+        promise(.failure(FlashError.unknown))
+      }
     }
-    .receive(on: DispatchQueue.main)
     .eraseToAnyPublisher()
   }
   
-  func deleteCards(_ cards: [Card]) -> AnyPublisher<Void, FlashError> {
+  func deleteCards(_ cards: [Card], deckId: String) -> AnyPublisher<Void, FlashError> {
     Future { promise in
       do {
         let realm = try Realm()
-        let objectsToDelete = realm.objects(CardDB.self).filter(NSPredicate(format: "id IN %@", cards.map { $0.id }))
-        if objectsToDelete.count > 0 {
-          try realm.write {
-            realm.delete(objectsToDelete)
-            promise(.success(()))
-          }
-        } else {
-          promise(.failure(FlashError.unknown))
+        let cardsToDelete = realm.objects(CardDB.self).filter(NSPredicate(format: "id IN %@", cards.map { $0.id }))
+        
+        let sideIds: [String] = cardsToDelete.map { cardDB in
+          [cardDB.front?.id, cardDB.back?.id]
+        }.flatMap { $0 }
+        .compactMap { $0 }
+        let cardSidesToDelete = realm.objects(CardSideDB.self).filter(NSPredicate(format: "id IN %@", sideIds))
+        
+        try realm.write {
+          realm.delete(cardSidesToDelete)
+          realm.delete(cardsToDelete)
+          promise(.success(()))
         }
       } catch {
         promise(.failure(FlashError.unknown))
       }
     }
-    .receive(on: DispatchQueue.main)
     .eraseToAnyPublisher()
   }
-  
-  
 }

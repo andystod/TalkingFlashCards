@@ -11,48 +11,13 @@ import RealmSwift
 
 protocol DeckDataService {
   func loadDecks() -> AnyPublisher<Results<DeckDB>, Error>
-  func createDeck(deck: Deck) -> AnyPublisher<Void, FlashError> // TODO check on error type and use of trymap and maperror
+  func createDeck(deck: Deck) -> AnyPublisher<Void, FlashError>
   func updateDeck(deck: Deck) -> AnyPublisher<Void, Error>
-  //  func addCard(_ card: Card, to deck: Deck) -> AnyPublisher<Void, Error> // TODO need to remove inout
-  func deleteCards() -> AnyPublisher<Void, FlashError>
+//  func deleteCards() -> AnyPublisher<Void, FlashError> // TODO
 }
 
 class RealmDeckDataService: DeckDataService {
- 
-  // TODO delete this
-//  init() {
-//
-//    // TODO
-//    //        decks = [Deck]()
-//
-//    decks = [
-//      Deck(name: "English to Spanish", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "es", autoPlay: true),
-//           cardStore: CardStore(cards: [
-//            Card(front: CardSide(text: "First Card"), back: CardSide(text: "Primera Carta")),
-//            Card(front: CardSide(text: "Hello!"), back: CardSide(text: "¡Hola!")),
-//            Card(front: CardSide(text: "How are you?"), back: CardSide(text: "¿Cómo estás?")),
-//            Card(front: CardSide(text: "Australia"), back: CardSide(text: "Australia")),
-//            Card(front: CardSide(text: "Where are you from?"), back: CardSide(text: "¿De donde eres?"))
-//           ])),
-//      Deck(name: "Español a Ingles", frontSideSettings: SideSettings(side: .front, languageCode: "es", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "en", autoPlay: true),
-//           cardStore: CardStore(cards: [Card](repeating: Card(front: CardSide(text: "Hello!"), back: CardSide(text: "¡Hola!")), count: 10))),
-//      Deck(name: "English to German", frontSideSettings: SideSettings(side: .front, languageCode: "en", autoPlay: false), backSideSettings: SideSettings(side: .back, languageCode: "de", autoPlay: true),
-//           cardStore: CardStore(cards: [
-//            Card(front: CardSide(text: "Hello!"), back: CardSide(text: "Hallo!")),
-//            Card(front: CardSide(text: "How are you?"), back: CardSide(text: "Wie geht es dir?")),
-//            Card(front: CardSide(text: "Where are you from?"), back: CardSide(text: "Woher kommen Sie?"))
-//           ]))
-//    ]
-//  }
-  
-  //  var decks = [Deck]() // TODO
-  
-  //      promise(.success([Deck(id: UUID(), name: "Deck1"),
-  //                        Deck(id: UUID(), name: "Deck2"),
-  //                        Deck(id: UUID(), name: "Deck4")]))
-  //      promise(.failure(URLError(URLError.Code.badURL)))
-  
-  
+   
   func loadDecks() -> AnyPublisher<Results<DeckDB>, Error> {
     return Future<Results<DeckDB>, Error> { promise in
       do {
@@ -64,7 +29,6 @@ class RealmDeckDataService: DeckDataService {
         promise(.failure(error))
       }
     }
-    .receive(on: DispatchQueue.main)
     .eraseToAnyPublisher()
   }
   
@@ -81,8 +45,6 @@ class RealmDeckDataService: DeckDataService {
         promise(.failure(FlashError.unknown))
       }
     }
-    //    .tryMap{ _ in }
-    .receive(on: DispatchQueue.main)
     .eraseToAnyPublisher()
   }
   
@@ -99,34 +61,18 @@ class RealmDeckDataService: DeckDataService {
         promise(.failure(FlashError.unknown))
       }
     }
-    .receive(on: DispatchQueue.main)
     .eraseToAnyPublisher()
   }
   
-  //  func addCard(_ card: Card, to deck: Deck) -> AnyPublisher<Void, Error> {
-  //
-  //    let deckFound = decks.first { $0.id == deck.id }
-  //    if var deckFound = deckFound {
-  //      deckFound.cards.append(card)
-  //    }
-  //
-  //    //    decks[3].cards.append(card)
-  //
-  //    return Future { promise in
-  //      promise(.success(()))
-  //    }
-  //    .receive(on: DispatchQueue.main)
-  //    .eraseToAnyPublisher()
-  //  }
-  
-  func deleteCards() -> AnyPublisher<Void, FlashError> {
-    //    deck.cards.removeAll { $0.selected }
-    
-    return Future { promise in
-      promise(.success(()))
-    }
-    .eraseToAnyPublisher()
-  }
+  // TODO
+//  func deleteCards() -> AnyPublisher<Void, FlashError> {
+//    //    deck.cards.removeAll { $0.selected }
+//
+//    return Future { promise in
+//      promise(.success(()))
+//    }
+//    .eraseToAnyPublisher()
+//  }
   
 }
 

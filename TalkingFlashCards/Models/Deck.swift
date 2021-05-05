@@ -19,13 +19,13 @@ struct Deck: Identifiable {
   var desc: String = ""
   var frontSideSettings = SideSettings(side: .front)
   var backSideSettings = SideSettings(side: .back, autoPlay: true)
-  
-  //  var cards = [Card]()
-  
-  var cardStore = CardStore()
-  //  @Dependency var deckDataService: DeckDataService
+  var cardStore: CardStore
   var cancellables = Set<AnyCancellable>()
-  //  @Published var result: Result<Void, Error>?
+  
+  init() {
+    id = UUID().uuidString
+    cardStore = CardStore(deckId: id)
+  }
   
   var hasRequiredFieldsFilled: Bool {
     return !name.isEmpty && !frontSideSettings.languageCode.isEmpty && !backSideSettings.languageCode.isEmpty
@@ -40,7 +40,19 @@ extension Deck {
     desc = deckDB.desc
     frontSideSettings = SideSettings(deckDB.frontSideSettings)
     backSideSettings = SideSettings(deckDB.backSideSettings)
+    cardStore = CardStore(deckId: deckDB.id)
+    cardStore.loadCards()
   }
+  
+  init(name: String) {
+    self.name = name
+    self.cardStore = CardStore()
+  }
+  
+  init(cardStore: CardStore) {
+    self.cardStore = cardStore
+  }
+  
 }
 
 

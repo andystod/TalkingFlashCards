@@ -8,6 +8,14 @@
 import Foundation
 
 struct Card: Identifiable, Equatable {
+  
+  var id: String = UUID().uuidString
+  var front = CardSide(text: "", side: .front)
+  var back = CardSide(text: "", side: .back)
+  var selected = false
+  var nextReviewDate: Date?
+  var boxNumber: Int = 1 // TODO ??
+  
   static func == (lhs: Card, rhs: Card) -> Bool {
     lhs.id == rhs.id &&
       lhs.selected == rhs.selected &&
@@ -15,27 +23,43 @@ struct Card: Identifiable, Equatable {
       lhs.back.text == rhs.back.text
   }
   
-  let id: String = UUID().uuidString
-  var front = CardSide(text: "")
-  var back = CardSide(text: "")
-  var selected = false
-  var nextReviewDate: Date?
-  var boxNumber: Int = 1 // TODO ??
-
   static var example: Card {
     Card(front: CardSide(text: "Hello! How are you? fsdfjasd fajsdlf asdfljasdf asldjf asdlfjk asdflkjasd fasjdf asldjf asdfjasldfkj asdfjlkasd;fjas;djfsajdfk asdfkljsd fajskldf; asdfjasd f"), back: CardSide(text: "¡Hola! ¿Cómo estás?"))
   }
 }
 
+extension Card {
+  init(_ cardDB: CardDB) {
+    self.id = cardDB.id
+    self.front = CardSide(cardDB.front)
+    self.back = CardSide(cardDB.back)
+    self.selected = cardDB.selected
+    self.nextReviewDate = cardDB.nextReviewDate
+    self.boxNumber = cardDB.boxNumber
+  }
+}
+
+
 struct CardSide {
   var id: String = UUID().uuidString
-  var text: String
+  var text: String = ""
+  var side: Side = .front
+}
+
+extension CardSide {
+  init(_ cardSideDB: CardSideDB?) {
+    if let cardSideDB = cardSideDB {
+      self.id = cardSideDB.id
+      self.text = cardSideDB.text
+      self.side = cardSideDB.side
+    }
+  }
 }
 
 extension Array where Iterator.Element == Card {
   var hasSelectedItems: Bool {
     return self.contains { $0.selected }
-    }
   }
-  
+}
+
 

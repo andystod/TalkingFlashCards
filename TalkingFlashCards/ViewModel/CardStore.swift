@@ -12,20 +12,39 @@ class CardStore: ObservableObject {
   
   @Published var cards = [Card]()
   var cardManager = CardManager()
-  var cardStore: CardDataService = RealmCardDataService()
+  @Dependency var cardDataService: CardDataService
   var cancellables = Set<AnyCancellable>()
+  var deckId = ""
   
-  init() {
-    
+//  init() { }
+  
+  init(deckId: String = "") {
+    self.deckId = deckId
   }
   
   init(cards: [Card]) {
     self.cards = cards
   }
   
+  func loadCards() {
+    objectWillChange.send()
+    cardDataService.loadCards(deckId: deckId)
+      .sink { completion in
+        switch completion {
+        case .finished:
+          print("Cards Load completed")
+        case .failure(let error):
+          print(error)
+        }
+      } receiveValue: { [weak self] cards in
+        self?.cards = cards
+      }
+      .store(in: &cancellables)
+  }
+  
   func addCard(_ card: Card) {
     objectWillChange.send()
-    cardStore.addCard(card)
+    cardDataService.addCard(card, deckId: deckId)
       .sink { [weak self] completion in
         switch completion {
         case .finished:
@@ -39,7 +58,7 @@ class CardStore: ObservableObject {
   
   func updateCard(_ card: Card) {
     objectWillChange.send()
-    cardStore.updateCard(card)
+    cardDataService.updateCard(card)
       .sink { [weak self] completion in
         switch completion {
         case .finished:
@@ -58,7 +77,7 @@ class CardStore: ObservableObject {
     let selectedCards = cards.compactMap {
       $0.selected ? $0 : nil
     }
-    cardStore.deleteCards(selectedCards)
+    cardDataService.deleteCards(selectedCards, deckId: deckId)
       .sink { [weak self] completion in
         switch completion {
         case .finished:
@@ -77,8 +96,8 @@ class CardStore: ObservableObject {
   func demoteCard(_ card: inout Card) {
     cardManager.demoteCard(&card)
   }
-//  
-////  func getNextReviewDate(card: Card) -> Date {
-////    return Calendar.current.date(byAdding: .day, value: boxNumberOfDays[card.boxNumber], to: card.nextReviewDate ?? Date())!
-////  }
+  //
+  ////  func getNextReviewDate(card: Card) -> Date {
+  ////    return Calendar.current.date(byAdding: .day, value: boxNumberOfDays[card.boxNumber], to: card.nextReviewDate ?? Date())!
+  ////  }
 }

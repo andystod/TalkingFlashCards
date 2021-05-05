@@ -11,6 +11,7 @@ class DependencyManager {
     
     static func addDependencies() {
       DependencyContainer.register(RealmDeckDataService() as DeckDataService)
+      DependencyContainer.register(RealmCardDataService() as CardDataService)
       DependencyContainer.register(LocalLanguageService() as LanguageService)
     }
 }
