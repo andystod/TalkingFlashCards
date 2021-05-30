@@ -15,11 +15,21 @@ class CardStore: ObservableObject {
   @Dependency var cardDataService: CardDataService
   var cancellables = Set<AnyCancellable>()
   var deckId = ""
+  @Published var allCardsReviewed = false
+  var answersCorrect = 0
+  var answersWrong = 0
   
 //  init() { }
   
   init(deckId: String = "") {
     self.deckId = deckId
+//    cards.publisher.sink { [weak self] _ in
+//      self?.objectWillChange.send()
+//      self!.allCardsReviewed = self!.cards.allCardsReviewed
+//    }
+//    .store(in: &cancellables)
+    
+    
   }
   
   init(cards: [Card]) {
@@ -91,11 +101,29 @@ class CardStore: ObservableObject {
   
   func promoteCard(_ card: inout Card) {
     cardManager.promoteCard(&card)
+    answersCorrect += 1
+    checkAllCardsReviewed()
   }
   
   func demoteCard(_ card: inout Card) {
     cardManager.demoteCard(&card)
+    answersWrong += 1
+    checkAllCardsReviewed()
   }
+  
+  func checkAllCardsReviewed() {
+    if cards.count - answersCorrect - answersWrong == 0 {
+      objectWillChange.send()
+      self.allCardsReviewed = true
+    }
+  }
+  
+  func resetReviewProperties() {
+    self.allCardsReviewed = false
+    self.answersWrong = 0
+    self.answersCorrect = 0
+  }
+  
   //
   ////  func getNextReviewDate(card: Card) -> Date {
   ////    return Calendar.current.date(byAdding: .day, value: boxNumberOfDays[card.boxNumber], to: card.nextReviewDate ?? Date())!

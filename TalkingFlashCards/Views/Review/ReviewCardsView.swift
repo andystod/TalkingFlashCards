@@ -9,14 +9,37 @@ import SwiftUI
 
 struct ReviewCardsView: View {
   
-  var deck: Deck
+  @State var deck: Deck
+  @ObservedObject var cardStore: CardStore
+  @State var showResults = false
+  var deleteMe = false
+  
+  init(deck: Deck) {
+    _deck = State(wrappedValue: deck)
+    _cardStore = ObservedObject(wrappedValue: deck.cardStore)
+  }
+  
   
   var body: some View {
     VStack {
-      DeckView(deck: deck)
-        .padding()
+      if !showResults {
+        DeckView(deck: deck, cardStore: cardStore)
+          .padding()
+      } else {
+        ResultsView(cardStore: cardStore)
+      }
     }
+    .onReceive(cardStore.$allCardsReviewed) { showResults in
+                    if showResults {
+                        withAnimation {
+                            self.showResults = showResults
+                        }
+                    }
+                }
     .navigationBarTitle("Review Cards", displayMode: .inline)
+    .onDisappear {
+      cardStore.resetReviewProperties()
+    }
   }
 }
 
@@ -24,26 +47,27 @@ struct DeckView: View {
   
   @State var backViewSize: CGFloat = 80.0
   var deck: Deck
-  @State var cards: [Card]
+//  @State var cards: [Card]
+  @ObservedObject var cardStore: CardStore
   
-  init(deck: Deck) {
-    self.deck = deck
-    self._cards = State(wrappedValue: deck.cardStore.cards)
-  }
+//  init(deck: Deck) {
+//    self.deck = deck
+//    self._cards = State(wrappedValue: deck.cardStore.cards)
+//  }
   
   var body: some View {
     ZStack {
-      ForEach(cards.indices) { index in
-        CardView(deck: deck, card: $cards[index])
+      ForEach(cardStore.cards.indices) { index in
+        CardView(deck: deck, cardStore: cardStore, card: $cardStore.cards[index])
           .offset(offsetForCardNumber(index))
-          .rotationEffect(Angle(degrees: Double.random(in: -2.0...2.0)))
+          .rotationEffect(Angle(degrees: cardStore.cards[index].rotationAngleOffset))
           .zIndex(Double(deck.cardStore.cards.count - index - 1))
       }
     }
   }
   
   func offsetForCardNumber(_ cardNumber: Int) -> CGSize {
-    return CGSize(width: CGFloat.random(in: -2.0...2.0), height: CGFloat.random(in: -2.0...2.0))
+    return CGSize(width: CGFloat.random(in: -0.5...0.5), height: CGFloat.random(in: -0.5...0.5))
   }
 }
 
@@ -54,6 +78,7 @@ struct CardView: View {
   @State private var animate3d = false
   
   var deck: Deck
+  @ObservedObject var cardStore: CardStore
   @Binding var card: Card
   
   var body: some View {
@@ -72,9 +97,9 @@ struct CardView: View {
         .onEnded { _ in
           if abs(self.offset.width) > 100 {
             if self.offset.width > 0 {
-              deck.cardStore.promoteCard(&card)
+              cardStore.promoteCard(&card)
             } else {
-              deck.cardStore.demoteCard(&card)
+              cardStore.demoteCard(&card)
             }
           } else {
             self.offset = .zero

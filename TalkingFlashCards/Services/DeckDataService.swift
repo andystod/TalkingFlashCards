@@ -13,7 +13,7 @@ protocol DeckDataService {
   func loadDecks() -> AnyPublisher<Results<DeckDB>, Error>
   func createDeck(deck: Deck) -> AnyPublisher<Void, FlashError>
   func updateDeck(deck: Deck) -> AnyPublisher<Void, Error>
-//  func deleteCards() -> AnyPublisher<Void, FlashError> // TODO
+//  func deleteDeck(deck: Deck) -> AnyPublisher<Void, FlashError> // TODO
 }
 
 class RealmDeckDataService: DeckDataService {
@@ -63,16 +63,5 @@ class RealmDeckDataService: DeckDataService {
     }
     .eraseToAnyPublisher()
   }
-  
-  // TODO
-//  func deleteCards() -> AnyPublisher<Void, FlashError> {
-//    //    deck.cards.removeAll { $0.selected }
-//
-//    return Future { promise in
-//      promise(.success(()))
-//    }
-//    .eraseToAnyPublisher()
-//  }
-  
 }
 

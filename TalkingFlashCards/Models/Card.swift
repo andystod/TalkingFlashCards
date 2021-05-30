@@ -15,6 +15,9 @@ struct Card: Identifiable, Equatable {
   var selected = false
   var nextReviewDate: Date?
   var boxNumber: Int = 1 // TODO ??
+  var rotationAngleOffset: Double = Double.random(in: -0.5...0.5)
+//  var reviewed = false
+//  var answerCorrect = false
   
   static func == (lhs: Card, rhs: Card) -> Bool {
     lhs.id == rhs.id &&
@@ -60,6 +63,18 @@ extension Array where Iterator.Element == Card {
   var hasSelectedItems: Bool {
     return self.contains { $0.selected }
   }
+  
+//  var allCardsReviewed: Bool {
+//    return self.allSatisfy { $0.reviewed }
+//  }
+//
+//  var answersCorrect: Int {
+//    return self.filter { $0.answerCorrect }.count
+//  }
+//
+//  var answersWrong: Int {
+//    return self.filter { !$0.answerCorrect }.count
+//  }
 }
 
 

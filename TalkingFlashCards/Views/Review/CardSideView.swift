@@ -30,15 +30,7 @@ struct CardSideView: View {
     ZStack {
       RoundedRectangle(cornerRadius: 25, style: .continuous)
         .fill(
-          
-          //          RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 2, endRadius: 650)
-          
           LinearGradient(gradient: Gradient(colors: gradientColors()), startPoint: .topLeading, endPoint: .bottomTrailing)
-          
-          //          Color.white
-          
-          
-          
         )
         .background(
           RoundedRectangle(cornerRadius: 25, style: .continuous)

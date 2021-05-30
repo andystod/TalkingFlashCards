@@ -12,7 +12,6 @@
 		4927E4A625E0102400F6E166 /* ReviewCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927E4A525E0102400F6E166 /* ReviewCardsView.swift */; };
 		4927E4AB25E041F900F6E166 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927E4AA25E041F900F6E166 /* Card.swift */; };
 		49495F0A25E81DD800F5C3B0 /* VoiceSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49495F0925E81DD800F5C3B0 /* VoiceSelectionView.swift */; };
-		49495F1225EC8E0800F5C3B0 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49495F1125EC8E0800F5C3B0 /* StoreService.swift */; };
 		49495F1725EC90CC00F5C3B0 /* UserDefaults+TypeSafety.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49495F1625EC90CC00F5C3B0 /* UserDefaults+TypeSafety.swift */; };
 		4958D3FB261F72640050D717 /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958D3FA261F72640050D717 /* CardManager.swift */; };
 		4958D400261F72A60050D717 /* CardManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958D3FF261F72A60050D717 /* CardManagerTests.swift */; };
@@ -51,6 +50,8 @@
 		49CBE20E25F5348E00E03905 /* View+Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE20D25F5348E00E03905 /* View+Modifiers.swift */; };
 		49DBC31225DF3A4A009CFBE0 /* LanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DBC31125DF3A4A009CFBE0 /* LanguageService.swift */; };
 		49DBC31925DF58B3009CFBE0 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DBC31825DF58B3009CFBE0 /* Cache.swift */; };
+		49DCC2AD2648499D00EF6678 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCC2AC2648499D00EF6678 /* ResultsView.swift */; };
+		49DCC2B226484C2100EF6678 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCC2B126484C2100EF6678 /* PieChart.swift */; };
 		49E6322625DB674800AC6040 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6322525DB674800AC6040 /* Injectable.swift */; };
 		49E6322B25DB694C00AC6040 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6322A25DB694C00AC6040 /* DependencyManager.swift */; };
 		49E6323625DC3F2800AC6040 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6323525DC3F2800AC6040 /* Deck.swift */; };
@@ -86,7 +87,6 @@
 		4927E4A525E0102400F6E166 /* ReviewCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCardsView.swift; sourceTree = "<group>"; };
 		4927E4AA25E041F900F6E166 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		49495F0925E81DD800F5C3B0 /* VoiceSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceSelectionView.swift; sourceTree = "<group>"; };
-		49495F1125EC8E0800F5C3B0 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		49495F1625EC90CC00F5C3B0 /* UserDefaults+TypeSafety.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+TypeSafety.swift"; sourceTree = "<group>"; };
 		4958D3FA261F72640050D717 /* CardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
 		4958D3FF261F72A60050D717 /* CardManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManagerTests.swift; sourceTree = "<group>"; };
@@ -129,6 +129,8 @@
 		49CBE20D25F5348E00E03905 /* View+Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Modifiers.swift"; sourceTree = "<group>"; };
 		49DBC31125DF3A4A009CFBE0 /* LanguageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageService.swift; sourceTree = "<group>"; };
 		49DBC31825DF58B3009CFBE0 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		49DCC2AC2648499D00EF6678 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		49DCC2B126484C2100EF6678 /* PieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		49E6322525DB674800AC6040 /* Injectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
 		49E6322A25DB694C00AC6040 /* DependencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
 		49E6323525DC3F2800AC6040 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
@@ -175,7 +177,6 @@
 				490925F725DB3ED400BE1DE2 /* DeckDataService.swift */,
 				495A63DD2638948E0085FD5C /* CardDataService.swift */,
 				49DBC31125DF3A4A009CFBE0 /* LanguageService.swift */,
-				49495F1125EC8E0800F5C3B0 /* StoreService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -347,6 +348,8 @@
 				4927E4A025E0100D00F6E166 /* ReviewView.swift */,
 				4927E4A525E0102400F6E166 /* ReviewCardsView.swift */,
 				49FE722625E3422800E2C3B1 /* CardSideView.swift */,
+				49DCC2AC2648499D00EF6678 /* ResultsView.swift */,
+				49DCC2B126484C2100EF6678 /* PieChart.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -567,7 +570,7 @@
 				49E6322625DB674800AC6040 /* Injectable.swift in Sources */,
 				49E6322B25DB694C00AC6040 /* DependencyManager.swift in Sources */,
 				498965B92625E9A300E71B1A /* DeckDB.swift in Sources */,
-				49495F1225EC8E0800F5C3B0 /* StoreService.swift in Sources */,
+				49DCC2AD2648499D00EF6678 /* ResultsView.swift in Sources */,
 				49989FC225D83ABD001510EB /* ContentView.swift in Sources */,
 				49C62FEA25F03FD4007DCC2E /* GlobalData.swift in Sources */,
 				4958D3FB261F72640050D717 /* CardManager.swift in Sources */,
@@ -580,6 +583,7 @@
 				49989FC525D83ABD001510EB /* TalkingFlashCards.xcdatamodeld in Sources */,
 				4927E4A125E0100D00F6E166 /* ReviewView.swift in Sources */,
 				49F40AB125DDAFBD00DE80DC /* AlertItem.swift in Sources */,
+				49DCC2B226484C2100EF6678 /* PieChart.swift in Sources */,
 				4998A00725D9C234001510EB /* NewDeckView.swift in Sources */,
 				49DBC31225DF3A4A009CFBE0 /* LanguageService.swift in Sources */,
 				498965B32625485300E71B1A /* RealmExtensions.swift in Sources */,
@@ -773,7 +777,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ajs.LangFlash;
+				PRODUCT_BUNDLE_IDENTIFIER = ajs.FlashTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -794,7 +798,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ajs.LangFlash;
+				PRODUCT_BUNDLE_IDENTIFIER = ajs.FlashTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

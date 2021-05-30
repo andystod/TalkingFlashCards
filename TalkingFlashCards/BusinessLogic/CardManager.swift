@@ -22,6 +22,7 @@ class CardManager {
       card.boxNumber += 1
     }
     card.nextReviewDate = getNextReviewDate(card: card)
+//    card.reviewed = true
   }
   
   func demoteCard(_ card: inout Card) {
@@ -29,6 +30,7 @@ class CardManager {
       card.boxNumber -= 1
     }
     card.nextReviewDate = getNextReviewDate(card: card)
+//    card.reviewed = true
   }
   
   private func getNextReviewDate(card: Card) -> Date {

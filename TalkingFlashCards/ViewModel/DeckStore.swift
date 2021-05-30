@@ -8,8 +8,15 @@
 import Combine
 import RealmSwift
 
-class DeckStore: ObservableObject {
-  
+protocol DeckStoreOperations {
+  func createDeck(_ deck: Deck)
+  func updateDeck(_ deck: Deck)
+  func deckIndexById(_ id: String) -> Int
+  func deckById(_ id: String) -> Deck
+}
+
+
+class DeckStore: ObservableObject, DeckStoreOperations {  
   @Published var decks = [Deck]()
   @Dependency var deckDataService: DeckDataService
   private var cancellables = Set<AnyCancellable>()
@@ -69,16 +76,4 @@ class DeckStore: ObservableObject {
   func deckById(_ id: String) -> Deck {
     decks.first { $0.id == id }!
   }
-  
-  /*
-  decks.append(deck)
-}
-
-func updateDeck(_ deck: Deck) {
-  objectWillChange.send()
-  if let index = decks.firstIndex(where: { $0.id == deck.id }) {
-    decks[index] = deck
-  }
-  */ 
-  
 }

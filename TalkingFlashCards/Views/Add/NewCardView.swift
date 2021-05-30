@@ -39,12 +39,10 @@ struct NewCardView: View {
             }
           }
           .frame(minHeight: 70.0, maxHeight: 150.0)
-        //          .foregroundColor(.secondary)
       }
       Section(header: Text("Back")) {
         TextEditor(text: $card.back.text)
           .frame(minHeight: 70.0, maxHeight: 150.0)
-        //          .foregroundColor(.secondary)
       }
     }
     .navigationTitle(mode == .create ? "New Card" : "Edit Card")
