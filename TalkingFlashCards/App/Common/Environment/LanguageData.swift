@@ -12,7 +12,7 @@ class LanguageData: ObservableObject {
   @Published var uniqueLanguages: [Language]
 //  @Dependency private(set) var languageService: LanguageService TODO
   
-  init(languageService: LanguageService = LocalLanguageService()) {
+  init(languageService: LanguageServiceProtocol = LanguageService()) {
     uniqueLanguages = languageService.getUniqueLanguages()
   }
   

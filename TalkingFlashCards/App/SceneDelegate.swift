@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     print(Realm.Configuration.defaultConfiguration.fileURL!)
-    let realm = try! Realm()
+    let _ = try! Realm()
     
     let homeView = HomeView()
       .environment(\.managedObjectContext, context)

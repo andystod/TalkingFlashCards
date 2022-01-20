@@ -9,14 +9,14 @@ import Foundation
 import Combine
 import RealmSwift
 
-protocol DeckDataService {
+protocol DeckDataServiceProtocol {
   func loadDecks() -> AnyPublisher<Results<DeckDB>, Error>
   func createDeck(deck: Deck) -> AnyPublisher<Void, FlashError>
   func updateDeck(deck: Deck) -> AnyPublisher<Void, Error>
 //  func deleteDeck(deck: Deck) -> AnyPublisher<Void, FlashError> // TODO
 }
 
-class RealmDeckDataService: DeckDataService {
+class DeckDataService: DeckDataServiceProtocol {
    
   func loadDecks() -> AnyPublisher<Results<DeckDB>, Error> {
     return Future<Results<DeckDB>, Error> { promise in

@@ -12,7 +12,7 @@ class CardStore: ObservableObject {
   
   @Published var cards = [Card]()
   var cardManager = CardManager()
-  @Dependency var cardDataService: CardDataService
+  @Dependency var cardDataService: CardDataServiceProtocol
   var cancellables = Set<AnyCancellable>()
   var deckId = ""
   @Published var allCardsReviewed = false

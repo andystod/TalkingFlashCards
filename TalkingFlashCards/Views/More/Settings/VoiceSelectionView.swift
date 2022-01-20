@@ -13,7 +13,7 @@ struct VoiceSelectionView: View {
   var language: Language
   @State var selectedVoice: Voice?
   @StateObject var viewModel: ViewModel
-  @Dependency var languageService: LanguageService
+  @Dependency var languageService: LanguageServiceProtocol
   
   init(viewModel: ViewModel = ViewModel(), language: Language, selectedVoice: Voice) {
     self._viewModel = StateObject(wrappedValue: viewModel)
@@ -57,7 +57,7 @@ struct VoiceSelectionView: View {
 extension VoiceSelectionView {
   class ViewModel: ObservableObject {
     @Published var voices = [Voice]()
-    @Dependency var languageService: LanguageService
+    @Dependency var languageService: LanguageServiceProtocol
     @Published var selectedVoice: Voice?
     
     func loadLanguages(languageCode: String) {

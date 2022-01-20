@@ -48,7 +48,7 @@ extension VoiceSettingsView {
         .sink { [weak self] voicePreferences in
           
           let languages = GlobalData.shared.languageData.uniqueLanguages
-          self?.languagesAndVoices = languages.map { LanguageAndVoice(language: $0, voice: voicePreferences[$0.languageCode] != nil ? Voice(identifier:  voicePreferences[$0.languageCode] as! String) : Voice(defaultItem: true)) }
+          self?.languagesAndVoices = languages.map { LanguageAndVoice(language: $0, voice: voicePreferences[$0.languageCode] != nil ? Voice(identifier:  voicePreferences[$0.languageCode]!) : Voice(defaultItem: true)) }
         }
       
       

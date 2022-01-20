@@ -8,7 +8,7 @@
 import Foundation
 import AVFoundation
 
-protocol LanguageService {
+protocol LanguageServiceProtocol {
   func getUniqueLanguages() -> [Language]
   func getVoicesForLanguage(_ languageCode: String) -> [Voice] 
   
@@ -33,7 +33,7 @@ struct Language: Hashable, Comparable {
   }
 }
 
-struct LocalLanguageService: LanguageService {
+struct LanguageService: LanguageServiceProtocol {
   
   var defaultLocalForLanguages = ["en":"en-US", "zh":"zh-CN", "es":"es-MX", "fr":"fr-FR", "nl":"nl-NL", "pt-BR":"pt-BR"]
   

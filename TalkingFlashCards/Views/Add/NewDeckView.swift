@@ -77,8 +77,7 @@ struct NewDeckView: View {
           presentationMode.wrappedValue.dismiss()
         }) {
           Text("Save")
-            .fontWeight(.black)
-          
+            .fontWeight(.bold)
         }
         .disabled(!deck.hasRequiredFieldsFilled)
       }

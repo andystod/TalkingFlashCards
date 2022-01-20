@@ -10,8 +10,8 @@ import Foundation
 class DependencyManager {
     
     static func addDependencies() {
-      DependencyContainer.register(RealmDeckDataService() as DeckDataService)
-      DependencyContainer.register(RealmCardDataService() as CardDataService)
-      DependencyContainer.register(LocalLanguageService() as LanguageService)
+      DependencyContainer.register(DeckDataService() as DeckDataServiceProtocol)
+      DependencyContainer.register(CardDataService() as CardDataServiceProtocol)
+      DependencyContainer.register(LanguageService() as LanguageServiceProtocol)
     }
 }

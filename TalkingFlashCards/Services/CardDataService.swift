@@ -9,14 +9,14 @@ import Foundation
 import RealmSwift
 import Combine
 
-protocol CardDataService {
+protocol CardDataServiceProtocol {
   func loadCards(deckId: String) -> AnyPublisher<[Card], FlashError>
   func addCard(_ card: Card, deckId: String) -> AnyPublisher<Void, FlashError>
   func updateCard(_ card: Card) -> AnyPublisher<Void, FlashError>
   func deleteCards(_ cards: [Card], deckId: String) -> AnyPublisher<Void, FlashError>
 }
 
-class RealmCardDataService: CardDataService {
+class CardDataService: CardDataServiceProtocol {
   
   func loadCards(deckId: String) -> AnyPublisher<[Card], FlashError> {
     Future { promise in

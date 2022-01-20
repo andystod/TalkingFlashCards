@@ -18,7 +18,7 @@ protocol DeckStoreOperations {
 
 class DeckStore: ObservableObject, DeckStoreOperations {  
   @Published var decks = [Deck]()
-  @Dependency var deckDataService: DeckDataService
+  @Dependency var deckDataService: DeckDataServiceProtocol
   private var cancellables = Set<AnyCancellable>()
   
   init(callLoad: Bool = true) {
